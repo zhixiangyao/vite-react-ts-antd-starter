@@ -32,10 +32,6 @@ function RegistrantList() {
     setState('edit')
   }
 
-  const handleOk = () => {
-    setIsModalVisible(false)
-  }
-
   const handleCancel = () => {
     setIsModalVisible(false)
   }
@@ -90,18 +86,13 @@ function RegistrantList() {
 
   return (
     <>
-      <Button type="primary" className="mt-3" onClick={() => showModalAdd()}>
+      <Button type="primary" className="mb-3" onClick={() => showModalAdd()}>
         添加
       </Button>
 
-      <Table className="w-full p-4" columns={columns} dataSource={reduxregistrantList} />
+      <Table className="w-full" columns={columns} dataSource={reduxregistrantList} />
 
-      <RegistrantForm
-        visible={isModalVisible}
-        state={state}
-        handleOk={() => handleOk()}
-        handleCancel={() => handleCancel()}
-      />
+      <RegistrantForm visible={isModalVisible} state={state} handleCancel={() => handleCancel()} />
     </>
   )
 }

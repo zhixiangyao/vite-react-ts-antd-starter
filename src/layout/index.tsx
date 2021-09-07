@@ -39,7 +39,6 @@ const Default: React.FC<Props> = ({ route }) => {
         ))}
       </>
     ),
-    info: `PATH: "${pathname}"`,
   }
 
   return (

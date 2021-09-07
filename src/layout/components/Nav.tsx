@@ -21,10 +21,6 @@ const Nav: React.FC<NavProps> = ({ children }) => (
             <div className="flex space-x-4 select-none">{children?.default ?? 'null'}</div>
           </div>
         </div>
-
-        <div className="lg:flex xl:flex text-blue-600 flex-shrink-0 px-3 py-2 rounded-md text-sm font-medium">
-          {children?.info ?? 'null'}
-        </div>
       </div>
     </div>
   </nav>
