@@ -15,6 +15,9 @@ const setLocalStorage = (key: string, value: any): void => {
 
 const getLocalStorage = (key: string, isParse = false): any => {
   const cache = localStorage.getItem(`${keyBefore}${key}`)
+
+  if (cache === undefined) return cache
+
   return isParse ? cache && JSON.parse(cache) : cache
 }
 

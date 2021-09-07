@@ -10,15 +10,9 @@ import Main from '/@/layout/components/Main'
 const navbarList = [
   {
     id: 1,
-    label: 'Home',
-    name: 'Home',
-    path: '/defalut/home',
-  },
-  {
-    id: 3,
-    label: 'Users',
-    name: 'Users',
-    path: '/defalut/users',
+    label: 'RegistrantList',
+    name: 'RegistrantList',
+    path: '/defalut/registrant-list',
   },
 ]
 

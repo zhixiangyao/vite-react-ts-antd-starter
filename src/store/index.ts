@@ -1,21 +1,14 @@
-import { action, observable, makeObservable } from 'mobx'
-import { getLocalStorage, setLocalStorage } from '/@/utils'
+import { configureStore } from '@reduxjs/toolkit'
 
-class Store {
-  @observable
-  count = getLocalStorage('value') ? Number(getLocalStorage('value')) : 0
+import registrantReducer from '/@/store/registrantReducer'
 
-  constructor() {
-    makeObservable(this)
-  }
+const store = configureStore({
+  reducer: { registrantReducer },
+})
 
-  @action
-  setCount = () => {
-    this.count++
-    setLocalStorage('value', this.count)
-  }
-}
+export default store
 
-const store = new Store()
-
-export { store }
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch

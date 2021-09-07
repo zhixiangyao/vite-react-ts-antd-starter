@@ -1,8 +1,6 @@
 import React, { lazy } from 'react'
 import { Redirect } from 'react-router-dom'
-
 import type { RouteConfig } from 'react-router-config'
-
 import Layout from '/@/layout'
 
 export interface Props {
@@ -16,18 +14,14 @@ export interface CopyRouteConfig extends RouteConfig {
 }
 
 const routes: CopyRouteConfig[] = [
-  { path: '/', exact: true, render: () => <Redirect to={'/defalut/home'} /> },
+  { path: '/', exact: true, render: () => <Redirect to={'/defalut/registrant-list'} /> },
   {
     path: '/defalut',
     component: Layout,
     routes: [
       {
-        path: '/defalut/home',
-        component: lazy(() => import('/@/views/Home')),
-      },
-      {
-        path: '/defalut/users',
-        component: lazy(() => import('/@/views/Users')),
+        path: '/defalut/registrant-list',
+        component: lazy(() => import('/@/views/RegistrantList')),
       },
     ],
   },
