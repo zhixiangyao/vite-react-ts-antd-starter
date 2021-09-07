@@ -8,19 +8,20 @@ import UploadAvatar from '/@/components/UploadAvatar'
 
 import type { Data } from '/@/store/registrantReducer'
 
+interface Props {
+  visible: boolean
+  state: 'add' | 'look' | 'edit'
+  handleCancel: () => void
+  handleFinish: (values: Data) => void
+}
+
 const addLookEdit = {
   add: '添加',
   look: '查看',
   edit: '编辑',
 }
-interface Props {
-  visible: boolean
-  handleCancel: () => void
-  handleFinish: (values: Data) => void
-  state: 'add' | 'look' | 'edit'
-}
 
-const RegistrantForm: React.FC<Props> = ({ visible, handleCancel, handleFinish, state }) => {
+const RegistrantForm: React.FC<Props> = ({ visible, state, handleCancel, handleFinish }) => {
   const [disabled, setDisabled] = useState(false)
 
   useEffect(() => {
@@ -34,17 +35,16 @@ const RegistrantForm: React.FC<Props> = ({ visible, handleCancel, handleFinish, 
   return (
     <>
       <Modal
-        title={`${addLookEdit[state]}: 员工入职登记表`}
         width="100%"
-        style={{ top: 10 }}
         visible={visible}
-        onCancel={handleCancel}
         footer={null}
+        title={`${addLookEdit[state]}: 员工入职登记表`}
+        style={{ top: 10 }}
+        onCancel={handleCancel}
       >
         <Form
           layout="horizontal"
           size="small"
-          // form={form}
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
           initialValues={{ size: 'small' }}

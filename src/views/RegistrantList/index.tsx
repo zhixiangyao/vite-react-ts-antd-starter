@@ -10,6 +10,14 @@ import RegistrantForm from './components/RegistrantForm'
 
 import type { Data } from '/@/store/registrantReducer'
 
+// interface FieldData {
+//   name: string | number | (string | number)[]
+//   value?: any
+//   touched?: boolean
+//   validating?: boolean
+//   errors?: string[]
+// }
+
 function RegistrantList() {
   const reduxregistrantList = useAppSelector((state) => state.registrantReducer.registrantList)
   const dispatch = useAppDispatch()
@@ -43,6 +51,7 @@ function RegistrantList() {
     form.graduationDate = moment(form.graduationDate).format('L')
     form.registrationTime = moment(form.registrationTime).format('L')
     form.birthDate = moment(form.birthDate).format('L')
+
     dispatch(addRegistrant(form))
     handleCancel()
   }
