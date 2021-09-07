@@ -4,6 +4,7 @@ import dotenv from 'dotenv' // Dotenv 是一个零依赖的模块，它能将 en
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import WindiCSS from 'vite-plugin-windicss'
+import vitePluginImp from 'vite-plugin-imp'
 
 import type { UserConfigExport } from 'vite'
 
@@ -30,7 +31,18 @@ export const getEnv = (mode: string): ENV => {
  * https://vitejs.dev/config/
  */
 const userConfig = defineConfig({
-  plugins: [reactRefresh(), WindiCSS()],
+  plugins: [
+    reactRefresh(),
+    WindiCSS(),
+    vitePluginImp({
+      libList: [
+        {
+          libName: 'antd',
+          style: (name) => `antd/lib/${name}/style/index.less`,
+        },
+      ],
+    }),
+  ],
   resolve: {
     alias: [
       {
@@ -38,6 +50,14 @@ const userConfig = defineConfig({
         replacement: resolve(__dirname, './src'),
       },
     ],
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        // 支持内联 JavaScript
+        javascriptEnabled: true,
+      },
+    },
   },
 })
 
