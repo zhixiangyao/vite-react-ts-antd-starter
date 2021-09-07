@@ -1,6 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getLocalStorage, setLocalStorage } from '/@/utils'
+
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit'
+
+export interface FieldData {
+  name: string | number | (string | number)[]
+  value?: any
+  touched?: boolean
+  validating?: boolean
+  errors?: string[]
+}
 
 export interface Data {
   accountAddress: undefined | string
@@ -35,24 +43,45 @@ export interface Data {
 
 export interface InitialState {
   registrantList: Data[]
+  registrantFieldList: FieldData[][]
 }
 
 const initialState: InitialState = {
-  registrantList: getLocalStorage('registrantList', true) ?? [],
+  // Data Ripe
+  registrantList: [],
+
+  // FieldData Raw
+  registrantFieldList: [],
 }
 
 export const registrantSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    addRegistrant: (state, action) => {
+    // Data Ripe
+    addRegistrant: (state, action: { payload: Data }) => {
       state.registrantList.push(action.payload)
-      setLocalStorage('registrantList', state.registrantList)
     },
 
-    deleteRegistrant: (state, action) => {
+    editRegistrant: (state, action: { payload: { index: number; value: Data } }) => {
+      state.registrantList[action.payload.index] = action.payload.value
+    },
+
+    deleteRegistrant: (state, action: { payload: number }) => {
       state.registrantList.splice(action.payload, 1)
-      setLocalStorage('registrantList', state.registrantList)
+    },
+
+    // FieldData Raw
+    addRegistrantField: (state, action: { payload: FieldData[] }) => {
+      state.registrantFieldList.push(action.payload)
+    },
+
+    editRegistrantField: (state, action: { payload: { index: number; value: FieldData[] } }) => {
+      state.registrantFieldList[action.payload.index] = action.payload.value
+    },
+
+    deleteRegistrantField: (state, action: { payload: number }) => {
+      state.registrantFieldList.splice(action.payload, 1)
     },
   },
 })
@@ -60,7 +89,18 @@ export const registrantSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const addRegistrant: ActionCreatorWithPayload<Data, string> =
   registrantSlice.actions.addRegistrant
+export const editRegistrant: ActionCreatorWithPayload<{ index: number; value: Data }, string> =
+  registrantSlice.actions.editRegistrant
 export const deleteRegistrant: ActionCreatorWithPayload<number, string> =
   registrantSlice.actions.deleteRegistrant
+
+export const addRegistrantField: ActionCreatorWithPayload<FieldData[], string> =
+  registrantSlice.actions.addRegistrantField
+export const editRegistrantField: ActionCreatorWithPayload<
+  { index: number; value: FieldData[] },
+  string
+> = registrantSlice.actions.editRegistrantField
+export const deleteRegistrantField: ActionCreatorWithPayload<number, string> =
+  registrantSlice.actions.deleteRegistrantField
 
 export default registrantSlice.reducer

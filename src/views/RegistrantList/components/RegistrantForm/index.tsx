@@ -7,12 +7,16 @@ import Line from '/@/components/Line'
 import UploadAvatar from '/@/components/UploadAvatar'
 
 import type { Data } from '/@/store/registrantReducer'
+import type { FieldData } from '/@/store/registrantReducer'
 
 interface Props {
   visible: boolean
   state: 'add' | 'look' | 'edit'
+  fields: FieldData[]
   handleCancel: () => void
-  handleFinish: (values: Data) => void
+  handleFinishAdd: (values: Data) => void
+  handleFinishEdit: (values: Data) => void
+  handleonFields: (fields: FieldData[]) => void
 }
 
 const addLookEdit = {
@@ -21,7 +25,15 @@ const addLookEdit = {
   edit: '编辑',
 }
 
-const RegistrantForm: React.FC<Props> = ({ visible, state, handleCancel, handleFinish }) => {
+const RegistrantForm: React.FC<Props> = ({
+  visible,
+  state,
+  fields,
+  handleCancel,
+  handleFinishAdd,
+  handleFinishEdit,
+  handleonFields,
+}) => {
   const [disabled, setDisabled] = useState(false)
 
   useEffect(() => {
@@ -45,11 +57,21 @@ const RegistrantForm: React.FC<Props> = ({ visible, state, handleCancel, handleF
         <Form
           layout="horizontal"
           size="small"
+          fields={fields}
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
           initialValues={{ size: 'small' }}
-          onFinish={(values) => handleFinish(values)}
+          onFinish={(values) => {
+            if (state === 'add') {
+              handleFinishAdd(values)
+            } else {
+              handleFinishEdit(values)
+            }
+          }}
           onFinishFailed={(values) => onFinishFailed(values)}
+          onFieldsChange={(_, allFields) => {
+            handleonFields(allFields)
+          }}
         >
           <Row gutter={24}>
             <Col span={8} sm={10}>
