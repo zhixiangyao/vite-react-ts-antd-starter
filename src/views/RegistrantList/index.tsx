@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { Button, Table, Space } from 'antd'
 import { Popconfirm, message } from 'antd'
+import moment from 'moment'
 
+import { addRegistrant } from '/@/store/registrantReducer'
 import { useAppDispatch, useAppSelector } from '/@/hooks'
 import { deleteRegistrant } from '/@/store/registrantReducer'
-import RegistrantForm from '/@/components/RegistrantForm'
+import RegistrantForm from './components/RegistrantForm'
 
 import type { Data } from '/@/store/registrantReducer'
 
@@ -34,6 +36,15 @@ function RegistrantList() {
 
   const handleCancel = () => {
     setIsModalVisible(false)
+  }
+
+  const onFinish = (values: Data) => {
+    const form = values
+    form.graduationDate = moment(form.graduationDate).format('L')
+    form.registrationTime = moment(form.registrationTime).format('L')
+    form.birthDate = moment(form.birthDate).format('L')
+    dispatch(addRegistrant(form))
+    handleCancel()
   }
 
   const handleRender = (text: unknown, record: Data, index: number) => (
@@ -96,7 +107,12 @@ function RegistrantList() {
 
       <Table rowKey="id" className="w-full" columns={columns} dataSource={reduxregistrantList} />
 
-      <RegistrantForm visible={isModalVisible} state={state} handleCancel={() => handleCancel()} />
+      <RegistrantForm
+        visible={isModalVisible}
+        state={state}
+        handleCancel={() => handleCancel()}
+        handleFinish={(values) => onFinish(values)}
+      />
     </>
   )
 }

@@ -2,42 +2,30 @@ import React, { useEffect, useState } from 'react'
 import { Form, Input, Radio, Select, DatePicker } from 'antd'
 import { Modal, Button } from 'antd'
 import { Row, Col } from 'antd'
-import moment from 'moment'
 
-import { useAppDispatch } from '/@/hooks'
-import { addRegistrant } from '/@/store/registrantReducer'
 import Line from '/@/components/Line'
 import UploadAvatar from '/@/components/UploadAvatar'
 
 import type { Data } from '/@/store/registrantReducer'
 
+const addLookEdit = {
+  add: '添加',
+  look: '查看',
+  edit: '编辑',
+}
 interface Props {
   visible: boolean
   handleCancel: () => void
+  handleFinish: (values: Data) => void
   state: 'add' | 'look' | 'edit'
 }
 
-const RegistrantForm: React.FC<Props> = ({ visible, handleCancel, state }) => {
-  const addLookEdit = {
-    add: '添加',
-    look: '查看',
-    edit: '编辑',
-  }
-
+const RegistrantForm: React.FC<Props> = ({ visible, handleCancel, handleFinish, state }) => {
   const [disabled, setDisabled] = useState(false)
-  const dispatch = useAppDispatch()
 
   useEffect(() => {
     state === 'look' ? setDisabled(true) : setDisabled(false)
   }, [state])
-
-  const onFinish = (values: Data) => {
-    const form = values
-    form.graduationDate = moment(form.graduationDate).format('L')
-    form.registrationTime = moment(form.registrationTime).format('L')
-    form.birthDate = moment(form.birthDate).format('L')
-    dispatch(addRegistrant(form))
-  }
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
@@ -60,8 +48,8 @@ const RegistrantForm: React.FC<Props> = ({ visible, handleCancel, state }) => {
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
           initialValues={{ size: 'small' }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
+          onFinish={(values) => handleFinish(values)}
+          onFinishFailed={(values) => onFinishFailed(values)}
         >
           <Row gutter={24}>
             <Col span={8} sm={10}>
