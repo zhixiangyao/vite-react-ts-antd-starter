@@ -5,27 +5,9 @@ import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import WindiCSS from 'vite-plugin-windicss'
 import vitePluginImp from 'vite-plugin-imp'
+import lessToJS from 'less-vars-to-js'
 
 import type { UserConfigExport } from 'vite'
-
-interface ENV {
-  [K: string]: string
-}
-
-export const getEnv = (mode: string): ENV => {
-  const envFiles = [`.env.${mode}`]
-
-  for (const envFile of envFiles) {
-    try {
-      const env = Object.create(null)
-      const envConfig = dotenv.parse(fs.readFileSync(envFile))
-      for (const k in envConfig) Object.assign(env, { [k]: envConfig[k] })
-      return env
-    } catch (error) {
-      console.error(error)
-    }
-  }
-}
 
 /**
  * https://vitejs.dev/config/
@@ -56,6 +38,10 @@ const userConfig = defineConfig({
       less: {
         // 支持内联 JavaScript
         javascriptEnabled: true,
+        // 重写 less 变量，定制样式
+        modifyVars: lessToJS(
+          fs.readFileSync(resolve(__dirname, './config/variables.less'), 'utf8'),
+        ),
       },
     },
   },
@@ -83,5 +69,24 @@ export default ({ command, mode }): UserConfigExport => {
     return userConfig
   } else {
     return userConfig
+  }
+}
+
+interface ENV {
+  [K: string]: string
+}
+
+const getEnv = (mode: string): ENV => {
+  const envFiles = [`.env.${mode}`]
+
+  for (const envFile of envFiles) {
+    try {
+      const env = Object.create(null)
+      const envConfig = dotenv.parse(fs.readFileSync(envFile))
+      for (const k in envConfig) Object.assign(env, { [k]: envConfig[k] })
+      return env
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
