@@ -3,11 +3,34 @@ import { getLocalStorage, setLocalStorage } from '/@/utils'
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 
 export interface Data {
-  key: string
-  name: string
-  registrationTime: string
-  address: string
-  tags: string[]
+  accountAddress: undefined | string
+  birthDate: undefined | string
+  cardNo: undefined | string
+  category: undefined | number
+  censusEegister: undefined | string
+  email: undefined | string
+  emergencyContact: undefined | string
+  emergencyContactPhone: undefined | string
+  emergencyContactRelationship: undefined | string
+  graduationDate: undefined | string
+  graduationSchool: undefined | string
+  highestEducation: undefined | string
+  id: undefined | string
+  idCard: undefined | string
+  registrationTime: undefined | string
+  major: undefined | string
+  maritalStatus: number
+  name: undefined | string
+  nation: undefined | string
+  oftenAddress: undefined | string
+  phone: undefined | string
+  politicalIdentity: number
+  position: undefined | string
+  providentFundAccount: undefined | string
+  qqID: undefined | string
+  remarks: undefined | string
+  sex: undefined | number
+  wechatID: undefined | string
 }
 
 export interface InitialState {
@@ -22,14 +45,8 @@ export const registrantSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    addRegistrant: (state) => {
-      state.registrantList.push({
-        key: String(Math.floor(Math.random() * 10000)),
-        name: 'John Brown',
-        registrationTime: '2020-09-06 14:00',
-        address: 'New York No. 1 Lake Park',
-        tags: ['nice', 'developer'],
-      })
+    addRegistrant: (state, action) => {
+      state.registrantList.push(action.payload)
       setLocalStorage('registrantList', state.registrantList)
     },
 
@@ -41,7 +58,8 @@ export const registrantSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const addRegistrant = registrantSlice.actions.addRegistrant
+export const addRegistrant: ActionCreatorWithPayload<Data, string> =
+  registrantSlice.actions.addRegistrant
 export const deleteRegistrant: ActionCreatorWithPayload<number, string> =
   registrantSlice.actions.deleteRegistrant
 

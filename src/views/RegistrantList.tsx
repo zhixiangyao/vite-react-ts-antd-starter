@@ -38,7 +38,6 @@ function RegistrantList() {
 
   const handleRender = (text: unknown, record: Data, index: number) => (
     <Space size="middle">
-      <a>Invite {record.name}</a>
       <a className="text-green-600 cursor-pointer" onClick={() => showModalLook(index)}>
         查看
       </a>
@@ -62,15 +61,21 @@ function RegistrantList() {
   const columns = [
     {
       title: 'ID',
-      dataIndex: 'key',
-      key: 'key',
-      render: (text: string) => <a>{text}</a>,
+      dataIndex: 'id',
+      key: 'id',
+      render: (id: string) => <a>{id}</a>,
     },
     {
       title: '姓名',
       dataIndex: 'name',
       key: 'name',
-      render: (text: string) => <a>{text}</a>,
+      render: (name: string) => <a>{name}</a>,
+    },
+    {
+      title: '性别',
+      dataIndex: 'sex',
+      key: 'sex',
+      render: (sex: number) => <a>{['男', '女'][sex]}</a>,
     },
     {
       title: '填表时间',
@@ -79,7 +84,6 @@ function RegistrantList() {
     },
     {
       title: '操作',
-      key: 'handle',
       render: handleRender,
     },
   ]
@@ -90,7 +94,7 @@ function RegistrantList() {
         添加
       </Button>
 
-      <Table className="w-full" columns={columns} dataSource={reduxregistrantList} />
+      <Table rowKey="id" className="w-full" columns={columns} dataSource={reduxregistrantList} />
 
       <RegistrantForm visible={isModalVisible} state={state} handleCancel={() => handleCancel()} />
     </>
