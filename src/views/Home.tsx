@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Observer } from 'mobx-react'
-import styled from 'styled-components'
+import { Button } from 'antd'
 
 import { useLocalStore } from '/@/hooks'
-
-const Button = styled.button`
-  font-size: calc(10px + 2vmin);
-`
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -28,11 +24,11 @@ function Home() {
     <Observer>
       {() => (
         <>
-          <Button type="button" onClick={() => setCount((count) => count + 1)}>
+          <Button type="primary" onClick={() => setCount((count) => count + 1)}>
             count is: {count}
           </Button>
 
-          <Button type="button" onClick={() => localStore.setCount()}>
+          <Button type="primary" className="mt-3" onClick={() => localStore.setCount()}>
             mobxCount is: {localStore.count}
           </Button>
         </>
