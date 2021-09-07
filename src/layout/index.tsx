@@ -16,7 +16,7 @@ const navbarList = [
   },
 ]
 
-const Default: React.FunctionComponent<Props> = ({ route }) => {
+const Default: React.FC<Props> = ({ route }) => {
   const history = useHistory()
   const { pathname } = useLocation()
 

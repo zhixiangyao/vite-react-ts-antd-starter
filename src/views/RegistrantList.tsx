@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button, Table, Space } from 'antd'
 import { Popconfirm, message } from 'antd'
 
 import { useAppDispatch, useAppSelector } from '/@/hooks'
-import { addRegistrant, deleteRegistrant } from '/@/store/registrantReducer'
+import { deleteRegistrant } from '/@/store/registrantReducer'
+import RegistrantForm from '/@/components/RegistrantForm'
 
 import type { Data } from '/@/store/registrantReducer'
 
@@ -11,15 +12,56 @@ function RegistrantList() {
   const reduxregistrantList = useAppSelector((state) => state.registrantReducer.registrantList)
   const dispatch = useAppDispatch()
 
-  useEffect(() => console.log('componentDidMount!'), [])
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [state, setState] = useState<'add' | 'look' | 'edit'>('add')
 
-  useEffect(() => console.log('componentDidMount-and-componentDidUpdate!'))
+  const showModalAdd = () => {
+    setIsModalVisible(true)
+    setState('add')
+  }
 
-  useEffect(() => {
-    console.log('componentDidMount~')
+  const showModalLook = (index: number) => {
+    console.log(index)
+    setIsModalVisible(true)
+    setState('look')
+  }
 
-    return () => console.log('componentWillUnmount~')
-  }, [])
+  const showModalEdit = (index: number) => {
+    console.log(index)
+    setIsModalVisible(true)
+    setState('edit')
+  }
+
+  const handleOk = () => {
+    setIsModalVisible(false)
+  }
+
+  const handleCancel = () => {
+    setIsModalVisible(false)
+  }
+
+  const handleRender = (text: unknown, record: Data, index: number) => (
+    <Space size="middle">
+      <a>Invite {record.name}</a>
+      <a className="text-green-600 cursor-pointer" onClick={() => showModalLook(index)}>
+        查看
+      </a>
+      <a className="text-green-600 cursor-pointer" onClick={() => showModalEdit(index)}>
+        编辑
+      </a>
+      <Popconfirm
+        title={`确定删除${record.name}的记录吗?`}
+        onConfirm={() => {
+          dispatch(deleteRegistrant(index))
+          message.success('Click on Yes')
+        }}
+        okText="是"
+        cancelText="否"
+      >
+        <a className="text-red-600 cursor-pointer">删除</a>
+      </Popconfirm>
+    </Space>
+  )
 
   const columns = [
     {
@@ -41,35 +83,25 @@ function RegistrantList() {
     },
     {
       title: '操作',
-      key: 'action',
-      render: (text: unknown, record: Data, index: number) => (
-        <Space size="middle">
-          <a>Invite {record.name}</a>
-          <a className="text-green-600 cursor-pointer">查看</a>
-          <a className="text-green-600 cursor-pointer">编辑</a>
-          <Popconfirm
-            title={`确定删除${record.name}的记录吗?`}
-            onConfirm={() => {
-              dispatch(deleteRegistrant(index))
-              message.success('Click on Yes')
-            }}
-            okText="Yes"
-            cancelText="No"
-          >
-            <a className="text-red-600 cursor-pointer">删除</a>
-          </Popconfirm>
-        </Space>
-      ),
+      key: 'handle',
+      render: handleRender,
     },
   ]
 
   return (
     <>
-      <Button type="primary" className="mt-3" onClick={() => dispatch(addRegistrant())}>
-        Add
+      <Button type="primary" className="mt-3" onClick={() => showModalAdd()}>
+        添加
       </Button>
 
       <Table className="w-full p-4" columns={columns} dataSource={reduxregistrantList} />
+
+      <RegistrantForm
+        visible={isModalVisible}
+        state={state}
+        handleOk={() => handleOk()}
+        handleCancel={() => handleCancel()}
+      />
     </>
   )
 }

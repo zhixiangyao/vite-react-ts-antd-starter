@@ -10,7 +10,7 @@ export interface Props {
 }
 
 export interface CopyRouteConfig extends RouteConfig {
-  component?: RouteConfig['component'] | React.FunctionComponent<Props>
+  component?: RouteConfig['component'] | React.FC<Props>
 }
 
 const routes: CopyRouteConfig[] = [
