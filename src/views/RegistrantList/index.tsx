@@ -4,59 +4,61 @@ import { Popconfirm, message } from 'antd'
 import moment from 'moment'
 
 import { addRegistrant, editRegistrant } from '/@/store/reducer/registrantReducer'
-import { useAppDispatch, useAppSelector } from '/@/hooks'
 import { deleteRegistrant } from '/@/store/reducer/registrantReducer'
+import { useAppDispatch, useAppSelector } from '/@/hooks'
 import RegistrantForm from './components/RegistrantForm'
 
 import type { Data } from '/@/store/reducer/registrantReducer'
 
 function RegistrantList() {
   const dispatch = useAppDispatch()
-  const reduxregistrantList = useAppSelector((state) => state.registrantReducer.registrantList)
+  const reduxRegistrantList = useAppSelector((state) => state.registrantReducer.registrantList)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [state, setState] = useState<'add' | 'look' | 'edit'>('add')
   const [fields, setFields] = useState<Data>({})
   const [index, setIndex] = useState<number>(0)
 
-  const hideModalForm = (): void => {
+  const hideModalForm = () => {
     setIsModalVisible(false)
     setFields({})
   }
 
-  const showModalFormAdd = (): void => {
+  const showModalFormAdd = () => {
     setIsModalVisible(true)
     setState('add')
   }
 
-  const showModalFormLook = (index: number): void => {
-    console.log(index)
+  const showModalFormLook = (index: number) => {
     setIsModalVisible(true)
     setState('look')
-    setFields(reduxregistrantList[index])
+    setFields(reduxRegistrantList[index])
   }
 
-  const showModalFormEdit = (index: number): void => {
-    console.log(index)
+  const showModalFormEdit = (index: number) => {
     setIsModalVisible(true)
     setState('edit')
-    setFields(reduxregistrantList[index])
+    setFields(reduxRegistrantList[index])
   }
 
-  const onFinishAdd = (values: Data): void => {
-    const form = values
-    form.graduationDate = moment(form.graduationDate).format('L')
-    form.registrationTime = moment(form.registrationTime).format('L')
-    form.birthDate = moment(form.birthDate).format('L')
+  const onFinishAdd = (values: Data) => {
+    const form = {
+      ...values,
+      graduationDate: moment(values.graduationDate).format('L'),
+      registrationTime: moment(values.registrationTime).format('L'),
+      birthDate: moment(values.birthDate).format('L'),
+    }
 
     dispatch(addRegistrant(form))
     hideModalForm()
   }
 
-  const onFinishEdit = (values: Data): void => {
-    const form = values
-    form.graduationDate = moment(form.graduationDate).format('L')
-    form.registrationTime = moment(form.registrationTime).format('L')
-    form.birthDate = moment(form.birthDate).format('L')
+  const onFinishEdit = (values: Data) => {
+    const form = {
+      ...values,
+      graduationDate: moment(values.graduationDate).format('L'),
+      registrationTime: moment(values.registrationTime).format('L'),
+      birthDate: moment(values.birthDate).format('L'),
+    }
 
     dispatch(editRegistrant({ index, value: form }))
     hideModalForm()
@@ -124,7 +126,7 @@ function RegistrantList() {
 
   return (
     <>
-      <Button type="primary" className="mb-3" onClick={() => showModalFormAdd()}>
+      <Button type="primary" className="mb-3" onClick={showModalFormAdd}>
         添加
       </Button>
 
@@ -132,7 +134,7 @@ function RegistrantList() {
         rowKey="id"
         className="w-full"
         columns={columns}
-        dataSource={reduxregistrantList}
+        dataSource={reduxRegistrantList}
         bordered
       />
 
@@ -140,9 +142,9 @@ function RegistrantList() {
         fields={fields}
         visible={isModalVisible}
         state={state}
-        handleCancel={() => hideModalForm()}
-        handleFinishAdd={(values) => onFinishAdd(values)}
-        handleFinishEdit={(values) => onFinishEdit(values)}
+        handleCancel={hideModalForm}
+        handleFinishAdd={onFinishAdd}
+        handleFinishEdit={onFinishEdit}
       />
     </>
   )

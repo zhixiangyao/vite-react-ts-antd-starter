@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Input, Radio, Select, DatePicker, Space } from 'antd'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
-import { Modal, Button } from 'antd'
-import { Row, Col } from 'antd'
+import { Modal, Button, Row, Col } from 'antd'
 import moment from 'moment'
 
 import Line from '/@/components/Line'
@@ -16,24 +15,10 @@ import {
 } from './data'
 
 import type { Data } from '/@/store/reducer/registrantReducer'
+import type { Props } from './type'
 
-interface Props {
-  visible: boolean
-  state: 'add' | 'look' | 'edit'
-  fields: Data
-  handleCancel: () => void
-  handleFinishAdd: (values: Data) => void
-  handleFinishEdit: (values: Data) => void
-}
-
-const RegistrantForm: React.FC<Props> = ({
-  visible,
-  state,
-  fields,
-  handleCancel,
-  handleFinishAdd,
-  handleFinishEdit,
-}) => {
+const RegistrantForm: React.FC<Props> = (props) => {
+  const { visible, state, fields, handleCancel, handleFinishAdd, handleFinishEdit } = props
   const [form] = Form.useForm()
   const [disabled, setDisabled] = useState(false)
 
@@ -49,11 +34,7 @@ const RegistrantForm: React.FC<Props> = ({
   })
 
   const onFinish = (values: Data) => {
-    if (state === 'add') {
-      handleFinishAdd(values)
-    } else {
-      handleFinishEdit(values)
-    }
+    state === 'add' ? handleFinishAdd(values) : handleFinishEdit(values)
   }
 
   const workList = (
@@ -137,7 +118,7 @@ const RegistrantForm: React.FC<Props> = ({
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         initialValues={{ size: 'small' }}
-        onFinish={(values) => onFinish(values)}
+        onFinish={onFinish}
       >
         <Row gutter={24}>
           <Col span={8} sm={10}>
