@@ -15,7 +15,7 @@ import {
   timeKeys,
 } from './data'
 
-import type { Data } from '/@/store/registrantReducer'
+import type { Data } from '/@/store/reducer/registrantReducer'
 
 interface Props {
   visible: boolean
@@ -55,6 +55,68 @@ const RegistrantForm: React.FC<Props> = ({
       handleFinishEdit(values)
     }
   }
+
+  const workList = (
+    <Form.List name="workList">
+      {(fields, { add, remove }) => (
+        <>
+          {fields.map(({ key, name, fieldKey, ...restField }) => (
+            <Space size={100} key={key} style={{ marginBottom: 8 }} align="baseline">
+              <Form.Item
+                {...restField}
+                name={[name, 'date']}
+                fieldKey={[fieldKey, 'date']}
+                rules={[{ required: true, message: '请输入起止日期' }]}
+              >
+                <Input disabled={disabled} placeholder="起止日期" />
+              </Form.Item>
+
+              <Form.Item
+                {...restField}
+                name={[name, 'name']}
+                fieldKey={[fieldKey, 'name']}
+                rules={[{ required: true, message: '请输入工作单位' }]}
+              >
+                <Input disabled={disabled} placeholder="工作单位" />
+              </Form.Item>
+
+              <Form.Item
+                {...restField}
+                name={[name, 'rule']}
+                fieldKey={[fieldKey, 'rule']}
+                rules={[{ required: true, message: '请输入工作职位' }]}
+              >
+                <Input disabled={disabled} placeholder="工作职位" />
+              </Form.Item>
+
+              <Form.Item
+                {...restField}
+                name={[name, 'info']}
+                fieldKey={[fieldKey, 'info']}
+                rules={[{ required: true, message: '请输入离职原因' }]}
+              >
+                <Input disabled={disabled} placeholder="离职原因" />
+              </Form.Item>
+
+              <MinusCircleOutlined onClick={() => remove(name)} />
+            </Space>
+          ))}
+
+          <Form.Item>
+            <Button
+              disabled={disabled}
+              type="dashed"
+              onClick={() => add()}
+              block
+              icon={<PlusOutlined />}
+            >
+              新增工作经历
+            </Button>
+          </Form.Item>
+        </>
+      )}
+    </Form.List>
+  )
 
   return (
     <Modal
@@ -267,65 +329,7 @@ const RegistrantForm: React.FC<Props> = ({
 
         <Line />
 
-        <Form.List name="workList">
-          {(fields, { add, remove }) => (
-            <>
-              {fields.map(({ key, name, fieldKey, ...restField }) => (
-                <Space size={100} key={key} style={{ marginBottom: 8 }} align="baseline">
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'date']}
-                    fieldKey={[fieldKey, 'date']}
-                    rules={[{ required: true, message: '请输入起止日期' }]}
-                  >
-                    <Input disabled={disabled} placeholder="起止日期" />
-                  </Form.Item>
-
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'name']}
-                    fieldKey={[fieldKey, 'name']}
-                    rules={[{ required: true, message: '请输入工作单位' }]}
-                  >
-                    <Input disabled={disabled} placeholder="工作单位" />
-                  </Form.Item>
-
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'rule']}
-                    fieldKey={[fieldKey, 'rule']}
-                    rules={[{ required: true, message: '请输入工作职位' }]}
-                  >
-                    <Input disabled={disabled} placeholder="工作职位" />
-                  </Form.Item>
-
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'info']}
-                    fieldKey={[fieldKey, 'info']}
-                    rules={[{ required: true, message: '请输入离职原因' }]}
-                  >
-                    <Input disabled={disabled} placeholder="离职原因" />
-                  </Form.Item>
-
-                  <MinusCircleOutlined onClick={() => remove(name)} />
-                </Space>
-              ))}
-
-              <Form.Item>
-                <Button
-                  disabled={disabled}
-                  type="dashed"
-                  onClick={() => add()}
-                  block
-                  icon={<PlusOutlined />}
-                >
-                  新增工作经历
-                </Button>
-              </Form.Item>
-            </>
-          )}
-        </Form.List>
+        {workList}
 
         <Line />
 

@@ -3,12 +3,12 @@ import { Button, Table, Space } from 'antd'
 import { Popconfirm, message } from 'antd'
 import moment from 'moment'
 
-import { addRegistrant, editRegistrant } from '/@/store/registrantReducer'
+import { addRegistrant, editRegistrant } from '/@/store/reducer/registrantReducer'
 import { useAppDispatch, useAppSelector } from '/@/hooks'
-import { deleteRegistrant } from '/@/store/registrantReducer'
+import { deleteRegistrant } from '/@/store/reducer/registrantReducer'
 import RegistrantForm from './components/RegistrantForm'
 
-import type { Data } from '/@/store/registrantReducer'
+import type { Data } from '/@/store/reducer/registrantReducer'
 
 function RegistrantList() {
   const dispatch = useAppDispatch()
