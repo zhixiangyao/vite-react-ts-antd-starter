@@ -24,3 +24,5 @@ export const highestEducationList = [
   { value: 3, lable: '初中' },
   { value: 4, lable: '小学' },
 ]
+
+export const timeKeys = ['graduationDate', 'registrationTime', 'birthDate']

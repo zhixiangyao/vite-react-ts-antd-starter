@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import 'virtual:windi.css'
-import 'virtual:windi-devtools'
+// import 'virtual:windi-devtools'
 import 'antd/dist/antd.css'
 
 import App from '/@/App'
