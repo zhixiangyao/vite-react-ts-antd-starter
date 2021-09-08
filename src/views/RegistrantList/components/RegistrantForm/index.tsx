@@ -47,10 +47,6 @@ const RegistrantForm: React.FC<Props> = ({
     }
   })
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo)
-  }
-
   const onFinish = (values: Data) => {
     if (state === 'add') {
       handleFinishAdd(values)
@@ -79,7 +75,6 @@ const RegistrantForm: React.FC<Props> = ({
         wrapperCol={{ span: 14 }}
         initialValues={{ size: 'small' }}
         onFinish={(values) => onFinish(values)}
-        onFinishFailed={(values) => onFinishFailed(values)}
       >
         <Row gutter={24}>
           <Col span={8} sm={10}>
@@ -269,7 +264,6 @@ const RegistrantForm: React.FC<Props> = ({
           </Col>
         </Row>
 
-        <Line />
         <Line />
 
         <Form.Item name="providentFundAccount" label="公积金账号">

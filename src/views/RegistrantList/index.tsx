@@ -128,7 +128,13 @@ function RegistrantList() {
         添加
       </Button>
 
-      <Table rowKey="id" className="w-full" columns={columns} dataSource={reduxregistrantList} />
+      <Table
+        rowKey="id"
+        className="w-full"
+        columns={columns}
+        dataSource={reduxregistrantList}
+        bordered
+      />
 
       <RegistrantForm
         fields={fields}
