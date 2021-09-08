@@ -4,6 +4,13 @@ import { getLocalStorage, setLocalStorage } from '/@/utils'
 
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 
+interface WorkInfo {
+  date: string
+  info: string
+  name: string
+  rule: string
+}
+
 export interface Data {
   accountAddress?: undefined | string
   birthDate?: undefined | string
@@ -33,6 +40,7 @@ export interface Data {
   remarks?: undefined | string
   sex?: undefined | number
   wechatID?: undefined | string
+  workList?: WorkInfo[]
 }
 
 export interface InitialState {
