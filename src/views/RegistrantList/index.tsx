@@ -37,6 +37,7 @@ function RegistrantList() {
   const showModalFormEdit = (index: number) => {
     setIsModalVisible(true)
     setState('edit')
+    setIndex(index)
     setFields(reduxRegistrantList[index])
   }
 
@@ -70,13 +71,7 @@ function RegistrantList() {
         查看
       </a>
 
-      <a
-        className="text-green-600 cursor-pointer"
-        onClick={() => {
-          showModalFormEdit(index)
-          setIndex(index)
-        }}
-      >
+      <a className="text-green-600 cursor-pointer" onClick={() => showModalFormEdit(index)}>
         编辑
       </a>
 
@@ -126,7 +121,7 @@ function RegistrantList() {
 
   return (
     <>
-      <Button type="primary" className="mb-3" onClick={showModalFormAdd}>
+      <Button type="primary" className="mb-3 self-end" onClick={showModalFormAdd}>
         添加
       </Button>
 
