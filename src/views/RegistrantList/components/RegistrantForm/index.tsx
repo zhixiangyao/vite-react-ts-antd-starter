@@ -336,13 +336,16 @@ const RegistrantForm: React.FC<Props> = (props) => {
     </fieldset>
   )
 
-  const SubmitView = (
-    <Form.Item wrapperCol={{ span: 24, offset: 12 }}>
-      <Button type="primary" size="large" htmlType="submit">
-        {addLookEdit[state]}
-      </Button>
-    </Form.Item>
-  )
+  const SubmitView =
+    disabled === false ? (
+      <Form.Item wrapperCol={{ span: 24, offset: 12 }}>
+        <Button type="primary" size="large" htmlType="submit">
+          {addLookEdit[state]}
+        </Button>
+      </Form.Item>
+    ) : (
+      <></>
+    )
 
   const FormView = (
     <Form
@@ -366,7 +369,7 @@ const RegistrantForm: React.FC<Props> = (props) => {
 
       {RemarksInfoView}
 
-      {disabled === false && SubmitView}
+      {SubmitView}
     </Form>
   )
 
