@@ -41,12 +41,11 @@ const Default: React.FC<Props> = ({ route }) => {
 
   return (
     <>
-      <Nav children={navChildren} />
-      <Main
-        children={
-          <Suspense fallback={<div>Loading...</div>}>{renderRoutes(route?.routes)}</Suspense>
-        }
-      />
+      <Nav>{navChildren}</Nav>
+
+      <Main>
+        <Suspense fallback={<div>Loading...</div>}>{renderRoutes(route?.routes)}</Suspense>
+      </Main>
     </>
   )
 }
