@@ -5,7 +5,7 @@ export interface Props {
   visible: boolean
   state: State
   fields: Data
-  handleCancel: () => void
-  handleFinishAdd: (values: Data) => void
-  handleFinishEdit: (values: Data) => void
+  handleFormCancel: () => void
+  handleFormAdd: (values: Data) => void
+  handleFormEdit: (values: Data) => void
 }

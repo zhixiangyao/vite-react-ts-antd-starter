@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
-import { Button, Table, Space } from 'antd'
-import { Popconfirm, message } from 'antd'
+import { Button, message } from 'antd'
 import moment from 'moment'
 
+import { useAppDispatch, useAppSelector } from '/@/hooks'
 import { addRegistrant, editRegistrant } from '/@/store/reducer/registrantReducer'
 import { deleteRegistrant } from '/@/store/reducer/registrantReducer'
-import { useAppDispatch, useAppSelector } from '/@/hooks'
-import RegistrantForm from './components/RegistrantForm'
-import { State } from './type'
-
 import type { Data } from '/@/store/reducer/registrantReducer'
 
-function RegistrantList() {
+import RegistrantForm from './components/RegistrantForm'
+import RegistranTableList from './components/RegistranTableList'
+import { State } from './type'
+
+function formatMoment(time: moment.MomentInput, type = 'L') {
+  return moment(time).format(type)
+}
+
+const RegistrantList: React.FC = () => {
   const dispatch = useAppDispatch()
   const reduxRegistrantList = useAppSelector((state) => state.registrantReducer.registrantList)
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -19,128 +23,78 @@ function RegistrantList() {
   const [fields, setFields] = useState<Data>({})
   const [index, setIndex] = useState<number>(0)
 
-  const hideModalForm = () => {
-    setIsModalVisible(false)
-    setFields({})
-  }
-
-  const showModalFormAdd = () => {
+  const handleAdd = () => {
     setIsModalVisible(true)
     setState(State.ADD)
   }
 
-  const showModalFormLook = (index: number) => {
+  const handleTableLook = (index: number) => {
     setIsModalVisible(true)
     setState(State.LOOK)
     setFields(reduxRegistrantList[index])
   }
 
-  const showModalFormEdit = (index: number) => {
+  const handleTableEdit = (index: number) => {
     setIsModalVisible(true)
     setState(State.EDIT)
     setIndex(index)
     setFields(reduxRegistrantList[index])
   }
 
-  const onFinishAdd = (values: Data) => {
+  const handleTableDelete = (index: number) => {
+    dispatch(deleteRegistrant(index))
+    message.success('Click on Yes')
+  }
+
+  const hideFormView = () => {
+    setIsModalVisible(false)
+    setFields({})
+  }
+
+  const handleFormAdd = (values: Data) => {
     const form = {
       ...values,
-      graduationDate: moment(values.graduationDate).format('L'),
-      registrationTime: moment(values.registrationTime).format('L'),
-      birthDate: moment(values.birthDate).format('L'),
+      graduationDate: formatMoment(values.graduationDate),
+      registrationTime: formatMoment(values.registrationTime),
+      birthDate: formatMoment(values.birthDate),
     }
 
     dispatch(addRegistrant(form))
-    hideModalForm()
+    hideFormView()
   }
 
-  const onFinishEdit = (values: Data) => {
+  const handleFormEdit = (values: Data) => {
     const form = {
       ...values,
-      graduationDate: moment(values.graduationDate).format('L'),
-      registrationTime: moment(values.registrationTime).format('L'),
-      birthDate: moment(values.birthDate).format('L'),
+      graduationDate: formatMoment(values.graduationDate),
+      registrationTime: formatMoment(values.registrationTime),
+      birthDate: formatMoment(values.birthDate),
     }
 
     dispatch(editRegistrant({ index, value: form }))
-    hideModalForm()
+    hideFormView()
   }
-
-  const handleRender = (text: unknown, record: Data, index: number) => (
-    <Space size="middle">
-      <a className="text-green-600 cursor-pointer" onClick={() => showModalFormLook(index)}>
-        查看
-      </a>
-
-      <a className="text-green-600 cursor-pointer" onClick={() => showModalFormEdit(index)}>
-        编辑
-      </a>
-
-      <Popconfirm
-        title={`确定删除${record.name}的记录吗?`}
-        onConfirm={() => {
-          dispatch(deleteRegistrant(index))
-          message.success('Click on Yes')
-        }}
-        okText="是"
-        cancelText="否"
-      >
-        <a className="text-red-600 cursor-pointer">删除</a>
-      </Popconfirm>
-    </Space>
-  )
-
-  const columns = [
-    {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
-      render: (id: string) => <a>{id}</a>,
-    },
-    {
-      title: '姓名',
-      dataIndex: 'name',
-      key: 'name',
-      render: (name: string) => <a>{name}</a>,
-    },
-    {
-      title: '性别',
-      dataIndex: 'sex',
-      key: 'sex',
-      render: (sex: number) => <a>{['男', '女'][sex]}</a>,
-    },
-    {
-      title: '填表时间',
-      dataIndex: 'registrationTime',
-      key: 'registrationTime',
-    },
-    {
-      title: '操作',
-      render: handleRender,
-    },
-  ]
 
   return (
     <>
-      <Button type="primary" className="mb-3 self-end" onClick={showModalFormAdd}>
+      <Button type="primary" className="mb-3 self-end" onClick={handleAdd}>
         添加
       </Button>
 
-      <Table
-        rowKey="id"
-        className="w-full"
-        columns={columns}
-        dataSource={reduxRegistrantList}
-        bordered
+      <RegistranTableList
+        list={reduxRegistrantList}
+        handleLook={handleTableLook}
+        handleEdit={handleTableEdit}
+        handleDelete={handleTableDelete}
       />
 
       <RegistrantForm
-        fields={fields}
         visible={isModalVisible}
+        fields={fields}
         state={state}
-        handleCancel={hideModalForm}
-        handleFinishAdd={onFinishAdd}
-        handleFinishEdit={onFinishEdit}
+        handleFormCancel={hideFormView}
+        handleFormAdd={handleFormAdd}
+        handleFormEdit={handleFormEdit}
       />
     </>
   )

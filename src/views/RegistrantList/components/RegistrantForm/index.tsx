@@ -18,7 +18,8 @@ import type { Data } from '/@/store/reducer/registrantReducer'
 import type { Props } from './type'
 
 const RegistrantForm: React.FC<Props> = (props) => {
-  const { visible, state, fields, handleCancel, handleFinishAdd, handleFinishEdit } = props
+  const { visible, state, fields } = props
+  const { handleFormCancel, handleFormAdd, handleFormEdit } = props
 
   const [form] = Form.useForm()
   const [disabled, setDisabled] = useState(false)
@@ -35,7 +36,7 @@ const RegistrantForm: React.FC<Props> = (props) => {
   })
 
   const onFinish = (values: Data) => {
-    state === State.ADD ? handleFinishAdd(values) : handleFinishEdit(values)
+    state === State.ADD ? handleFormAdd(values) : handleFormEdit(values)
   }
 
   const BasicInfoView = (
@@ -382,7 +383,7 @@ const RegistrantForm: React.FC<Props> = (props) => {
       footer={null}
       title={`${addLookEdit[state]}: 员工入职登记表`}
       style={{ top: 10 }}
-      onCancel={handleCancel}
+      onCancel={handleFormCancel}
       destroyOnClose={false}
       getContainer={false}
       forceRender
