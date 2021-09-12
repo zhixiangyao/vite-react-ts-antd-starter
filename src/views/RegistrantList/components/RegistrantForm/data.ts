@@ -1,8 +1,4 @@
-export const addLookEdit = {
-  add: '添加',
-  look: '查看',
-  edit: '编辑',
-}
+export const addLookEdit = ['添加', '查看', '编辑']
 
 export const maritalStatusList = [
   { value: 0, lable: '未婚未孕' },

@@ -7,6 +7,7 @@ import { addRegistrant, editRegistrant } from '/@/store/reducer/registrantReduce
 import { deleteRegistrant } from '/@/store/reducer/registrantReducer'
 import { useAppDispatch, useAppSelector } from '/@/hooks'
 import RegistrantForm from './components/RegistrantForm'
+import { State } from './type'
 
 import type { Data } from '/@/store/reducer/registrantReducer'
 
@@ -14,7 +15,7 @@ function RegistrantList() {
   const dispatch = useAppDispatch()
   const reduxRegistrantList = useAppSelector((state) => state.registrantReducer.registrantList)
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [state, setState] = useState<'add' | 'look' | 'edit'>('add')
+  const [state, setState] = useState<State>(State.ADD)
   const [fields, setFields] = useState<Data>({})
   const [index, setIndex] = useState<number>(0)
 
@@ -25,18 +26,18 @@ function RegistrantList() {
 
   const showModalFormAdd = () => {
     setIsModalVisible(true)
-    setState('add')
+    setState(State.ADD)
   }
 
   const showModalFormLook = (index: number) => {
     setIsModalVisible(true)
-    setState('look')
+    setState(State.LOOK)
     setFields(reduxRegistrantList[index])
   }
 
   const showModalFormEdit = (index: number) => {
     setIsModalVisible(true)
-    setState('edit')
+    setState(State.EDIT)
     setIndex(index)
     setFields(reduxRegistrantList[index])
   }

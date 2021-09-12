@@ -12,18 +12,20 @@ import {
   highestEducationList,
   timeKeys,
 } from './data'
+import { State } from '../../type'
 
 import type { Data } from '/@/store/reducer/registrantReducer'
 import type { Props } from './type'
 
 const RegistrantForm: React.FC<Props> = (props) => {
   const { visible, state, fields, handleCancel, handleFinishAdd, handleFinishEdit } = props
+
   const [form] = Form.useForm()
   const [disabled, setDisabled] = useState(false)
 
   useEffect(() => {
-    state === 'look' ? setDisabled(true) : setDisabled(false)
-    state === 'add' && form.resetFields()
+    state === State.LOOK ? setDisabled(true) : setDisabled(false)
+    state === State.ADD && form.resetFields()
   }, [state])
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const RegistrantForm: React.FC<Props> = (props) => {
   })
 
   const onFinish = (values: Data) => {
-    state === 'add' ? handleFinishAdd(values) : handleFinishEdit(values)
+    state === State.ADD ? handleFinishAdd(values) : handleFinishEdit(values)
   }
 
   const BasicInfoView = (
