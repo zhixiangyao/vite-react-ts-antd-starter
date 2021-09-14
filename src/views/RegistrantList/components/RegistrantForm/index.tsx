@@ -20,7 +20,6 @@ const RegistrantForm: React.FC<Props> = (props) => {
       style={{ top: 10 }}
       onCancel={handleFormCancel}
       destroyOnClose={false}
-      getContainer={false}
     >
       <FormView {...{ state, handleFormAdd, handleFormEdit, fields }} />
     </Modal>
