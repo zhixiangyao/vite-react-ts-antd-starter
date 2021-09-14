@@ -5,7 +5,7 @@ import moment from 'moment'
 import { useAppDispatch, useAppSelector } from '/@/hooks'
 import { addRegistrant, editRegistrant } from '/@/store/reducer/registrantReducer'
 import { deleteRegistrant } from '/@/store/reducer/registrantReducer'
-import { State } from './type'
+import { ADD_LOOK_EDIT } from './type'
 
 import type { Data } from '/@/store/reducer/registrantReducer'
 
@@ -17,24 +17,24 @@ const useMonster = () => {
   const dispatch = useAppDispatch()
   const list = useAppSelector((state) => state.registrantReducer.registrantList)
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [state, setState] = useState<State>(State.ADD)
+  const [state, setState] = useState<ADD_LOOK_EDIT>(ADD_LOOK_EDIT.ADD)
   const [fields, setFields] = useState<Data>({})
   const [index, setIndex] = useState<number>(0)
 
   const handleAdd = () => {
     setIsModalVisible(true)
-    setState(State.ADD)
+    setState(ADD_LOOK_EDIT.ADD)
   }
 
   const handleTableLook = (index: number) => {
     setIsModalVisible(true)
-    setState(State.LOOK)
+    setState(ADD_LOOK_EDIT.LOOK)
     setFields(list[index])
   }
 
   const handleTableEdit = (index: number) => {
     setIsModalVisible(true)
-    setState(State.EDIT)
+    setState(ADD_LOOK_EDIT.EDIT)
     setIndex(index)
     setFields(list[index])
   }
@@ -75,12 +75,15 @@ const useMonster = () => {
 
   return {
     handleAdd,
+
     handleTableLook,
     handleTableEdit,
     handleTableDelete,
+
     hideFormView,
     handleFormAdd,
     handleFormEdit,
+
     isModalVisible,
     fields,
     state,

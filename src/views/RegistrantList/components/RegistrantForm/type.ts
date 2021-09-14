@@ -1,9 +1,9 @@
+import { ADD_LOOK_EDIT } from '../../type'
 import type { Data } from '/@/store/reducer/registrantReducer'
-import { State } from '../../type'
 
 export interface Props {
   visible: boolean
-  state: State
+  state: ADD_LOOK_EDIT
   fields: Data
   handleFormCancel: () => void
   handleFormAdd: (values: Data) => void
