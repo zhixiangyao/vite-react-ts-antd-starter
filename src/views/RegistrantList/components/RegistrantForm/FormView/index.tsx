@@ -23,11 +23,13 @@ const FormView: React.FC<FormViewProps> = (props) => {
 
   const [disabled, setDisabled] = useState(false)
 
+  // React Hook useEffect has a missing dependency: 'form'.
+  // Either include it or remove the dependency array.
   useEffect(() => {
     setDisabled(state === ADD_LOOK_EDIT.LOOK)
 
     state === ADD_LOOK_EDIT.ADD && form.resetFields()
-  }, [state])
+  }, [state, form])
 
   useEffect(() => {
     for (const [key, value] of Object.entries(fields)) {
