@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'antd'
 
 import RegistrantForm from './components/RegistrantForm'
-import RegistranTableList from './components/RegistranTableList'
+import RegistrantTableList from './components/RegistrantTableList'
 import { useMonster } from './hooks'
 
 const RegistrantList: React.FC = () => {
@@ -19,7 +19,7 @@ const RegistrantList: React.FC = () => {
         添加
       </Button>
 
-      <RegistranTableList
+      <RegistrantTableList
         list={list}
         handleLook={handleTableLook}
         handleEdit={handleTableEdit}

@@ -54,16 +54,16 @@ const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (
           label="婚姻"
         >
           <Select disabled={disabled}>
-            {maritalStatusList.map(({ lable, value }) => (
+            {maritalStatusList.map(({ label, value }) => (
               <Select.Option key={value} value={value}>
-                {lable}
+                {label}
               </Select.Option>
             ))}
           </Select>
         </Form.Item>
 
         <Form.Item
-          name="censusEegister"
+          name="censusRegister"
           rules={[{ required: true, message: '请输入你的户籍!' }]}
           label="户籍"
         >
@@ -95,9 +95,9 @@ const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (
           label="党/团"
         >
           <Select disabled={disabled}>
-            {politicalIdentityList.map(({ lable, value }) => (
+            {politicalIdentityList.map(({ label, value }) => (
               <Select.Option key={value} value={value}>
-                {lable}
+                {label}
               </Select.Option>
             ))}
           </Select>

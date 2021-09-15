@@ -14,13 +14,13 @@ export interface CopyRouteConfig extends RouteConfig {
 }
 
 const routes: CopyRouteConfig[] = [
-  { path: '/', exact: true, render: () => <Redirect to={'/defalut/registrant-list'} /> },
+  { path: '/', exact: true, render: () => <Redirect to={'/default/registrant-list'} /> },
   {
-    path: '/defalut',
+    path: '/default',
     component: Layout,
     routes: [
       {
-        path: '/defalut/registrant-list',
+        path: '/default/registrant-list',
         component: lazy(() => import('/@/views/RegistrantList')),
       },
     ],

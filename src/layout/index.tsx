@@ -12,7 +12,7 @@ const navbarList = [
     id: 1,
     label: 'RegistrantList',
     name: 'RegistrantList',
-    path: '/defalut/registrant-list',
+    path: '/default/registrant-list',
   },
 ]
 

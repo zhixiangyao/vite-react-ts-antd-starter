@@ -18,7 +18,7 @@ export interface Data {
   birthDate?: undefined | string
   cardNo?: undefined | string
   category?: undefined | number
-  censusEegister?: undefined | string
+  censusRegister?: undefined | string
   email?: undefined | string
   emergencyContact?: undefined | string
   emergencyContactPhone?: undefined | string
@@ -41,7 +41,7 @@ export interface Data {
   qqID?: undefined | string
   remarks?: undefined | string
   sex?: undefined | number
-  wechatID?: undefined | string
+  WeChatID?: undefined | string
   workList?: WorkInfo[]
 }
 

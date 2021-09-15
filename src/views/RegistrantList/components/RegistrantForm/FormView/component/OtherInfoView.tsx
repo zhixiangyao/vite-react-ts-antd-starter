@@ -10,9 +10,9 @@ const OtherInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (
       <Col span={8} sm={10}>
         <Form.Item name="highestEducation" label="最高学历">
           <Select disabled={disabled}>
-            {highestEducationList.map(({ lable, value }) => (
+            {highestEducationList.map(({ label, value }) => (
               <Select.Option key={value} value={value}>
-                {lable}
+                {label}
               </Select.Option>
             ))}
           </Select>

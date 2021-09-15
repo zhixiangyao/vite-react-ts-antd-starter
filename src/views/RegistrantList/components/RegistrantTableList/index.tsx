@@ -11,7 +11,7 @@ interface Props {
   handleDelete: (index: number) => void
 }
 
-const RegistranTableList: React.FC<Props> = (props) => {
+const RegistrantTableList: React.FC<Props> = (props) => {
   const { list, handleLook, handleEdit, handleDelete } = props
 
   const handleRender = (text: unknown, record: Data, index: number) => (
@@ -68,4 +68,4 @@ const RegistranTableList: React.FC<Props> = (props) => {
   return <Table rowKey="id" className="w-full" columns={columns} dataSource={list} bordered />
 }
 
-export default RegistranTableList
+export default RegistrantTableList

@@ -7,7 +7,7 @@ const ContactDetailsInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) =
 
     <Row gutter={24}>
       <Col span={8} sm={10}>
-        <Form.Item name="wechatID" label="微信号">
+        <Form.Item name="WeChatID" label="微信号">
           <Input disabled={disabled} />
         </Form.Item>
         <Form.Item name="email" label="E-mail">
