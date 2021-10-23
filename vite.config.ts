@@ -5,13 +5,33 @@ import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import WindiCSS from 'vite-plugin-windicss'
 import lessToJS from 'less-vars-to-js'
+import visualizer from 'rollup-plugin-visualizer'
 
 import type { ConfigEnv } from 'vite'
+
+interface ENV {
+  [K: string]: string
+}
+
+const getEnv = (mode: string): ENV => {
+  const envFiles = [`.env.${mode}`]
+
+  for (const envFile of envFiles) {
+    try {
+      const env = Object.create(null)
+      const envConfig = dotenv.parse(fs.readFileSync(envFile))
+      for (const k in envConfig) Object.assign(env, { [k]: envConfig[k] })
+      return env
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
 
 /**
  * https://vitejs.dev/config/
  */
-const userConfig = defineConfig({
+const baseConfig = {
   plugins: [reactRefresh(), WindiCSS()],
   resolve: {
     alias: [
@@ -33,7 +53,7 @@ const userConfig = defineConfig({
       },
     },
   },
-})
+}
 
 export default ({ command, mode }: ConfigEnv) => {
   /**
@@ -54,27 +74,15 @@ export default ({ command, mode }: ConfigEnv) => {
   }, 66)
 
   if (command === 'serve') {
-    return userConfig
+    return defineConfig({ ...baseConfig })
   } else {
-    return userConfig
-  }
-}
-
-interface ENV {
-  [K: string]: string
-}
-
-const getEnv = (mode: string): ENV => {
-  const envFiles = [`.env.${mode}`]
-
-  for (const envFile of envFiles) {
-    try {
-      const env = Object.create(null)
-      const envConfig = dotenv.parse(fs.readFileSync(envFile))
-      for (const k in envConfig) Object.assign(env, { [k]: envConfig[k] })
-      return env
-    } catch (error) {
-      console.error(error)
-    }
+    return defineConfig({
+      ...baseConfig,
+      build: {
+        rollupOptions: {
+          plugins: [visualizer()],
+        },
+      },
+    })
   }
 }
