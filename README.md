@@ -14,8 +14,8 @@
 ## Clone
 
 ```shell
-git clone git@github.com:zhixiangyao/vite-react-ts-demo.git
-cd vite-react-ts-demo
+git clone git@github.com:zhixiangyao/vite-react-ts-antd-starter.git
+cd vite-react-ts-antd-starter
 pnpm i # 如果没有安装 pnpm, 请运行: npm install -g pnpm
 ```
 

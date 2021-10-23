@@ -1,6 +1,6 @@
 const getElementById = (id: string) => document.getElementById(id)
 
-const keyBefore = 'vite-react-ts-demo-'
+const keyBefore = 'vite-react-ts-antd-starter-'
 
 const objectToString = Object.prototype.toString
 
