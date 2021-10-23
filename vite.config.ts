@@ -6,7 +6,7 @@ import reactRefresh from '@vitejs/plugin-react-refresh'
 import WindiCSS from 'vite-plugin-windicss'
 import lessToJS from 'less-vars-to-js'
 
-import type { UserConfigExport } from 'vite'
+import type { ConfigEnv } from 'vite'
 
 /**
  * https://vitejs.dev/config/
@@ -35,7 +35,7 @@ const userConfig = defineConfig({
   },
 })
 
-export default ({ command, mode }): UserConfigExport => {
+export default ({ command, mode }: ConfigEnv) => {
   /**
    * Such as:
    * import.meta.env.MODE: {string}     app runtime 的模式.
