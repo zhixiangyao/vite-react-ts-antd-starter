@@ -12,7 +12,7 @@ import SubmitView from './components/SubmitView'
 import { ADD_LOOK_EDIT } from '../../../type'
 import { timeKeys } from '../data'
 
-import type { Data } from '/@/store/reducer/registrantReducer'
+import type { Data } from '/@/store/Reducer/registrantReducer'
 import type { Props } from '../type'
 
 type FormViewProps = Pick<Props, 'state' | 'handleFormEdit' | 'handleFormAdd' | 'fields'>

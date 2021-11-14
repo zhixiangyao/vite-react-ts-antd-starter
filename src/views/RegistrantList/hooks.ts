@@ -3,11 +3,11 @@ import { message } from 'antd'
 import moment from 'moment'
 
 import { useAppDispatch, useAppSelector } from '/@/hooks'
-import { addRegistrant, editRegistrant } from '/@/store/reducer/registrantReducer'
-import { deleteRegistrant } from '/@/store/reducer/registrantReducer'
+import { addRegistrant, editRegistrant } from '/@/store/Reducer/registrantReducer'
+import { deleteRegistrant } from '/@/store/Reducer/registrantReducer'
 import { ADD_LOOK_EDIT } from './type'
 
-import type { Data } from '/@/store/reducer/registrantReducer'
+import type { Data } from '/@/store/Reducer/registrantReducer'
 
 const formatMoment = (time: moment.MomentInput, type = 'L') => {
   return moment(time).format(type)

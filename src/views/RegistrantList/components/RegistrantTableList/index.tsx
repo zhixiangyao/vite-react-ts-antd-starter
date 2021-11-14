@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, Space } from 'antd'
 import { Popconfirm } from 'antd'
 
-import type { Data } from '/@/store/reducer/registrantReducer'
+import type { Data } from '/@/store/Reducer/registrantReducer'
 
 interface Props {
   list: Data[]
