@@ -21,4 +21,10 @@ const getLocalStorage = (key: string, isParse = false): any => {
   return isParse ? cache && JSON.parse(cache) : cache
 }
 
-export { getElementById, setLocalStorage, getLocalStorage }
+const firstCharacterUpperCase = (word: string) => {
+  const tmp = [...word]
+  tmp[0] = tmp[0].toUpperCase()
+  return tmp.join('')
+}
+
+export { getElementById, setLocalStorage, getLocalStorage, firstCharacterUpperCase }

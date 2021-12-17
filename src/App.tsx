@@ -8,20 +8,20 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate replace to={'/default/registrant-list'} />} />
+        <Route path="/" element={<Navigate replace to={'/user/registrant-list'} />} />
 
         {/* This is nested router, maybe you can use the useRoutes. */}
         <Route
-          path="/default"
+          path="/user"
           element={
             <Suspense fallback={<>loading Layout</>}>
               <Layout />
             </Suspense>
           }
         >
-          {/* In Layout */}
+          {/* User => Registrant List */}
           <Route
-            path="/default/registrant-list"
+            path="/user/registrant-list"
             element={
               <Suspense fallback={<>loading RegistrantList</>}>
                 <RegistrantList />
@@ -29,9 +29,12 @@ const App = () => {
             }
           />
 
-          {/* 404 */}
-          <Route path="/default/*" element={<div>Not Found</div>} />
+          {/* User => 404 */}
+          <Route path="/user/*" element={<div>Not Found</div>} />
         </Route>
+
+        {/* All => 404 */}
+        <Route path="/*" element={<div>Not Found</div>} />
       </Routes>
     </Router>
   )

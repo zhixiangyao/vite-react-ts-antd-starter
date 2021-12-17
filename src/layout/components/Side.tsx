@@ -16,30 +16,28 @@ export interface MenuInfo {
 
 interface Props {
   style?: React.CSSProperties | undefined
+  collapsed: boolean
 }
 
-const Side: React.FC<Props> = ({ style }) => {
+const Side: React.FC<Props> = ({ style, collapsed }) => {
   const { pathname } = useLocation()
   const navigate = useNavigate()
+
   const handleClick = ({ key }: MenuInfo) => {
     navigate(key)
   }
 
-  const defaultSelectedKeys = [pathname]
-
   return (
     <Menu
-      onClick={handleClick}
-      style={style}
-      defaultSelectedKeys={defaultSelectedKeys}
-      defaultOpenKeys={['/default']}
       mode="inline"
+      style={style}
+      inlineCollapsed={collapsed}
+      defaultSelectedKeys={[pathname]}
+      defaultOpenKeys={['/user']}
+      onClick={handleClick}
     >
-      <SubMenu key="/default" icon={<MailOutlined />} title="Navigation One">
-        <Menu.Item key="/default/registrant-list">Option 1</Menu.Item>
-        <Menu.Item key="/default/2">Option 2</Menu.Item>
-        <Menu.Item key="/default/3">Option 3</Menu.Item>
-        <Menu.Item key="/default/4">Option 4</Menu.Item>
+      <SubMenu key="/user" icon={<MailOutlined />} title="User">
+        <Menu.Item key="/user/registrant-list">Registrant List</Menu.Item>
       </SubMenu>
     </Menu>
   )

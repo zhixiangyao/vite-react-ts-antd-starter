@@ -1,7 +1,7 @@
 import React from 'react'
 import { PageHeader } from 'antd'
 import { useLocation } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
+import { firstCharacterUpperCase } from '/@/utils'
 
 interface Props {
   style?: React.CSSProperties | undefined
@@ -9,8 +9,9 @@ interface Props {
 }
 
 const Main: React.FC<Props> = ({ children, style, className = '' }) => {
-  const history = createBrowserHistory()
   const { pathname } = useLocation()
+
+  const title = pathname.split('/').pop()?.split('-').map(firstCharacterUpperCase).join(' ')
 
   return (
     <main
@@ -20,12 +21,8 @@ const Main: React.FC<Props> = ({ children, style, className = '' }) => {
         className
       }
     >
-      <PageHeader
-        className="w-full"
-        onBack={() => history.back()}
-        title="Title"
-        subTitle={pathname}
-      />
+      <PageHeader className="w-full" title={title} />
+
       {children}
     </main>
   )
