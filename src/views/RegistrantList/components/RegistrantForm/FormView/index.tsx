@@ -3,11 +3,6 @@ import { Form } from 'antd'
 import moment from 'moment'
 
 import BasicInfoView from './components/BasicInfoView'
-import OtherInfoView from './components/OtherInfoView'
-import ContactDetailsInfoView from './components/ContactDetailsInfoView'
-import BankInfoView from './components/BankInfoView'
-import WorkExperienceListInfoView from './components/WorkExperienceListInfoView'
-import RemarksInfoView from './components/RemarksInfoView'
 import SubmitView from './components/SubmitView'
 import { ADD_LOOK_EDIT } from '../../../type'
 import { timeKeys } from '../data'
@@ -52,16 +47,6 @@ const FormView: React.FC<FormViewProps> = (props) => {
       onFinish={onFinish}
     >
       <BasicInfoView disabled={disabled} />
-
-      <OtherInfoView disabled={disabled} />
-
-      <ContactDetailsInfoView disabled={disabled} />
-
-      <BankInfoView disabled={disabled} />
-
-      <WorkExperienceListInfoView disabled={disabled} />
-
-      <RemarksInfoView disabled={disabled} />
 
       <SubmitView state={state} disabled={disabled} />
     </Form>
