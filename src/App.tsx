@@ -1,9 +1,16 @@
 import React from 'react'
-import { Routes } from 'react-router-dom'
-import { routes, genRoute } from './router'
+import { Provider } from 'react-redux'
+import { Routes } from './router'
+import store from '/@/store'
 
 const App = () => {
-  return <Routes>{routes.map((route) => genRoute(route))}</Routes>
+  return (
+    <React.StrictMode>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
+    </React.StrictMode>
+  )
 }
 
 export default App
