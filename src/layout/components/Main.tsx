@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, type ReactNode } from 'react'
 import { PageHeader } from 'antd'
 import { useLocation } from 'react-router-dom'
 import { firstCharacterUpperCase } from '/@/utils'
@@ -6,12 +6,17 @@ import { firstCharacterUpperCase } from '/@/utils'
 interface Props {
   style?: React.CSSProperties | undefined
   className?: string
+  children?: ReactNode
 }
 
 const Main: React.FC<Props> = ({ children, style, className = '' }) => {
   const { pathname } = useLocation()
 
-  const title = pathname.split('/').pop()?.split('-').map(firstCharacterUpperCase).join(' ')
+  const title = useMemo(() => {
+    const list = pathname.split('/').pop()?.split('-')
+
+    return list?.map(firstCharacterUpperCase).join(' ')
+  }, [pathname])
 
   return (
     <main

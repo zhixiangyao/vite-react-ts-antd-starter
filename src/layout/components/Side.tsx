@@ -3,8 +3,6 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { Menu } from 'antd'
 import { MailOutlined } from '@ant-design/icons'
 
-const { SubMenu } = Menu
-
 // rc-menu
 export interface MenuInfo {
   key: string
@@ -13,6 +11,15 @@ export interface MenuInfo {
   item: React.ReactInstance
   domEvent: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>
 }
+
+const items = [
+  {
+    label: 'User',
+    key: '/user',
+    icon: <MailOutlined />,
+    children: [{ label: 'Registrant List', key: '/user/registrant-list' }],
+  },
+]
 
 interface Props {
   style?: React.CSSProperties | undefined
@@ -35,11 +42,8 @@ const Side: React.FC<Props> = ({ style, collapsed }) => {
       defaultSelectedKeys={[pathname]}
       defaultOpenKeys={['/user']}
       onClick={handleClick}
-    >
-      <SubMenu key="/user" icon={<MailOutlined />} title="User">
-        <Menu.Item key="/user/registrant-list">Registrant List</Menu.Item>
-      </SubMenu>
-    </Menu>
+      items={items}
+    />
   )
 }
 
