@@ -2,9 +2,8 @@ import { resolve } from 'path'
 import fs from 'fs'
 import dotenv from 'dotenv' // Dotenv 是一个零依赖的模块，它能将 env 变量中的变量从 '.env*' file 提取
 import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import react from '@vitejs/plugin-react'
 import WindiCSS from 'vite-plugin-windicss'
-import lessToJS from 'less-vars-to-js'
 import visualizer from 'rollup-plugin-visualizer'
 
 import type { ConfigEnv } from 'vite'
@@ -32,7 +31,7 @@ const getEnv = (mode: string): ENV => {
  * https://vitejs.dev/config/
  */
 const baseConfig = {
-  plugins: [reactRefresh(), WindiCSS()],
+  plugins: [react(), WindiCSS()],
   resolve: {
     alias: [
       {
@@ -42,16 +41,7 @@ const baseConfig = {
     ],
   },
   css: {
-    preprocessorOptions: {
-      less: {
-        // 支持内联 JavaScript
-        javascriptEnabled: true,
-        // 重写 less 变量，定制样式
-        modifyVars: lessToJS(
-          fs.readFileSync(resolve(__dirname, './config/variables.less'), 'utf8'),
-        ),
-      },
-    },
+    preprocessorOptions: {},
   },
 }
 
