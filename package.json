@@ -9,7 +9,7 @@
   "homepage": "https://github.com/zhixiangyao/vite-react-ts-antd-starter",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "npm run build && vite preview",
     "preview:dist": "vite preview",
     "lint:all": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
@@ -71,6 +71,7 @@
     "stylelint-order": "^5.0.0",
     "typescript": "^4.6.4",
     "vite": "^2.9.9",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-windicss": "^1.8.4",
     "windicss": "^3.5.4"
   },

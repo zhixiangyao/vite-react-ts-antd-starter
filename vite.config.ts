@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import WindiCSS from 'vite-plugin-windicss'
 import visualizer from 'rollup-plugin-visualizer'
+import viteCompression from 'vite-plugin-compression'
 
 import type { ConfigEnv } from 'vite'
 
@@ -31,7 +32,7 @@ const getEnv = (mode: string): ENV => {
  * https://vitejs.dev/config/
  */
 const baseConfig = {
-  plugins: [react(), WindiCSS()],
+  plugins: [react(), WindiCSS(), viteCompression()],
   resolve: {
     alias: [
       {
