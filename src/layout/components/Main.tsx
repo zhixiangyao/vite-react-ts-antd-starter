@@ -1,5 +1,6 @@
 import React, { useMemo, type ReactNode } from 'react'
-import { PageHeader } from 'antd'
+import { PageHeader } from '@ant-design/pro-layout'
+
 import { useLocation } from 'react-router-dom'
 import { firstCharacterUpperCase } from '/@/utils'
 

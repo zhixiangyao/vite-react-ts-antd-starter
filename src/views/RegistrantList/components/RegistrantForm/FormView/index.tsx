@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Form } from 'antd'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 import BasicInfoView from './components/BasicInfoView'
 import SubmitView from './components/SubmitView'
@@ -28,7 +28,7 @@ const FormView: React.FC<FormViewProps> = (props) => {
 
   useEffect(() => {
     for (const [key, value] of Object.entries(fields)) {
-      form.setFieldsValue({ [key]: timeKeys.includes(key) ? moment(value as string) : value })
+      form.setFieldsValue({ [key]: timeKeys.includes(key) ? dayjs(value as string) : value })
     }
   })
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { message } from 'antd'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 import { useAppDispatch, useAppSelector } from '/@/hooks'
 import { addRegistrant, editRegistrant } from '/@/store/Reducer/registrantReducer'
@@ -9,8 +9,8 @@ import { ADD_LOOK_EDIT } from './type'
 
 import type { Data } from '/@/store/Reducer/registrantReducer'
 
-const formatMoment = (time: moment.MomentInput, type = 'L') => {
-  return moment(time).format(type)
+const formatTime = (time: dayjs.ConfigType, type = 'L') => {
+  return dayjs(time).format(type)
 }
 
 const useMonster = () => {
@@ -52,9 +52,9 @@ const useMonster = () => {
   const handleFormAdd = (values: Data) => {
     const form = {
       ...values,
-      graduationDate: formatMoment(values.graduationDate),
-      registrationTime: formatMoment(values.registrationTime),
-      birthDate: formatMoment(values.birthDate),
+      graduationDate: formatTime(values.graduationDate),
+      registrationTime: formatTime(values.registrationTime),
+      birthDate: formatTime(values.birthDate),
     }
 
     dispatch(addRegistrant(form))
@@ -64,9 +64,9 @@ const useMonster = () => {
   const handleFormEdit = (values: Data) => {
     const form = {
       ...values,
-      graduationDate: formatMoment(values.graduationDate),
-      registrationTime: formatMoment(values.registrationTime),
-      birthDate: formatMoment(values.birthDate),
+      graduationDate: formatTime(values.graduationDate),
+      registrationTime: formatTime(values.registrationTime),
+      birthDate: formatTime(values.birthDate),
     }
 
     dispatch(editRegistrant({ index, value: form }))

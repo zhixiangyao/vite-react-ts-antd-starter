@@ -14,7 +14,7 @@ const RegistrantForm: React.FC<Props> = (props) => {
     <Modal
       forceRender
       width="100%"
-      visible={visible}
+      open={visible}
       footer={null}
       title={`${addLookEdit[state]}: 员工入职登记表`}
       style={{ top: 10 }}
