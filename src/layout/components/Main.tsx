@@ -1,5 +1,4 @@
 import React, { useMemo, type ReactNode } from 'react'
-import { PageHeader } from '@ant-design/pro-layout'
 
 import { useLocation } from 'react-router-dom'
 import { firstCharacterUpperCase } from '/@/utils'
@@ -27,7 +26,7 @@ const Main: React.FC<Props> = ({ children, style, className = '' }) => {
         className
       }
     >
-      <PageHeader className="w-full" title={title} />
+      <div className="w-full p-20px text-20px font-700">{title}</div>
 
       {children}
     </main>
