@@ -11,7 +11,7 @@ const RegistrantList: React.FC = () => {
   const { handleAdd } = monster
   const { handleTableLook, handleTableEdit, handleTableDelete } = monster
   const { hideFormView, handleFormAdd, handleFormEdit } = monster
-  const { isModalVisible, fields, state, list } = monster
+  const { isModalVisible, fields, state, registrantList } = monster
 
   return (
     <>
@@ -20,7 +20,7 @@ const RegistrantList: React.FC = () => {
       </Button>
 
       <RegistrantTableList
-        list={list}
+        list={registrantList}
         handleLook={handleTableLook}
         handleEdit={handleTableEdit}
         handleDelete={handleTableDelete}

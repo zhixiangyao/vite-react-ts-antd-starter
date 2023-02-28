@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import Main from '/@/layout/components/Main'
 import Side from '/@/layout/components/Side'
 
-const Default = () => {
+const Default: React.FC = () => {
   const [width] = useState(256)
   const [collapsed] = useState(false)
 

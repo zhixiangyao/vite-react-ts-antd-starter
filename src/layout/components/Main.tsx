@@ -21,10 +21,9 @@ const Main: React.FC<Props> = ({ children, style, className = '' }) => {
   return (
     <main
       style={style}
-      className={
-        `flex text-black items-center justify-start flex-col pl-4 pb-4 pr-8 overflow-auto` +
-        className
-      }
+      className={`flex text-black items-center justify-start flex-col pl-4 pb-4 pr-8 overflow-auto ${
+        className ?? ''
+      }`}
     >
       <div className="w-full p-20px text-20px font-700">{title}</div>
 

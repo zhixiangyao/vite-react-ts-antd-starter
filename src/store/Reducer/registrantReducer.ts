@@ -8,7 +8,7 @@ const initialState: InitialState = {
   registrantList: getLocalStorage('registrantList', true) ?? [],
 }
 
-export const registrantSlice = createSlice({
+const registrantSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
@@ -30,9 +30,10 @@ export const registrantSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addRegistrant, editRegistrant, deleteRegistrant }: RegistrantActions =
+const { addRegistrant, editRegistrant, deleteRegistrant }: RegistrantActions =
   registrantSlice.actions
 
-export default registrantSlice.reducer
+const registrantReducer = registrantSlice.reducer
 
+export { addRegistrant, editRegistrant, deleteRegistrant, registrantReducer }
 export type { InitialState, Data }

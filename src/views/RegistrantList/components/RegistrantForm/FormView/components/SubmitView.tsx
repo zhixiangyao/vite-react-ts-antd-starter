@@ -15,8 +15,6 @@ const SubmitView: React.FC<SubmitViewProps> = ({ disabled, state }) =>
         {addLookEdit[state]}
       </Button>
     </Form.Item>
-  ) : (
-    <></>
-  )
+  ) : null
 
 export default SubmitView

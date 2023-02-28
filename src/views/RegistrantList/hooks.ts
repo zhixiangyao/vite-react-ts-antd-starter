@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { message } from 'antd'
 import dayjs from 'dayjs'
 
@@ -15,63 +15,78 @@ const formatTime = (time: dayjs.ConfigType, type = 'L') => {
 
 const useMonster = () => {
   const dispatch = useAppDispatch()
-  const list = useAppSelector((state) => state.registrantReducer.registrantList)
+  const registrantList = useAppSelector((state) => state.registrantReducer.registrantList)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [state, setState] = useState<ADD_LOOK_EDIT>(ADD_LOOK_EDIT.ADD)
   const [fields, setFields] = useState<Data>({})
   const [index, setIndex] = useState<number>(0)
 
-  const handleAdd = () => {
+  const handleAdd = useCallback(() => {
     setIsModalVisible(true)
     setState(ADD_LOOK_EDIT.ADD)
-  }
+  }, [])
 
-  const handleTableLook = (index: number) => {
-    setIsModalVisible(true)
-    setState(ADD_LOOK_EDIT.LOOK)
-    setFields(list[index])
-  }
+  const handleTableLook = useCallback(
+    (index: number) => {
+      setIsModalVisible(true)
+      setState(ADD_LOOK_EDIT.LOOK)
+      setFields(registrantList[index])
+    },
+    [registrantList],
+  )
 
-  const handleTableEdit = (index: number) => {
-    setIsModalVisible(true)
-    setState(ADD_LOOK_EDIT.EDIT)
-    setIndex(index)
-    setFields(list[index])
-  }
+  const handleTableEdit = useCallback(
+    (index: number) => {
+      setIsModalVisible(true)
+      setState(ADD_LOOK_EDIT.EDIT)
+      setIndex(index)
+      setFields(registrantList[index])
+    },
+    [registrantList],
+  )
 
-  const handleTableDelete = (index: number) => {
-    dispatch(deleteRegistrant(index))
-    message.success('Click on Yes')
-  }
+  const handleTableDelete = useCallback(
+    (index: number) => {
+      dispatch(deleteRegistrant(index))
+      message.success('Click on Yes')
+    },
+    [dispatch],
+  )
 
-  const hideFormView = () => {
+  const hideFormView = useCallback(() => {
     setIsModalVisible(false)
     setFields({})
-  }
+  }, [])
 
-  const handleFormAdd = (values: Data) => {
-    const form = {
-      ...values,
-      graduationDate: formatTime(values.graduationDate),
-      registrationTime: formatTime(values.registrationTime),
-      birthDate: formatTime(values.birthDate),
-    }
+  const handleFormAdd = useCallback(
+    (values: Data) => {
+      const form = {
+        ...values,
+        graduationDate: formatTime(values.graduationDate),
+        registrationTime: formatTime(values.registrationTime),
+        birthDate: formatTime(values.birthDate),
+      }
 
-    dispatch(addRegistrant(form))
-    hideFormView()
-  }
+      dispatch(addRegistrant(form))
+      hideFormView()
+    },
+    [dispatch, hideFormView],
+  )
 
-  const handleFormEdit = (values: Data) => {
-    const form = {
-      ...values,
-      graduationDate: formatTime(values.graduationDate),
-      registrationTime: formatTime(values.registrationTime),
-      birthDate: formatTime(values.birthDate),
-    }
+  const handleFormEdit = useCallback(
+    (values: Data) => {
+      const form = {
+        ...values,
+        graduationDate: formatTime(values.graduationDate),
+        registrationTime: formatTime(values.registrationTime),
+        birthDate: formatTime(values.birthDate),
+      }
 
-    dispatch(editRegistrant({ index, value: form }))
-    hideFormView()
-  }
+      dispatch(editRegistrant({ index, value: form }))
+      hideFormView()
+    },
+    [dispatch, hideFormView, index],
+  )
 
   return {
     handleAdd,
@@ -87,7 +102,7 @@ const useMonster = () => {
     isModalVisible,
     fields,
     state,
-    list,
+    registrantList,
   }
 }
 

@@ -20,10 +20,10 @@ const Img = styled.img`
   }
 `
 
-const ReactLogo = () => (
+const ReactLogo: React.FC = () => (
   <>
     <Img src={logo} className="pointer-events-none" alt="logo" />
-    <p>Hello Vite + React + ReactRouter + ReactMobx + TypeScript + StyledComponents + WindiCss!</p>
+    <p>Hello Vite + React + ReactRouter + ReactRedux + TypeScript + StyledComponents + WindiCss!</p>
   </>
 )
 
