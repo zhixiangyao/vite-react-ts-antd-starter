@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import { Button } from 'antd'
 
-import RegistrantForm from './components/RegistrantForm'
-import RegistrantTableList from './components/RegistrantTableList'
 import { useMonster } from './hooks'
+
+const RegistrantForm = lazy(() => import('./components/RegistrantForm'))
+const RegistrantTableList = lazy(() => import('./components/RegistrantTableList'))
 
 const RegistrantList: React.FC = () => {
   const monster = useMonster()
@@ -19,12 +20,14 @@ const RegistrantList: React.FC = () => {
         添加
       </Button>
 
-      <RegistrantTableList
-        list={registrantList}
-        handleLook={handleTableLook}
-        handleEdit={handleTableEdit}
-        handleDelete={handleTableDelete}
-      />
+      <Suspense fallback={<>loading...</>}>
+        <RegistrantTableList
+          list={registrantList}
+          handleLook={handleTableLook}
+          handleEdit={handleTableEdit}
+          handleDelete={handleTableDelete}
+        />
+      </Suspense>
 
       <RegistrantForm
         visible={isModalVisible}

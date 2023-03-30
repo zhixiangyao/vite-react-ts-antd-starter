@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import { Form } from 'antd'
 import dayjs from 'dayjs'
 
-import BasicInfoView from './components/BasicInfoView'
-import SubmitView from './components/SubmitView'
 import { ADD_LOOK_EDIT } from '../../../type'
 import { timeKeys } from '../data'
 
 import type { Data } from '/@/store/Reducer/registrantReducer'
 import type { Props } from '../type'
+
+const SubmitView = lazy(() => import('./components/SubmitView'))
+const BasicInfoView = lazy(() => import('./components/BasicInfoView'))
 
 type FormViewProps = Pick<Props, 'state' | 'handleFormEdit' | 'handleFormAdd' | 'fields'>
 
@@ -46,9 +47,11 @@ const FormView: React.FC<FormViewProps> = (props) => {
       initialValues={{ size: 'small' }}
       onFinish={onFinish}
     >
-      <BasicInfoView disabled={disabled} />
+      <Suspense fallback={<>loading...</>}>
+        <BasicInfoView disabled={disabled} />
 
-      <SubmitView state={state} disabled={disabled} />
+        <SubmitView state={state} disabled={disabled} />
+      </Suspense>
     </Form>
   )
 }
