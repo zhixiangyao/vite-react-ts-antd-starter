@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import { Routes } from '/@/router'
 import { store } from '/@/store'
 
-// import 'antd/dist/reset.css'
 import '/@/styles/global.css'
 
 const App = () => {
