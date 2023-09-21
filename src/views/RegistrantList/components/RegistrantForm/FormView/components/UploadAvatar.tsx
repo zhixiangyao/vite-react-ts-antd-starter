@@ -1,7 +1,6 @@
 import React from 'react'
 import { Upload, message } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
-
 import type { RcFile } from 'antd/lib/upload/interface'
 import type { UploadChangeParam, UploadFile } from 'antd/lib/upload/interface'
 

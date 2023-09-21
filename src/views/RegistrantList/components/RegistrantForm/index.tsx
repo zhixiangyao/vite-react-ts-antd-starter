@@ -2,7 +2,6 @@ import React, { Suspense, lazy } from 'react'
 import { Modal } from 'antd'
 
 import { addLookEdit } from './data'
-
 import type { Props } from './type'
 
 const FormView = lazy(() => import('./FormView'))

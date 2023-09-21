@@ -21,6 +21,7 @@
     "plugin:prettier/recommended",
     "prettier"
   ],
+  "plugins": ["import"],
   "rules": {
     "@typescript-eslint/ban-ts-ignore": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
@@ -40,6 +41,21 @@
       }
     ],
 
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+
+    "import/order": [
+      1,
+      {
+        "newlines-between": "always",
+        "groups": ["builtin", "external", "internal", "sibling", "parent", "index"],
+        "pathGroups": [
+          {
+            "pattern": "/@/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ]
+      }
+    ]
   }
 }

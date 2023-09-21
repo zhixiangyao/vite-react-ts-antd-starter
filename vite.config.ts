@@ -3,7 +3,6 @@ import fs from 'fs'
 import dotenv from 'dotenv' // Dotenv 是一个零依赖的模块，它能将 env 变量中的变量从 '.env*' file 提取
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import WindiCSS from 'vite-plugin-windicss'
 import visualizer from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
 
@@ -31,7 +30,7 @@ const getEnv = (mode: string) => {
  * https://vitejs.dev/config/
  */
 const baseConfig = {
-  plugins: [react(), WindiCSS(), viteCompression()],
+  plugins: [react(), viteCompression()],
   resolve: {
     alias: [
       {

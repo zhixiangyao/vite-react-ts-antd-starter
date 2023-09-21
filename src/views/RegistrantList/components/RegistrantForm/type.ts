@@ -1,5 +1,6 @@
-import { ADD_LOOK_EDIT } from '../../type'
 import type { Data } from '/@/store/Reducer/registrantReducer'
+
+import { ADD_LOOK_EDIT } from '../../type'
 
 export interface Props {
   visible: boolean

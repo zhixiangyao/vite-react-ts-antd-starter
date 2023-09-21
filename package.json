@@ -1,6 +1,7 @@
 {
   "name": "vite-react-ts-antd-starter",
   "version": "0.1.0",
+  "type": "module",
   "author": "zhixiangyao <blueskyzx@icloud.com> <https://github.com/zhixiangyao>",
   "repository": {
     "type": "git",
@@ -13,9 +14,9 @@
     "preview": "npm run build && vite preview",
     "preview:dist": "vite preview",
     "lint:all": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
-    "lint:eslint": "eslint \"{src,mock}/**/*.{ts,tsx}\" --fix",
-    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,tsx,css,less,scss,html,md}\"",
-    "lint:stylelint": "stylelint --fix \"**/*.{less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint:prettier": "prettier --cache --write --log-level warn \"src/**/*.{js,json,tsx,css,html,md}\"",
+    "lint:eslint": "eslint --fix \"src/**/*.{ts,tsx}\" --cache --cache-location node_modules/.cache/eslint/",
+    "lint:stylelint": "stylelint --fix \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
@@ -23,59 +24,60 @@
     "src/**/*.{js,ts,tsx}": [
       "npx eslint --fix"
     ],
-    "src/**/*.{js,json,tsx,css,less,scss,html,md}": [
+    "src/**/*.{js,json,tsx,css,html,md}": [
       "npx prettier --write --loglevel warn"
     ],
-    "src/**/*.{jsx,tsx,less,postcss,css,scss}": [
+    "src/**/*.{jsx,tsx,css}": [
       "npx stylelint --fix --cache --cache-location node_modules/.cache/stylelint/"
     ]
   },
   "dependencies": {
-    "@ant-design/icons": "^5.0.1",
-    "@reduxjs/toolkit": "^1.9.3",
-    "antd": "^5.3.3",
-    "dayjs": "^1.11.7",
-    "postcss": "^8.4.21",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-is": "^18.2.0",
-    "react-redux": "^8.0.5",
-    "react-router": "^6.10.0",
-    "react-router-dom": "^6.10.0",
-    "styled-components": "^5.3.9"
+    "@ant-design/icons": "5.2.6",
+    "@reduxjs/toolkit": "1.9.5",
+    "antd": "5.9.2",
+    "dayjs": "1.11.10",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-is": "18.2.0",
+    "react-redux": "8.1.2",
+    "react-router": "6.16.0",
+    "react-router-dom": "6.16.0",
+    "styled-components": "6.0.8"
   },
   "devDependencies": {
-    "@types/node": "^18.15.11",
-    "@types/react": "^18.0.31",
-    "@types/react-dom": "^18.0.11",
-    "@types/react-redux": "^7.1.25",
-    "@types/react-router-dom": "^5.3.3",
-    "@types/styled-components": "^5.1.26",
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
-    "@vitejs/plugin-react": "^3.1.0",
-    "dotenv": "^16.0.3",
-    "eslint": "^8.37.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.0",
-    "prettier": "^2.8.7",
-    "rollup": "^3.20.2",
-    "rollup-plugin-visualizer": "^5.9.0",
-    "stylelint": "^15.3.0",
-    "stylelint-config-standard": "^31.0.0",
-    "stylelint-order": "^6.0.3",
-    "typescript": "^5.0.2",
-    "vite": "^4.2.1",
-    "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-windicss": "^1.8.10",
-    "windicss": "^3.5.6"
+    "@types/node": "20.6.3",
+    "@types/react": "18.2.22",
+    "@types/react-dom": "18.2.7",
+    "@types/react-redux": "7.1.26",
+    "@types/react-router-dom": "5.3.3",
+    "@typescript-eslint/eslint-plugin": "6.7.2",
+    "@typescript-eslint/parser": "6.7.2",
+    "@vitejs/plugin-react": "4.0.4",
+    "autoprefixer": "10.4.16",
+    "dotenv": "16.3.1",
+    "eslint": "8.49.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-import": "2.28.1",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "husky": "8.0.3",
+    "lint-staged": "14.0.1",
+    "postcss-load-config": "4.0.1",
+    "postcss-styled-syntax": "0.5.0",
+    "prettier": "3.0.3",
+    "rollup": "3.29.2",
+    "rollup-plugin-visualizer": "5.9.2",
+    "stylelint": "15.10.3",
+    "stylelint-config-standard": "34.0.0",
+    "stylelint-order": "6.0.3",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.2.2",
+    "vite": "4.4.9",
+    "vite-plugin-compression": "0.5.1"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=16.17.0",
-    "pnpm": ">=7.17.0"
+    "node": ">=16",
+    "pnpm": ">=8"
   }
 }

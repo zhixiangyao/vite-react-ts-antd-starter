@@ -5,9 +5,9 @@ import dayjs from 'dayjs'
 import { useAppDispatch, useAppSelector } from '/@/hooks'
 import { addRegistrant, editRegistrant } from '/@/store/Reducer/registrantReducer'
 import { deleteRegistrant } from '/@/store/Reducer/registrantReducer'
-import { ADD_LOOK_EDIT } from './type'
-
 import type { Data } from '/@/store/Reducer/registrantReducer'
+
+import { ADD_LOOK_EDIT } from './type'
 
 const formatTime = (time: dayjs.ConfigType, type = 'L') => {
   return dayjs(time).format(type)

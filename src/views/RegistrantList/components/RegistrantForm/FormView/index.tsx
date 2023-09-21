@@ -2,10 +2,10 @@ import React, { Suspense, lazy, useEffect, useState } from 'react'
 import { Form } from 'antd'
 import dayjs from 'dayjs'
 
+import type { Data } from '/@/store/Reducer/registrantReducer'
+
 import { ADD_LOOK_EDIT } from '../../../type'
 import { timeKeys } from '../data'
-
-import type { Data } from '/@/store/Reducer/registrantReducer'
 import type { Props } from '../type'
 
 const SubmitView = lazy(() => import('./components/SubmitView'))

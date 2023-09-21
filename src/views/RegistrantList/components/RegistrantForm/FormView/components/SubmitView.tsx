@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Button } from 'antd'
-import { addLookEdit } from '../../data'
 
+import { addLookEdit } from '../../data'
 import type { Props } from '../../type'
 
 interface SubmitViewProps extends Pick<Props, 'state'> {

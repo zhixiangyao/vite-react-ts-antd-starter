@@ -1,10 +1,8 @@
-import { defineConfig } from 'vite-plugin-windicss'
-import typography from 'windicss/plugin/typography'
-import colors from 'windicss/colors'
-
-export default defineConfig({
+/** @type {import('tailwindcss').Config} */
+export default {
   darkMode: 'class',
-  plugins: [typography()],
+  content: ['./src/**/*.{ts,tsx}'],
+  plugins: [],
   attributify: true,
   theme: {
     screens: {
@@ -33,7 +31,6 @@ export default defineConfig({
               textDecoration: 'underline',
               '&:hover': {
                 opacity: 1,
-                color: colors.teal[600],
               },
             },
             b: { color: 'inherit' },
@@ -49,4 +46,4 @@ export default defineConfig({
       },
     },
   },
-})
+}

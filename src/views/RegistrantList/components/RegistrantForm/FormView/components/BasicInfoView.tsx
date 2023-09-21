@@ -3,6 +3,7 @@ import { Form, Input, Radio, Select, DatePicker } from 'antd'
 import { Row, Col } from 'antd'
 
 import UploadAvatar from './UploadAvatar'
+
 import { maritalStatusList, politicalIdentityList } from '../../data'
 
 const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (

@@ -1,6 +1,7 @@
 import React from 'react'
-import logo from '/@/assets/logo.svg'
 import styled from 'styled-components'
+
+import logo from '/@/assets/logo.svg'
 
 const Img = styled.img`
   height: 40vmin;
@@ -23,7 +24,9 @@ const Img = styled.img`
 const ReactLogo: React.FC = () => (
   <>
     <Img src={logo} className="pointer-events-none" alt="logo" />
-    <p>Hello Vite + React + ReactRouter + ReactRedux + TypeScript + StyledComponents + WindiCss!</p>
+    <p>
+      Hello Vite + React + ReactRouter + ReactRedux + TypeScript + StyledComponents + TailwindCSS!
+    </p>
   </>
 )
 
