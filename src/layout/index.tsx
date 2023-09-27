@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
 import Main from '/@/layout/components/Main'
 import Side from '/@/layout/components/Side'
 
-const Default: React.FC = () => {
+const Layout: React.FC = () => {
+  const location = useLocation()
   const [width] = useState(256)
   const [collapsed] = useState(false)
+
+  if (location.pathname === '/') {
+    return <Navigate replace to={'/registrant-list'} />
+  }
 
   return (
     <>
@@ -19,4 +24,4 @@ const Default: React.FC = () => {
   )
 }
 
-export default Default
+export default Layout

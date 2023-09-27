@@ -8,11 +8,9 @@ import '/@/styles/global.css'
 
 const App = () => {
   return (
-    // <React.StrictMode>
     <Provider store={store}>
       <Routes />
     </Provider>
-    // </React.StrictMode>
   )
 }
 

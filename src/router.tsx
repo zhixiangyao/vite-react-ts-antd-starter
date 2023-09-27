@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react'
-import { BrowserRouter, Routes as Routes_, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes as Routes_, Route } from 'react-router-dom'
 
 const GenRoute: React.FC<Route> = (route) => {
   if (route.children.length === 0) {
@@ -19,11 +19,6 @@ const RegistrantList = lazy(() => import('/@/views/RegistrantList'))
 const routes: Route[] = [
   {
     path: '/',
-    element: <Navigate replace to={'/user/registrant-list'} />,
-    children: [],
-  },
-  {
-    path: '/user',
     element: (
       <Suspense fallback={<>loading Layout</>}>
         <Layout />
@@ -31,7 +26,7 @@ const routes: Route[] = [
     ),
     children: [
       {
-        path: '/user/registrant-list',
+        path: '/registrant-list',
         element: (
           <Suspense fallback={<>loading RegistrantList</>}>
             <RegistrantList />
@@ -40,7 +35,7 @@ const routes: Route[] = [
         children: [],
       },
       {
-        path: '/user/*',
+        path: '/*',
         element: <div>Not Found</div>,
         children: [],
       },

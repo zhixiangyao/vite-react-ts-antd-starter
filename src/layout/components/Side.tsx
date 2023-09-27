@@ -14,10 +14,9 @@ export interface MenuInfo {
 
 const items = [
   {
-    label: 'User',
-    key: '/user',
+    label: 'Registrant List',
+    key: '/registrant-list',
     icon: <MailOutlined />,
-    children: [{ label: 'Registrant List', key: '/user/registrant-list' }],
   },
 ]
 
@@ -40,7 +39,6 @@ const Side: React.FC<Props> = ({ style, collapsed }) => {
       style={style}
       inlineCollapsed={collapsed}
       defaultSelectedKeys={[pathname]}
-      defaultOpenKeys={['/user']}
       onClick={handleClick}
       items={items}
     />
