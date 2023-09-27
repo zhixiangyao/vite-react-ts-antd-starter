@@ -1,11 +1,10 @@
 import { resolve } from 'path'
 import fs from 'fs'
+
 import dotenv from 'dotenv' // Dotenv 是一个零依赖的模块，它能将 env 变量中的变量从 '.env*' file 提取
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import visualizer from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
-
 import type { ConfigEnv } from 'vite'
 
 interface ENV {
@@ -69,7 +68,7 @@ export default ({ command, mode }: ConfigEnv) => {
       ...baseConfig,
       build: {
         rollupOptions: {
-          plugins: [visualizer()],
+          plugins: [],
         },
       },
     })

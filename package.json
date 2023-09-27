@@ -66,7 +66,6 @@
     "postcss-styled-syntax": "0.5.0",
     "prettier": "3.0.3",
     "rollup": "3.29.2",
-    "rollup-plugin-visualizer": "5.9.2",
     "stylelint": "15.10.3",
     "stylelint-config-standard": "34.0.0",
     "stylelint-order": "6.0.3",
