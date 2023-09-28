@@ -6,7 +6,7 @@ import Side from '/@/layout/components/Side'
 
 const Layout: React.FC = () => {
   const location = useLocation()
-  const [width] = useState(256)
+  const [width] = useState(200)
   const [collapsed] = useState(false)
 
   if (location.pathname === '/') {
