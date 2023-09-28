@@ -16,7 +16,7 @@ const RegistrantList: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" className="mb-3 self-end" onClick={handleAdd}>
+      <Button type="primary" className="mb-5 self-end" onClick={handleAdd}>
         添加
       </Button>
 

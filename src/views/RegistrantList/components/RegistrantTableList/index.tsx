@@ -4,7 +4,7 @@ import { Popconfirm } from 'antd'
 
 import type { Data } from '/@/store/Reducer/registrantReducer'
 
-interface Props {
+type Props = {
   list: Data[]
   handleLook: (index: number) => void
   handleEdit: (index: number) => void

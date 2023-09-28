@@ -35,6 +35,7 @@
     "@ant-design/icons": "5.2.6",
     "@reduxjs/toolkit": "1.9.5",
     "antd": "5.9.2",
+    "clsx": "2.0.0",
     "dayjs": "1.11.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",

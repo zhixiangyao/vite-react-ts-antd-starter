@@ -1,9 +1,10 @@
 import React, { useMemo, type ReactNode } from 'react'
 import { useLocation } from 'react-router-dom'
+import clsx from 'clsx'
 
 import { firstCharacterUpperCase } from '/@/utils'
 
-interface Props {
+type Props = {
   style?: React.CSSProperties | undefined
   className?: string
   children?: ReactNode
@@ -21,11 +22,12 @@ const Main: React.FC<Props> = ({ children, style, className = '' }) => {
   return (
     <main
       style={style}
-      className={`flex text-black items-center justify-start flex-col pl-4 pb-4 pr-8 overflow-auto ${
-        className ?? ''
-      }`}
+      className={clsx(
+        'flex text-black items-center justify-start flex-col overflow-auto pr-5',
+        className,
+      )}
     >
-      <div className="w-full p-20px text-20px font-700">{title}</div>
+      <div className="w-full h-[50px] p-20px text-20px font-700 flex items-center">{title}</div>
 
       {children}
     </main>

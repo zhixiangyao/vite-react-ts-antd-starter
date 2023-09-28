@@ -17,7 +17,7 @@ const Layout: React.FC = () => {
     <>
       <Side style={{ width }} collapsed={collapsed} />
 
-      <Main style={{ width: `calc(100vw - ${width}px)` }} className="inline">
+      <Main style={{ width: `calc(100vw - ${width - 20}px)` }} className="inline">
         <Outlet />
       </Main>
     </>

@@ -20,7 +20,7 @@ const items = [
   },
 ]
 
-interface Props {
+type Props = {
   style?: React.CSSProperties | undefined
   collapsed: boolean
 }

@@ -2,7 +2,7 @@ import type { Data } from '/@/store/Reducer/registrantReducer'
 
 import { ADD_LOOK_EDIT } from '../../type'
 
-export interface Props {
+export type Props = {
   visible: boolean
   state: ADD_LOOK_EDIT
   fields: Data

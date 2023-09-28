@@ -20,7 +20,7 @@ function beforeUpload(file: RcFile) {
   return isJpgOrPng && isLt2M
 }
 
-interface Props {
+type Props = {
   disabled: boolean
 }
 
