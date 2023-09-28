@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Menu } from 'antd'
 import { MailOutlined } from '@ant-design/icons'
@@ -29,9 +29,12 @@ const Side: React.FC<Props> = ({ style, collapsed }) => {
   const { pathname } = useLocation()
   const navigate = useNavigate()
 
-  const handleClick = ({ key }: MenuInfo) => {
-    navigate(key)
-  }
+  const handleClick = useCallback(
+    ({ key }: MenuInfo) => {
+      pathname !== key && navigate(key)
+    },
+    [navigate, pathname],
+  )
 
   return (
     <Menu
