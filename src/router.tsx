@@ -3,7 +3,7 @@ import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
 
 const Layout = lazy(() => import('/@/layout'))
-const RegistrantList = lazy(() => import('./pages/RegistrantList'))
+const RegistrantListPage = lazy(() => import('./pages/registrant-list'))
 
 const routes: Route[] = [
   {
@@ -19,8 +19,8 @@ const routes: Route[] = [
       {
         path: '/registrant-list',
         element: (
-          <Suspense fallback={<>loading RegistrantList</>}>
-            <RegistrantList />
+          <Suspense fallback={<>loading RegistrantListPage</>}>
+            <RegistrantListPage />
           </Suspense>
         ),
         children: [],

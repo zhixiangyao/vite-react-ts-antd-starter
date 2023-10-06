@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Table, Space } from 'antd'
 import { Popconfirm } from 'antd'
+import type { ColumnsType } from 'antd/es/table'
 
 import type { Data } from '/@/store/Reducer/registrantReducer'
 
@@ -11,7 +12,7 @@ type Props = {
   handleDelete: (index: number) => void
 }
 
-const RegistrantTableList: React.FC<Props> = (props) => {
+const RegistrantListPageTable = memo<Props>((props) => {
   const { list, handleLook, handleEdit, handleDelete } = props
 
   const handleRender = (text: unknown, record: Data, index: number) => (
@@ -35,7 +36,7 @@ const RegistrantTableList: React.FC<Props> = (props) => {
     </Space>
   )
 
-  const columns = [
+  const columns: ColumnsType<Data> = [
     {
       title: 'ID',
       dataIndex: 'id',
@@ -66,6 +67,7 @@ const RegistrantTableList: React.FC<Props> = (props) => {
   ]
 
   return <Table rowKey="id" className="w-full" columns={columns} dataSource={list} bordered />
-}
+})
+RegistrantListPageTable.displayName = 'RegistrantListPageTable'
 
-export default RegistrantTableList
+export default RegistrantListPageTable

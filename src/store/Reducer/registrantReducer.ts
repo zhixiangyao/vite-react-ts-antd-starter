@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getLocalStorage, setLocalStorage } from '/@/utils'
+import { getLocalStorage, setLocalStorage } from '/@/utils/storage'
 import type { InitialState, Data, RegistrantActions } from '/@/store/Reducer/types'
 
 const initialState: InitialState = {

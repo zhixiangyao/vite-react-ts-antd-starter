@@ -1,12 +1,11 @@
-import React, { Suspense, lazy } from 'react'
+import React, { memo } from 'react'
 import { Drawer } from 'antd'
 
 import { addLookEdit } from './data'
 import type { Props } from './type'
+import FormView from './FormView'
 
-const FormView = lazy(() => import('./FormView'))
-
-const RegistrantForm: React.FC<Props> = (props) => {
+const RegistrantListPageDrawer = memo<Props>((props) => {
   const { visible, handleFormCancel } = props
   const { state, fields, handleFormAdd, handleFormEdit } = props
 
@@ -18,11 +17,10 @@ const RegistrantForm: React.FC<Props> = (props) => {
       onClose={handleFormCancel}
       open={visible}
     >
-      <Suspense fallback={<>loading...</>}>
-        <FormView {...{ state, handleFormAdd, handleFormEdit, fields }} />
-      </Suspense>
+      <FormView {...{ state, handleFormAdd, handleFormEdit, fields }} />
     </Drawer>
   )
-}
+})
+RegistrantListPageDrawer.displayName = 'RegistrantListPageDrawer'
 
-export default RegistrantForm
+export default RegistrantListPageDrawer

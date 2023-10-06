@@ -1,19 +1,19 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { Form } from 'antd'
 import dayjs from 'dayjs'
 
 import type { Data } from '/@/store/Reducer/registrantReducer'
 
+import SubmitView from './components/SubmitView'
+import BasicInfoView from './components/BasicInfoView'
+
 import { ADD_LOOK_EDIT } from '../../../type'
 import { timeKeys } from '../data'
 import type { Props } from '../type'
 
-const SubmitView = lazy(() => import('./components/SubmitView'))
-const BasicInfoView = lazy(() => import('./components/BasicInfoView'))
-
 type FormViewProps = Pick<Props, 'state' | 'handleFormEdit' | 'handleFormAdd' | 'fields'>
 
-const FormView: React.FC<FormViewProps> = (props) => {
+const FormView = memo<FormViewProps>((props) => {
   const { state, fields, handleFormAdd, handleFormEdit } = props
   const [form] = Form.useForm()
 
@@ -47,13 +47,12 @@ const FormView: React.FC<FormViewProps> = (props) => {
       initialValues={{ size: 'small' }}
       onFinish={onFinish}
     >
-      <Suspense fallback={<>loading...</>}>
-        <BasicInfoView disabled={disabled} />
+      <BasicInfoView disabled={disabled} />
 
-        <SubmitView state={state} disabled={disabled} />
-      </Suspense>
+      <SubmitView state={state} disabled={disabled} />
     </Form>
   )
-}
+})
+FormView.displayName = 'FormView'
 
 export default FormView
