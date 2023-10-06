@@ -3,7 +3,7 @@ import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
 
 const Layout = lazy(() => import('/@/layout'))
-const RegistrantList = lazy(() => import('/@/views/RegistrantList'))
+const RegistrantList = lazy(() => import('./pages/RegistrantList'))
 
 const routes: Route[] = [
   {
