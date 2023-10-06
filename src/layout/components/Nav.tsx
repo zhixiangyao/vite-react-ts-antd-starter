@@ -13,6 +13,11 @@ const items = [
     key: '/registrant-list',
     icon: <MailOutlined />,
   },
+  {
+    label: 'Test',
+    key: '/test',
+    icon: <MailOutlined />,
+  },
 ]
 
 type Props = {}

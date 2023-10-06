@@ -4,8 +4,9 @@ import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
 
 const Layout = lazy(() => import('/@/layout'))
 const RegistrantListPage = lazy(() => import('./pages/registrant-list'))
+const TestPage = lazy(() => import('./pages/test'))
 
-const routes: Route[] = [
+const routes = [
   {
     path: '/',
     element: (
@@ -23,12 +24,18 @@ const routes: Route[] = [
             <RegistrantListPage />
           </Suspense>
         ),
-        children: [],
+      },
+      {
+        path: '/test',
+        element: (
+          <Suspense fallback={<>loading RegistrantListPage</>}>
+            <TestPage />
+          </Suspense>
+        ),
       },
       {
         path: '/*',
         element: <div>Not Found</div>,
-        children: [],
       },
     ],
   },
