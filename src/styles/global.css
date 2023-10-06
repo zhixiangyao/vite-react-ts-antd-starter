@@ -25,11 +25,11 @@ body,
 }
 
 #root {
-  @apply flex gap-5 flex-row justify-between;
+  @apply flex flex-row justify-between gap-5;
 }
 
 body {
-  @apply overflow-y-scroll overflow-x-hidden;
+  @apply overflow-x-hidden overflow-y-scroll;
 }
 
 body.dark::-webkit-scrollbar {

@@ -16,11 +16,11 @@ const RegistrantTableList: React.FC<Props> = (props) => {
 
   const handleRender = (text: unknown, record: Data, index: number) => (
     <Space size="middle">
-      <a className="text-green-600 cursor-pointer" onClick={() => handleLook(index)}>
+      <a className="cursor-pointer text-green-600" onClick={() => handleLook(index)}>
         查看
       </a>
 
-      <a className="text-green-600 cursor-pointer" onClick={() => handleEdit(index)}>
+      <a className="cursor-pointer text-green-600" onClick={() => handleEdit(index)}>
         编辑
       </a>
 
@@ -30,7 +30,7 @@ const RegistrantTableList: React.FC<Props> = (props) => {
         okText="是"
         cancelText="否"
       >
-        <a className="text-red-600 cursor-pointer">删除</a>
+        <a className="cursor-pointer text-red-600">删除</a>
       </Popconfirm>
     </Space>
   )

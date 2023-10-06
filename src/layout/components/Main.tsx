@@ -23,11 +23,11 @@ const Main: React.FC<Props> = ({ children, style, className = '' }) => {
     <main
       style={style}
       className={clsx(
-        'flex text-black items-center justify-start flex-col overflow-auto pr-5',
+        'flex flex-col items-center justify-start overflow-auto pr-5 text-black',
         className,
       )}
     >
-      <div className="w-full h-[50px] p-20px text-20px font-700 flex items-center">{title}</div>
+      <div className="p-20px text-20px font-700 flex h-[50px] w-full items-center">{title}</div>
 
       {children}
     </main>
