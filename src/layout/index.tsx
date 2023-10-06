@@ -1,13 +1,26 @@
-import React, { useState } from 'react'
-import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import React from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
+import { Layout } from 'antd'
+import clsx from 'clsx'
+import { createGlobalStyle } from 'styled-components'
 
 import Main from '/@/layout/components/Main'
-import Side from '/@/layout/components/Side'
+import Nav from '/@/layout/components/Nav'
+import { useIsDesktop } from '/@/hooks/useIsDeskTop'
 
-const Layout: React.FC = () => {
+const GlobalStyleHiddenAntdSomeComponent = createGlobalStyle<{}>`
+  div.ant-drawer {
+    display: none;
+  }
+
+  div.ant-modal-root {
+    display: none;
+  }
+`
+
+export default () => {
   const location = useLocation()
-  const [width] = useState(200)
-  const [collapsed] = useState(false)
+  const isDesktop = useIsDesktop()
 
   if (location.pathname === '/') {
     return <Navigate replace to={'/registrant-list'} />
@@ -15,13 +28,20 @@ const Layout: React.FC = () => {
 
   return (
     <>
-      <Side style={{ width }} collapsed={collapsed} />
+      <Layout className={clsx(!isDesktop && 'hidden')}>
+        <Nav />
 
-      <Main style={{ width: `calc(100vw - ${width - 20}px)` }} className="inline">
-        <Outlet />
-      </Main>
+        <Main />
+      </Layout>
+
+      {!isDesktop && (
+        <>
+          <GlobalStyleHiddenAntdSomeComponent />
+          <div className="flex h-screen items-center justify-center text-center text-xl">
+            Please use a device with a width greater than 1280px to access.
+          </div>
+        </>
+      )}
     </>
   )
 }
-
-export default Layout

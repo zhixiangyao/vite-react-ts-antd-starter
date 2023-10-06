@@ -14,3 +14,4 @@ type AppDispatch = typeof store.dispatch
 
 export type { RootState, AppDispatch }
 export { store }
+export { useAppDispatch, useAppSelector } from './hooks'

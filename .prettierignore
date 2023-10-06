@@ -1,7 +1,6 @@
-public
 dist
 dist-ssr
-build
+public
 node_modules
 .husky
 

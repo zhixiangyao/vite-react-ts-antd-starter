@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from 'react'
 import { Button } from 'antd'
 
+import { Page } from '/@/components/Page'
+
 import { useMonster } from './hooks'
 
 const RegistrantForm = lazy(() => import('./components/RegistrantForm'))
@@ -15,7 +17,7 @@ const RegistrantList: React.FC = () => {
   const { isModalVisible, fields, state, registrantList } = monster
 
   return (
-    <>
+    <Page headerLess>
       <Button type="primary" className="mb-5 self-end" onClick={handleAdd}>
         添加
       </Button>
@@ -29,15 +31,17 @@ const RegistrantList: React.FC = () => {
         />
       </Suspense>
 
-      <RegistrantForm
-        visible={isModalVisible}
-        fields={fields}
-        state={state}
-        handleFormCancel={hideFormView}
-        handleFormAdd={handleFormAdd}
-        handleFormEdit={handleFormEdit}
-      />
-    </>
+      <Suspense fallback={<>loading...</>}>
+        <RegistrantForm
+          visible={isModalVisible}
+          fields={fields}
+          state={state}
+          handleFormCancel={hideFormView}
+          handleFormAdd={handleFormAdd}
+          handleFormEdit={handleFormEdit}
+        />
+      </Suspense>
+    </Page>
   )
 }
 

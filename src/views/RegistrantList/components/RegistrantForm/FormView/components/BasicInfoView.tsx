@@ -7,8 +7,8 @@ import UploadAvatar from './UploadAvatar'
 import { maritalStatusList, politicalIdentityList } from '../../data'
 
 const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (
-  <fieldset>
-    <legend>基础信息</legend>
+  <>
+    <h2>基础信息</h2>
 
     <Row gutter={24}>
       <Col span={8} sm={10}>
@@ -109,7 +109,7 @@ const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (
         <UploadAvatar disabled={true} />
       </Col>
     </Row>
-  </fieldset>
+  </>
 )
 
 export default BasicInfoView

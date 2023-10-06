@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react'
-import { Modal } from 'antd'
+import { Drawer } from 'antd'
 
 import { addLookEdit } from './data'
 import type { Props } from './type'
@@ -11,17 +11,17 @@ const RegistrantForm: React.FC<Props> = (props) => {
   const { state, fields, handleFormAdd, handleFormEdit } = props
 
   return (
-    <Modal
-      width="100%"
-      open={visible}
-      footer={null}
+    <Drawer
+      width="80%"
       title={`${addLookEdit[state]}: 员工入职登记表`}
-      onCancel={handleFormCancel}
+      placement="right"
+      onClose={handleFormCancel}
+      open={visible}
     >
       <Suspense fallback={<>loading...</>}>
         <FormView {...{ state, handleFormAdd, handleFormEdit, fields }} />
       </Suspense>
-    </Modal>
+    </Drawer>
   )
 }
 

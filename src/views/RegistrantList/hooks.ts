@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import { message } from 'antd'
 import dayjs from 'dayjs'
 
-import { useAppDispatch, useAppSelector } from '/@/hooks'
+import { useAppDispatch, useAppSelector } from '/@/store'
 import { addRegistrant, editRegistrant } from '/@/store/Reducer/registrantReducer'
 import { deleteRegistrant } from '/@/store/Reducer/registrantReducer'
 import type { Data } from '/@/store/Reducer/registrantReducer'

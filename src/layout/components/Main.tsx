@@ -1,37 +1,30 @@
-import React, { useMemo, type ReactNode } from 'react'
-import { useLocation } from 'react-router-dom'
-import clsx from 'clsx'
+import React, { memo, useMemo } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import { Layout } from 'antd'
 
-import { firstCharacterUpperCase } from '/@/utils'
+import { stringCapitalization } from '/@/utils/string'
 
-type Props = {
-  style?: React.CSSProperties | undefined
-  className?: string
-  children?: ReactNode
-}
+type Props = {}
 
-const Main: React.FC<Props> = ({ children, style, className = '' }) => {
+const Main = memo<Props>(() => {
   const { pathname } = useLocation()
 
   const title = useMemo(() => {
     const list = pathname.split('/').pop()?.split('-')
 
-    return list?.map(firstCharacterUpperCase).join(' ')
+    return list?.map((str) => stringCapitalization(str)).join(' ')
   }, [pathname])
 
   return (
-    <main
-      style={style}
-      className={clsx(
-        'flex flex-col items-center justify-start overflow-auto pr-5 text-black',
-        className,
-      )}
-    >
-      <div className="p-20px text-20px font-700 flex h-[50px] w-full items-center">{title}</div>
+    <Layout.Content>
+      <div className="font-700 flex h-[50px] w-full items-center px-7 text-[20px]">{title}</div>
 
-      {children}
-    </main>
+      <div className="h-[calc(100vh_-_50px)] w-full overflow-y-auto overflow-x-hidden px-3">
+        <Outlet />
+      </div>
+    </Layout.Content>
   )
-}
+})
+Main.displayName = 'Main'
 
 export default Main
