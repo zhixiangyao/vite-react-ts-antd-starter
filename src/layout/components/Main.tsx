@@ -1,28 +1,27 @@
-import React, { memo, useMemo } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
-import { Layout } from 'antd'
+import React, { memo } from 'react'
+import { Outlet, useNavigation } from 'react-router-dom'
+import { Watermark, type WatermarkProps } from 'antd'
 
-import { stringCapitalization } from '/@/utils/string'
+const watermarkConfig: WatermarkProps = {
+  content: 'vite-react-ts-antd-starter',
+  gap: [150, 150],
+}
 
 type Props = {}
 
 export const Main = memo<Props>(() => {
-  const { pathname } = useLocation()
-
-  const title = useMemo(() => {
-    const list = pathname.split('/').pop()?.split('-')
-
-    return list?.map((str) => stringCapitalization(str)).join(' ')
-  }, [pathname])
+  const navigation = useNavigation()
 
   return (
-    <Layout.Content>
-      <div className="font-700 flex h-[50px] w-full items-center px-7 text-[20px]">{title}</div>
+    <Watermark
+      className="h-[calc(100vh_-_50px)] w-full overflow-y-auto overflow-x-hidden px-3 pt-2"
+      content={watermarkConfig.content}
+      gap={watermarkConfig.gap}
+    >
+      {navigation.state === 'loading' && 'loading...'}
 
-      <div className="h-[calc(100vh_-_50px)] w-full overflow-y-auto overflow-x-hidden px-3">
-        <Outlet />
-      </div>
-    </Layout.Content>
+      <Outlet />
+    </Watermark>
   )
 })
 Main.displayName = 'Main'

@@ -8,7 +8,6 @@ This template is based on the template [vite-react-ts-starter](https://github.co
 
 **VSCode Extension:**
 
-- [VScode Styled Component](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
 **Development ENV:**
