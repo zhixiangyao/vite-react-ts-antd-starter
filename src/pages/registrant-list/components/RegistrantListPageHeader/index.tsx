@@ -5,7 +5,7 @@ type Props = {
   handleAdd: () => void
 }
 
-const RegistrantListPageHeader = memo<Props>(({ handleAdd }) => {
+export const RegistrantListPageHeader = memo<Props>(({ handleAdd }) => {
   return (
     <Space className="mb-5 w-full justify-between">
       <Space>&nbsp;</Space>
@@ -17,5 +17,3 @@ const RegistrantListPageHeader = memo<Props>(({ handleAdd }) => {
   )
 })
 RegistrantListPageHeader.displayName = 'RegistrantListPageHeader'
-
-export default RegistrantListPageHeader

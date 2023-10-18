@@ -12,7 +12,7 @@ type Props = {
   handleDelete: (index: number) => void
 }
 
-const RegistrantListPageTable = memo<Props>((props) => {
+export const RegistrantListPageTable = memo<Props>((props) => {
   const { list, handleLook, handleEdit, handleDelete } = props
 
   const handleRender = (text: unknown, record: Data, index: number) => (
@@ -69,5 +69,3 @@ const RegistrantListPageTable = memo<Props>((props) => {
   return <Table rowKey="id" className="w-full" columns={columns} dataSource={list} bordered />
 })
 RegistrantListPageTable.displayName = 'RegistrantListPageTable'
-
-export default RegistrantListPageTable

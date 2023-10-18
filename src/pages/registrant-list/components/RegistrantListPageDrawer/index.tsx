@@ -3,9 +3,9 @@ import { Drawer } from 'antd'
 
 import { addLookEdit } from './data'
 import type { Props } from './type'
-import FormView from './FormView'
+import { FormView } from './FormView'
 
-const RegistrantListPageDrawer = memo<Props>((props) => {
+export const RegistrantListPageDrawer = memo<Props>((props) => {
   const { visible, handleFormCancel } = props
   const { state, fields, handleFormAdd, handleFormEdit } = props
 
@@ -22,5 +22,3 @@ const RegistrantListPageDrawer = memo<Props>((props) => {
   )
 })
 RegistrantListPageDrawer.displayName = 'RegistrantListPageDrawer'
-
-export default RegistrantListPageDrawer

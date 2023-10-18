@@ -2,11 +2,11 @@ import React from 'react'
 import { Form, Input, Radio, Select, DatePicker } from 'antd'
 import { Row, Col } from 'antd'
 
-import UploadAvatar from './UploadAvatar'
+import { UploadAvatar } from './UploadAvatar'
 
 import { maritalStatusList, politicalIdentityList } from '../../data'
 
-const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (
+export const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (
   <>
     <h2>基础信息</h2>
 
@@ -111,5 +111,3 @@ const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (
     </Row>
   </>
 )
-
-export default BasicInfoView

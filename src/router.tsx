@@ -1,10 +1,14 @@
 import { Spin } from 'antd'
 import React, { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
+import { BrowserRouter, useRoutes } from 'react-router-dom'
 
-const Layout = lazy(() => import('/@/layout'))
-const RegistrantListPage = lazy(() => import('./pages/registrant-list'))
-const TestPage = lazy(() => import('./pages/test'))
+const Layout = lazy(() => import('/@/layout').then(({ Layout }) => ({ default: Layout })))
+const RegistrantListPage = lazy(() =>
+  import('./pages/registrant-list').then(({ RegistrantListPage }) => ({
+    default: RegistrantListPage,
+  })),
+)
+const TestPage = lazy(() => import('./pages/test').then(({ TestPage }) => ({ default: TestPage })))
 
 const routes = [
   {
@@ -52,10 +56,10 @@ const Routes = () => {
   return element
 }
 
-export default () => {
+export const Router = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes />
-    </Router>
+    </BrowserRouter>
   )
 }

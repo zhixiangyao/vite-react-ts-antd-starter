@@ -22,7 +22,7 @@ const items = [
 
 type Props = {}
 
-const Nav = memo<Props>(() => {
+export const Nav = memo<Props>(() => {
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const [collapsed, { toggle }] = useBoolean(true)
@@ -70,5 +70,3 @@ const Nav = memo<Props>(() => {
   )
 })
 Nav.displayName = 'Nav'
-
-export default Nav

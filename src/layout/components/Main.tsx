@@ -6,7 +6,7 @@ import { stringCapitalization } from '/@/utils/string'
 
 type Props = {}
 
-const Main = memo<Props>(() => {
+export const Main = memo<Props>(() => {
   const { pathname } = useLocation()
 
   const title = useMemo(() => {
@@ -26,5 +26,3 @@ const Main = memo<Props>(() => {
   )
 })
 Main.displayName = 'Main'
-
-export default Main

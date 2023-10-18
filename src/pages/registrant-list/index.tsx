@@ -3,11 +3,11 @@ import React, { memo } from 'react'
 import { Page } from '/@/components/Page'
 
 import { useMonster } from './hooks'
-import RegistrantListPageHeader from './components/RegistrantListPageHeader'
-import RegistrantListPageTable from './components/RegistrantListPageTable'
-import RegistrantListPageDrawer from './components/RegistrantListPageDrawer'
+import { RegistrantListPageHeader } from './components/RegistrantListPageHeader'
+import { RegistrantListPageTable } from './components/RegistrantListPageTable'
+import { RegistrantListPageDrawer } from './components/RegistrantListPageDrawer'
 
-const RegistrantListPage = memo(() => {
+export const RegistrantListPage = memo(() => {
   const monster = useMonster()
 
   const { handleAdd } = monster
@@ -38,5 +38,3 @@ const RegistrantListPage = memo(() => {
   )
 })
 RegistrantListPage.displayName = 'RegistrantListPage'
-
-export default RegistrantListPage

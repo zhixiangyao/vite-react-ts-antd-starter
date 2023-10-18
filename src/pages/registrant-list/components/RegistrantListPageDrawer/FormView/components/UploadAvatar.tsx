@@ -24,7 +24,7 @@ type Props = {
   disabled: boolean
 }
 
-class UploadAvatar extends React.Component<Props> {
+export class UploadAvatar extends React.Component<Props> {
   override state = {
     loading: false,
     imageUrl: '',
@@ -75,5 +75,3 @@ class UploadAvatar extends React.Component<Props> {
     )
   }
 }
-
-export default UploadAvatar

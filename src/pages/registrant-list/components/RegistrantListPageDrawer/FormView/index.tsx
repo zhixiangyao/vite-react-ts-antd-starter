@@ -4,8 +4,8 @@ import dayjs from 'dayjs'
 
 import type { Data } from '/@/store/Reducer/registrantReducer'
 
-import SubmitView from './components/SubmitView'
-import BasicInfoView from './components/BasicInfoView'
+import { SubmitView } from './components/SubmitView'
+import { BasicInfoView } from './components/BasicInfoView'
 
 import { ADD_LOOK_EDIT } from '../../../type'
 import { timeKeys } from '../data'
@@ -13,7 +13,7 @@ import type { Props } from '../type'
 
 type FormViewProps = Pick<Props, 'state' | 'handleFormEdit' | 'handleFormAdd' | 'fields'>
 
-const FormView = memo<FormViewProps>((props) => {
+export const FormView = memo<FormViewProps>((props) => {
   const { state, fields, handleFormAdd, handleFormEdit } = props
   const [form] = Form.useForm()
 
@@ -54,5 +54,3 @@ const FormView = memo<FormViewProps>((props) => {
   )
 })
 FormView.displayName = 'FormView'
-
-export default FormView

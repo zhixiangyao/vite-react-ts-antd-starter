@@ -1,11 +1,11 @@
 import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
-import { Layout } from 'antd'
+import { Layout as AntdLayout } from 'antd'
 import clsx from 'clsx'
 import { createGlobalStyle } from 'styled-components'
 
-import Main from '/@/layout/components/Main'
-import Nav from '/@/layout/components/Nav'
+import { Main } from '/@/layout/components/Main'
+import { Nav } from '/@/layout/components/Nav'
 import { useIsDesktop } from '/@/hooks/useIsDeskTop'
 
 const GlobalStyleHiddenAntdSomeComponent = createGlobalStyle<{}>`
@@ -18,7 +18,7 @@ const GlobalStyleHiddenAntdSomeComponent = createGlobalStyle<{}>`
   }
 `
 
-export default () => {
+export const Layout = () => {
   const location = useLocation()
   const isDesktop = useIsDesktop()
 
@@ -28,11 +28,11 @@ export default () => {
 
   return (
     <>
-      <Layout className={clsx(!isDesktop && 'hidden')}>
+      <AntdLayout className={clsx(!isDesktop && 'hidden')}>
         <Nav />
 
         <Main />
-      </Layout>
+      </AntdLayout>
 
       {!isDesktop && (
         <>
