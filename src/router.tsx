@@ -1,28 +1,38 @@
 import React from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Spin } from 'antd'
+import { HomeOutlined, RadarChartOutlined } from '@ant-design/icons'
+
+type Route = {
+  label: string
+  icon: React.ReactNode
+  path: string
+  element: Promise<React.FC>
+}
+
+export const routes: Route[] = [
+  {
+    label: 'Registrant List',
+    path: '/registrant-list',
+    icon: <HomeOutlined />,
+    element: import('./pages/registrant-list').then(({ RegistrantListPage }) => RegistrantListPage),
+  },
+  {
+    label: 'Test',
+    path: '/test',
+    icon: <RadarChartOutlined />,
+    element: import('./pages/test').then(({ TestPage }) => TestPage),
+  },
+]
 
 const router = createBrowserRouter([
   {
     path: '/',
     lazy: () => import('/@/layout').then(({ Layout }) => ({ Component: Layout })),
-    children: [
-      {
-        path: '/registrant-list',
-        lazy: () =>
-          import('./pages/registrant-list').then(({ RegistrantListPage }) => ({
-            Component: RegistrantListPage,
-          })),
-      },
-      {
-        path: '/test',
-        lazy: () => import('./pages/test').then(({ TestPage }) => ({ Component: TestPage })),
-      },
-      {
-        path: '/*',
-        element: <div>Not Found</div>,
-      },
-    ],
+    children: routes.map((route) => ({
+      path: route.path,
+      lazy: () => route.element.then((Component) => ({ Component })),
+    })),
   },
 ])
 

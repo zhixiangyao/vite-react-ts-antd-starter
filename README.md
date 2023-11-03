@@ -1,4 +1,4 @@
-# Vite + React + ReactRouter + ReactRedux + TypeScript + StyledComponents + TailwindCSS + AntdUI
+# Vite + React + ReactRouter + ReactRedux + TypeScript + TailwindCSS + AntdUI
 
 This template is based on the template [vite-react-ts-starter](https://github.com/zhixiangyao/vite-react-ts-starter)
 

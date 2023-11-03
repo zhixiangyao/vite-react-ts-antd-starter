@@ -1,24 +1,12 @@
-import React, { memo, useCallback } from 'react'
+import React, { memo, useCallback, useMemo } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Menu, Layout, type MenuProps } from 'antd'
-import { HeartTwoTone, MailOutlined } from '@ant-design/icons'
+import { HeartTwoTone } from '@ant-design/icons'
 import { useBoolean } from 'ahooks'
 import clsx from 'clsx'
 
 import { stringCapitalization } from '/@/utils/string'
-
-const items = [
-  {
-    label: 'Registrant List',
-    key: '/registrant-list',
-    icon: <MailOutlined />,
-  },
-  {
-    label: 'Test',
-    key: '/test',
-    icon: <MailOutlined />,
-  },
-]
+import { routes } from '/@/router'
 
 type Props = {}
 
@@ -32,6 +20,11 @@ export const Nav = memo<Props>(() => {
       pathname !== key && navigate(key)
     },
     [navigate, pathname],
+  )
+
+  const menus = useMemo(
+    () => routes.map(({ path, label, icon }) => ({ key: path, label, icon })),
+    [],
   )
 
   return (
@@ -64,7 +57,7 @@ export const Nav = memo<Props>(() => {
         forceSubMenuRender={false}
         defaultSelectedKeys={[pathname]}
         onClick={handleClick}
-        items={items}
+        items={menus}
       />
     </Layout.Sider>
   )
