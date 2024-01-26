@@ -42,19 +42,19 @@ pnpm build
 ### Check all
 
 ```shell
-pnpm lint:all
-```
-
-### Check ESlint
-
-```shell
-pnpm lint:eslint
+pnpm lint
 ```
 
 ### Check Prettier
 
 ```shell
 pnpm lint:prettier
+```
+
+### Check ESlint
+
+```shell
+pnpm lint:eslint
 ```
 
 ### Check Stylelint
