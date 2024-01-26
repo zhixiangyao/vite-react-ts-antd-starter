@@ -13,72 +13,73 @@
     "build": "vite build",
     "preview": "npm run build && vite preview",
     "preview:dist": "vite preview",
-    "lint:all": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
-    "lint:prettier": "prettier --cache --write --log-level warn \"src/**/*.{json,tsx,css,html,md}\"",
-    "lint:eslint": "eslint --fix \"src/**/*.{ts,tsx}\" --cache --cache-location node_modules/.cache/eslint/",
-    "lint:stylelint": "stylelint --fix \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint/",
+    "------- 🌕 FORMAT -------": "",
+    "lint": "npm run lint:prettier && npm run lint:eslint && npm run lint:stylelint",
+    "lint:prettier": "prettier --cache --write --log-level warn \"./**/*.{js,mjs,ts,tsx,css,html,md}\"",
+    "lint:eslint": "eslint --fix \"./**/*.{js,mjs,ts,tsx}\" --cache --cache-location node_modules/.cache/eslint/",
+    "lint:stylelint": "stylelint --fix \"./**/*.{jsx,tsx,css}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "npx eslint --fix"
+    "./**/*.{js,mjs,ts,tsx,css,html,md}": [
+      "npx prettier --cache --write --log-level warn"
     ],
-    "src/**/*.{json,tsx,css,html,md}": [
-      "npx prettier --write --loglevel warn"
+    "./**/*.{js,mjs,ts,tsx}": [
+      "npx eslint --fix --cache --cache-location node_modules/.cache/eslint/"
     ],
-    "src/**/*.{jsx,tsx,css}": [
+    "./**/*.{jsx,tsx,css}": [
       "npx stylelint --fix --cache --cache-location node_modules/.cache/stylelint/"
     ]
   },
   "dependencies": {
     "@ant-design/icons": "5.2.6",
-    "@reduxjs/toolkit": "1.9.7",
+    "@reduxjs/toolkit": "2.1.0",
     "ahooks": "3.7.8",
-    "antd": "5.10.3",
-    "clsx": "2.0.0",
+    "antd": "5.13.2",
+    "clsx": "2.1.0",
     "dayjs": "1.11.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
-    "react-redux": "8.1.3",
-    "react-router": "6.18.0",
-    "react-router-dom": "6.18.0"
+    "react-redux": "9.1.0",
+    "react-router": "6.21.3",
+    "react-router-dom": "6.21.3"
   },
   "devDependencies": {
-    "@types/node": "20.8.10",
-    "@types/react": "18.2.34",
-    "@types/react-dom": "18.2.14",
-    "@types/react-redux": "7.1.28",
-    "@typescript-eslint/eslint-plugin": "6.9.1",
-    "@typescript-eslint/parser": "6.9.1",
-    "@vitejs/plugin-react": "4.1.1",
-    "autoprefixer": "10.4.16",
-    "dotenv": "16.3.1",
-    "eslint": "8.52.0",
-    "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-import": "2.29.0",
-    "eslint-plugin-prettier": "5.0.1",
+    "@types/node": "20.11.6",
+    "@types/react": "18.2.48",
+    "@types/react-dom": "18.2.18",
+    "@types/react-redux": "7.1.33",
+    "@typescript-eslint/eslint-plugin": "6.19.1",
+    "@typescript-eslint/parser": "6.19.1",
+    "@vitejs/plugin-react": "4.2.1",
+    "autoprefixer": "10.4.17",
+    "dotenv": "16.4.1",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-prettier": "5.1.3",
     "eslint-plugin-react-hooks": "4.6.0",
-    "husky": "8.0.3",
-    "lint-staged": "15.0.2",
-    "postcss-load-config": "4.0.1",
-    "postcss-styled-syntax": "0.5.0",
-    "prettier": "3.0.3",
-    "prettier-plugin-tailwindcss": "0.5.6",
-    "rollup": "4.2.0",
-    "stylelint": "15.11.0",
-    "stylelint-config-standard": "34.0.0",
-    "stylelint-order": "6.0.3",
-    "tailwindcss": "3.3.5",
-    "typescript": "5.2.2",
-    "vite": "4.5.0",
+    "husky": "9.0.6",
+    "lint-staged": "15.2.0",
+    "postcss-load-config": "5.0.2",
+    "postcss-styled-syntax": "0.6.4",
+    "prettier": "3.2.4",
+    "prettier-plugin-tailwindcss": "0.5.11",
+    "rollup": "4.9.6",
+    "stylelint": "16.2.0",
+    "stylelint-config-standard": "36.0.0",
+    "stylelint-order": "6.0.4",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.3.3",
+    "vite": "5.0.12",
     "vite-plugin-checker": "0.6.2",
     "vite-plugin-compression": "0.5.1"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=16",
+    "node": ">=18",
     "pnpm": ">=8"
   }
 }

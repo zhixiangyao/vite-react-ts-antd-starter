@@ -7,7 +7,7 @@
   },
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
-    "ecmaVersion": 2020,
+    "ecmaVersion": "latest",
     "sourceType": "module",
     "jsxPragma": "React",
     "ecmaFeatures": {
@@ -21,9 +21,7 @@
     "plugin:prettier/recommended",
     "prettier"
   ],
-  "plugins": [
-    "import"
-  ],
+  "plugins": ["import"],
   "rules": {
     "@typescript-eslint/ban-ts-ignore": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
@@ -47,14 +45,7 @@
       1,
       {
         "newlines-between": "always",
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "sibling",
-          "parent",
-          "index"
-        ],
+        "groups": ["builtin", "external", "internal", "sibling", "parent", "index"],
         "pathGroups": [
           {
             "pattern": "/@/**",
