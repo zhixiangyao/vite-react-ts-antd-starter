@@ -1,9 +1,9 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { fixupConfigRules, fixupPluginRules } from '@eslint/compat'
 import _import from 'eslint-plugin-import'
 import globals from 'globals'
+import { fixupConfigRules, fixupPluginRules } from '@eslint/compat'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
 
@@ -31,6 +31,7 @@ export default [
       '**/dist',
       '**/dist-ssr',
       '**/public',
+      '**/docs',
     ],
   },
   ...fixupConfigRules(
@@ -77,7 +78,8 @@ export default [
       '@typescript-eslint/ban-types': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-
+      '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
