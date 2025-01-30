@@ -1,21 +1,19 @@
-import { useCallback, useState } from 'react'
+import type { Data } from '/@/store/Reducer/registrantReducer'
 import { message } from 'antd'
 import dayjs from 'dayjs'
 
-import { useAppDispatch, useAppSelector } from '/@/store'
-import { addRegistrant, editRegistrant } from '/@/store/Reducer/registrantReducer'
-import { deleteRegistrant } from '/@/store/Reducer/registrantReducer'
-import type { Data } from '/@/store/Reducer/registrantReducer'
-
+import { useCallback, useState } from 'react'
 import { ADD_LOOK_EDIT } from './type'
+import { useAppDispatch, useAppSelector } from '/@/store'
+import { addRegistrant, deleteRegistrant, editRegistrant } from '/@/store/Reducer/registrantReducer'
 
-const formatTime = (time: dayjs.ConfigType, type = 'L') => {
+function formatTime(time: dayjs.ConfigType, type = 'L') {
   return dayjs(time).format(type)
 }
 
-const useMonster = () => {
+function useMonster() {
   const dispatch = useAppDispatch()
-  const registrantList = useAppSelector((state) => state.registrantReducer.registrantList)
+  const registrantList = useAppSelector(state => state.registrantReducer.registrantList)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [state, setState] = useState<ADD_LOOK_EDIT>(ADD_LOOK_EDIT.ADD)
   const [fields, setFields] = useState<Data>({})

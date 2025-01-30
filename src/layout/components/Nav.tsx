@@ -1,14 +1,14 @@
-import React, { memo, useCallback, useMemo } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { Menu, Layout, type MenuProps } from 'antd'
 import { HeartTwoTone } from '@ant-design/icons'
 import { useBoolean } from 'ahooks'
+import { Layout, Menu, type MenuProps } from 'antd'
 import clsx from 'clsx'
+import React, { memo, useCallback, useMemo } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import { stringCapitalization } from '/@/utils/string'
 import { routes } from '/@/router'
+import { stringCapitalization } from '/@/utils/string'
 
-type Props = {}
+interface Props {}
 
 export const Nav = memo<Props>(() => {
   const { pathname } = useLocation()

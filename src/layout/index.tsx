@@ -1,14 +1,14 @@
-import React from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
 import { Layout as AntdLayout } from 'antd'
 import clsx from 'clsx'
+import React from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
 
 import { useIsDesktop } from '/@/hooks/useIsDeskTop'
-import { Nav } from '/@/layout/components/Nav'
 import { Header } from '/@/layout/components/Header'
 import { Main } from '/@/layout/components/Main'
+import { Nav } from '/@/layout/components/Nav'
 
-export const Layout = () => {
+export function Layout() {
   const location = useLocation()
   const isDesktop = useIsDesktop()
 
@@ -21,7 +21,7 @@ export const Layout = () => {
   }
 
   if (location.pathname === '/') {
-    return <Navigate replace to={'/registrant-list'} />
+    return <Navigate replace to="/registrant-list" />
   }
 
   return (

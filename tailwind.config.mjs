@@ -25,10 +25,10 @@ export default {
             maxWidth: '65ch',
             color: 'inherit',
             a: {
-              color: 'inherit',
-              opacity: 0.75,
-              fontWeight: '500',
-              textDecoration: 'underline',
+              'color': 'inherit',
+              'opacity': 0.75,
+              'fontWeight': '500',
+              'textDecoration': 'underline',
               '&:hover': {
                 opacity: 1,
               },

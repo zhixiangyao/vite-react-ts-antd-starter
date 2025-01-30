@@ -1,13 +1,11 @@
 import type { ConfigProviderProps } from 'antd/es/config-provider'
 
-export const getPopupContainerConfig = (): HTMLElement => {
+export function getPopupContainerConfig(): HTMLElement {
   return window.document.body
 }
 
 export const formConfig: ConfigProviderProps['form'] = {
-  validateMessages: {
-    required: '${label} is required',
-  },
+  validateMessages: {},
 }
 
 export const rules = {}

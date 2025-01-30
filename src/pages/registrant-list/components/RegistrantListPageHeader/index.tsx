@@ -1,7 +1,7 @@
 import { Button, Space } from 'antd'
 import React, { memo } from 'react'
 
-type Props = {
+interface Props {
   handleAdd: () => void
 }
 

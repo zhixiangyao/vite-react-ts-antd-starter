@@ -1,13 +1,13 @@
+import { Watermark, type WatermarkProps } from 'antd'
 import React, { memo } from 'react'
 import { Outlet, useNavigation } from 'react-router-dom'
-import { Watermark, type WatermarkProps } from 'antd'
 
 const watermarkConfig: WatermarkProps = {
   content: 'vite-react-ts-antd-starter',
   gap: [150, 150],
 }
 
-type Props = {}
+interface Props {}
 
 export const Main = memo<Props>(() => {
   const navigation = useNavigation()

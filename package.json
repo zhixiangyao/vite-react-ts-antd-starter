@@ -1,13 +1,18 @@
 {
   "name": "vite-react-ts-antd-starter",
-  "version": "0.1.0",
   "type": "module",
+  "version": "0.1.0",
   "author": "zhixiangyao <blueskyzx@icloud.com> <https://github.com/zhixiangyao>",
+  "license": "MIT",
+  "homepage": "https://github.com/zhixiangyao/vite-react-ts-antd-starter",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhixiangyao/vite-react-ts-antd-starter.git"
   },
-  "homepage": "https://github.com/zhixiangyao/vite-react-ts-antd-starter",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  },
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
@@ -57,11 +62,6 @@
     "vite": "6.0.2",
     "vite-plugin-checker": "0.8.0",
     "vite-plugin-compression": "0.5.1"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=22",
-    "pnpm": ">=9"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

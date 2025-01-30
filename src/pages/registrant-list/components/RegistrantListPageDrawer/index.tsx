@@ -1,8 +1,8 @@
-import React, { memo } from 'react'
+import type { Props } from './type'
 import { Drawer } from 'antd'
 
+import React, { memo } from 'react'
 import { addLookEdit } from './data'
-import type { Props } from './type'
 import { FormView } from './FormView'
 
 export const RegistrantListPageDrawer = memo<Props>((props) => {

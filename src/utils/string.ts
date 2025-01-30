@@ -13,8 +13,9 @@
  *   console.log(s) // AAAaaaa
  * ```
  */
-export const stringCapitalization = (str: string, scope: [number, number] = [0, 0]) => {
-  if (!str) return ''
+export function stringCapitalization(str: string, scope: [number, number] = [0, 0]) {
+  if (!str)
+    return ''
 
   const list = [...str]
 
@@ -39,10 +40,11 @@ export const stringCapitalization = (str: string, scope: [number, number] = [0, 
  *   console.log(s) // Phones
  * ```
  */
-export const stringPluralize = (num: number, word: string) => {
+export function stringPluralize(num: number, word: string) {
   if (num === 1) {
     return word
-  } else {
-    return word + 's'
+  }
+  else {
+    return `${word}s`
   }
 }

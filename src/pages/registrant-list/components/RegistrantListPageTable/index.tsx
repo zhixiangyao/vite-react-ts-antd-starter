@@ -1,11 +1,10 @@
-import React, { memo } from 'react'
-import { Table, Space } from 'antd'
-import { Popconfirm } from 'antd'
-import type { ColumnsType } from 'antd/es/table'
-
 import type { Data } from '/@/store/Reducer/registrantReducer'
+import type { ColumnsType } from 'antd/es/table'
+import { Popconfirm, Space, Table } from 'antd'
 
-type Props = {
+import React, { memo } from 'react'
+
+interface Props {
   list: Data[]
   handleLook: (index: number) => void
   handleEdit: (index: number) => void

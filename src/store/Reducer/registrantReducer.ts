@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import type { Data, InitialState, RegistrantActions } from '/@/store/Reducer/types'
 
+import { createSlice } from '@reduxjs/toolkit'
 import { getLocalStorage, setLocalStorage } from '/@/utils/storage'
-import type { InitialState, Data, RegistrantActions } from '/@/store/Reducer/types'
 
 const initialState: InitialState = {
   registrantList: getLocalStorage('registrantList', true) ?? [],
@@ -16,7 +16,7 @@ const registrantSlice = createSlice({
       setLocalStorage('registrantList', state.registrantList)
     },
 
-    editRegistrant: (state, action: { payload: { index: number; value: Data } }) => {
+    editRegistrant: (state, action: { payload: { index: number, value: Data } }) => {
       state.registrantList[action.payload.index] = action.payload.value
       setLocalStorage('registrantList', state.registrantList)
     },
@@ -29,10 +29,10 @@ const registrantSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-const { addRegistrant, editRegistrant, deleteRegistrant }: RegistrantActions =
-  registrantSlice.actions
+const { addRegistrant, editRegistrant, deleteRegistrant }: RegistrantActions
+  = registrantSlice.actions
 
 const registrantReducer = registrantSlice.reducer
 
-export { addRegistrant, editRegistrant, deleteRegistrant, registrantReducer }
-export type { InitialState, Data }
+export { addRegistrant, deleteRegistrant, editRegistrant, registrantReducer }
+export type { Data, InitialState }

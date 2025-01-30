@@ -1,7 +1,7 @@
+import { UserOutlined } from '@ant-design/icons'
+import { Avatar, Dropdown, type MenuProps } from 'antd'
 import React, { memo, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Dropdown, type MenuProps, Avatar } from 'antd'
-import { UserOutlined } from '@ant-design/icons'
 
 import { stringCapitalization } from '/@/utils/string'
 
@@ -12,7 +12,7 @@ const items: MenuProps['items'] = [
   },
 ]
 
-type Props = {}
+interface Props {}
 
 export const Header = memo<Props>(() => {
   const { pathname } = useLocation()
@@ -20,7 +20,7 @@ export const Header = memo<Props>(() => {
   const title = useMemo(() => {
     const list = pathname.split('/').pop()?.split('-')
 
-    return list?.map((str) => stringCapitalization(str)).join(' ')
+    return list?.map(str => stringCapitalization(str)).join(' ')
   }, [pathname])
 
   const menuProps = useMemo(() => ({ items }), [])

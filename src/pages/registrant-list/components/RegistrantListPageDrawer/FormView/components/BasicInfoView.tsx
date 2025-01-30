@@ -1,10 +1,9 @@
+import { Col, DatePicker, Form, Input, Radio, Row, Select } from 'antd'
 import React from 'react'
-import { Form, Input, Radio, Select, DatePicker } from 'antd'
-import { Row, Col } from 'antd'
-
-import { UploadAvatar } from './UploadAvatar'
 
 import { maritalStatusList, politicalIdentityList } from '../../data'
+
+import { UploadAvatar } from './UploadAvatar'
 
 export const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => (
   <>
@@ -106,7 +105,7 @@ export const BasicInfoView: React.FC<{ disabled: boolean }> = ({ disabled }) => 
       </Col>
 
       <Col span={8} sm={4}>
-        <UploadAvatar disabled={true} />
+        <UploadAvatar disabled />
       </Col>
     </Row>
   </>

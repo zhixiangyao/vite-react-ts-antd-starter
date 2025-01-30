@@ -1,8 +1,7 @@
-import React from 'react'
-import { Upload, message } from 'antd'
+import type { RcFile, UploadChangeParam, UploadFile } from 'antd/lib/upload/interface'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
-import type { RcFile } from 'antd/lib/upload/interface'
-import type { UploadChangeParam, UploadFile } from 'antd/lib/upload/interface'
+import { message, Upload } from 'antd'
+import React from 'react'
 
 function getBase64(img: RcFile, callback: (imageUrl: string) => unknown) {
   const reader = new FileReader()
@@ -12,15 +11,17 @@ function getBase64(img: RcFile, callback: (imageUrl: string) => unknown) {
 
 function beforeUpload(file: RcFile) {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
-  if (!isJpgOrPng) message.error('You can only upload JPG/PNG file!')
+  if (!isJpgOrPng)
+    message.error('You can only upload JPG/PNG file!')
 
   const isLt2M = file.size / 1024 / 1024 < 2
-  if (!isLt2M) message.error('Image must smaller than 2MB!')
+  if (!isLt2M)
+    message.error('Image must smaller than 2MB!')
 
   return isJpgOrPng && isLt2M
 }
 
-type Props = {
+interface Props {
   disabled: boolean
 }
 

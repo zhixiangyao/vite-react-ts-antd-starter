@@ -1,15 +1,15 @@
-import React, { memo, useEffect, useState } from 'react'
+import type { Data } from '/@/store/Reducer/registrantReducer'
+import type { Props } from '../type'
 import { Form } from 'antd'
+
 import dayjs from 'dayjs'
 
-import type { Data } from '/@/store/Reducer/registrantReducer'
-
-import { SubmitView } from './components/SubmitView'
-import { BasicInfoView } from './components/BasicInfoView'
-
+import React, { memo, useEffect, useState } from 'react'
 import { ADD_LOOK_EDIT } from '../../../type'
+
 import { timeKeys } from '../data'
-import type { Props } from '../type'
+import { BasicInfoView } from './components/BasicInfoView'
+import { SubmitView } from './components/SubmitView'
 
 type FormViewProps = Pick<Props, 'state' | 'handleFormEdit' | 'handleFormAdd' | 'fields'>
 

@@ -2,7 +2,7 @@ import type { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 
 export interface RegistrantActions {
   addRegistrant: ActionCreatorWithPayload<Data, string>
-  editRegistrant: ActionCreatorWithPayload<{ index: number; value: Data }, string>
+  editRegistrant: ActionCreatorWithPayload<{ index: number, value: Data }, string>
   deleteRegistrant: ActionCreatorWithPayload<number, string>
 }
 

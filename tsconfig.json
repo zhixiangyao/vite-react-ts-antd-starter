@@ -1,25 +1,25 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "allowJs": false,
     "target": "ESNext",
+    "jsx": "react",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "experimentalDecorators": true,
+    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "baseUrl": ".",
-    "jsx": "react",
-    "types": ["node"],
     "paths": {
       "/@/*": ["src/*"]
     },
-    "lib": ["DOM", "DOM.Iterable", "ESNext"]
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "allowJs": false,
+    "strict": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
   "include": ["./src"],
   "exclude": ["node_modules"]

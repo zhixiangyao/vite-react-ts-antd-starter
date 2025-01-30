@@ -1,9 +1,9 @@
-import React from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { Spin } from 'antd'
 import { HomeOutlined, RadarChartOutlined } from '@ant-design/icons'
+import { Spin } from 'antd'
+import React from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-type Route = {
+interface Route {
   label: string
   icon: React.ReactNode
   path: string
@@ -32,13 +32,13 @@ const router = createBrowserRouter([
     hydrateFallbackElement: (
       <Spin className="absolute left-2/4 top-2/4 translate-x-[-50%,-50%]" spinning />
     ),
-    children: routes.map((route) => ({
+    children: routes.map(route => ({
       path: route.path,
-      lazy: () => route.element.then((Component) => ({ Component })),
+      lazy: () => route.element.then(Component => ({ Component })),
     })),
   },
 ])
 
-export const Router = () => {
+export function Router() {
   return <RouterProvider router={router} />
 }

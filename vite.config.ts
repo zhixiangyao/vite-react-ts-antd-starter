@@ -1,11 +1,11 @@
-import { resolve } from 'path'
-import fs from 'fs'
+import fs from 'node:fs'
+import { resolve } from 'node:path'
 
-import dotenv from 'dotenv'
-import { defineConfig, type UserConfig, type ConfigEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import viteCompression from 'vite-plugin-compression'
+import dotenv from 'dotenv'
+import { type ConfigEnv, defineConfig, type UserConfig } from 'vite'
 import checker from 'vite-plugin-checker'
+import viteCompression from 'vite-plugin-compression'
 
 const baseConfig: UserConfig = {
   plugins: [react(), checker({ typescript: true }), viteCompression()],
@@ -17,12 +17,13 @@ const baseConfig: UserConfig = {
 export default ({ command, mode }: ConfigEnv) => {
   const { VITE_APP_NODE_ENV, VITE_APP_TITLE } = dotenv.parse(fs.readFileSync(`.env.${mode}`))
 
-  console.log('\x1b[33m%s\x1b[0m', `🏭--NODE 环境 (VITE_APP_NODE_ENV): ${VITE_APP_NODE_ENV}`)
-  console.log('\x1b[36m%s\x1b[0m', `🏠--APP 标题 (VITE_APP_TITLE): ${VITE_APP_TITLE}`)
+  console.log('\x1B[33m%s\x1B[0m', `🏭--NODE 环境 (VITE_APP_NODE_ENV): ${VITE_APP_NODE_ENV}`)
+  console.log('\x1B[36m%s\x1B[0m', `🏠--APP 标题 (VITE_APP_TITLE): ${VITE_APP_TITLE}`)
 
   if (command === 'serve') {
     return defineConfig({ ...baseConfig })
-  } else {
+  }
+  else {
     return defineConfig({
       ...baseConfig,
     })

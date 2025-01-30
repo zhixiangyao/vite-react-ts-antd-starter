@@ -3,7 +3,7 @@ import React, { memo } from 'react'
 
 import { PageHeader } from './PageHeader'
 
-type Props = {
+interface Props {
   title?: React.ReactNode
   children?: React.ReactNode
   header?: React.ReactElement
@@ -16,11 +16,15 @@ const Page = memo<Props>((props) => {
 
   return (
     <>
-      {headerLess ? null : React.isValidElement(header) ? (
-        header
-      ) : (
-        <PageHeader title={loading ? 'Loading...' : title} />
-      )}
+      {headerLess
+        ? null
+        : React.isValidElement(header)
+          ? (
+              header
+            )
+          : (
+              <PageHeader title={loading ? 'Loading...' : title} />
+            )}
 
       <Skeleton active={loading} loading={loading}>
         {children}
