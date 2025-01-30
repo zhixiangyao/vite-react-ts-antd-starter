@@ -1,5 +1,6 @@
+import type { MenuProps } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
-import { Avatar, Dropdown, type MenuProps } from 'antd'
+import { Avatar, Dropdown } from 'antd'
 import React, { memo, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 

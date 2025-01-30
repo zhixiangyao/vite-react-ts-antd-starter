@@ -1,4 +1,5 @@
-import { Watermark, type WatermarkProps } from 'antd'
+import type { WatermarkProps } from 'antd'
+import { Watermark } from 'antd'
 import React, { memo } from 'react'
 import { Outlet, useNavigation } from 'react-router-dom'
 

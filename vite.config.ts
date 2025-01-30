@@ -1,9 +1,10 @@
+import type { ConfigEnv, UserConfig } from 'vite'
 import fs from 'node:fs'
-import { resolve } from 'node:path'
 
+import { resolve } from 'node:path'
 import react from '@vitejs/plugin-react'
 import dotenv from 'dotenv'
-import { type ConfigEnv, defineConfig, type UserConfig } from 'vite'
+import { defineConfig } from 'vite'
 import checker from 'vite-plugin-checker'
 import viteCompression from 'vite-plugin-compression'
 
