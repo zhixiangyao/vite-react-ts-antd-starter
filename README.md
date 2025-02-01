@@ -39,14 +39,9 @@ pnpm dev
 pnpm build
 ```
 
-### Check ESlint
+### Check
 
 ```shell
 pnpm lint
-```
-
-### Check Stylelint
-
-```shell
 pnpm lint:stylelint
 ```
