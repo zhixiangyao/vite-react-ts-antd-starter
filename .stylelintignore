@@ -1,7 +1,8 @@
-dist
-dist-ssr
-public
-node_modules
+/dist/*
+/dist-ssr/*
+/public/*
+/.vscode/*
+/node_modules/*
 .husky
 
 **/*.html

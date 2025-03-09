@@ -2,6 +2,7 @@ import type { ConfigEnv, UserConfig } from 'vite'
 import fs from 'node:fs'
 
 import { resolve } from 'node:path'
+import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import dotenv from 'dotenv'
 import { defineConfig } from 'vite'
@@ -9,7 +10,7 @@ import checker from 'vite-plugin-checker'
 import viteCompression from 'vite-plugin-compression'
 
 const baseConfig: UserConfig = {
-  plugins: [react(), checker({ typescript: true }), viteCompression()],
+  plugins: [react(), checker({ typescript: true }), viteCompression(), tailwindcss()],
   resolve: {
     alias: [{ find: '/@', replacement: resolve(__dirname, './src') }],
   },

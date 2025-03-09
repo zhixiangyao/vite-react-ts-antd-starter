@@ -1,5 +1,4 @@
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 /* Override base SVG style to work with Ant Design */
 svg {

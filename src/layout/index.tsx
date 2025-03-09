@@ -15,7 +15,7 @@ export function Layout() {
   if (!isDesktop) {
     return (
       <div className="flex h-screen items-center justify-center text-center text-xl">
-        Please use a device with a width greater than 1024px to access.
+        Please use a device with a width greater than 768px to access.
       </div>
     )
   }
