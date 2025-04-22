@@ -1,12 +1,9 @@
 import type { Data } from '/@/store/Reducer/registrantReducer'
 import type { Props } from '../type'
 import { Form } from 'antd'
-
 import dayjs from 'dayjs'
-
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useEffect } from 'react'
 import { ADD_LOOK_EDIT } from '../../../type'
-
 import { timeKeys } from '../data'
 import { BasicInfoView } from './components/BasicInfoView'
 import { SubmitView } from './components/SubmitView'
@@ -16,14 +13,11 @@ type FormViewProps = Pick<Props, 'state' | 'handleFormEdit' | 'handleFormAdd' | 
 export const FormView = memo<FormViewProps>((props) => {
   const { state, fields, handleFormAdd, handleFormEdit } = props
   const [form] = Form.useForm()
-
-  const [disabled, setDisabled] = useState(false)
+  const disabled = state === ADD_LOOK_EDIT.LOOK
 
   // React Hook useEffect has a missing dependency: 'form'.
   // Either include it or remove the dependency array.
   useEffect(() => {
-    setDisabled(state === ADD_LOOK_EDIT.LOOK)
-
     state === ADD_LOOK_EDIT.ADD && form.resetFields()
   }, [state, form])
 
