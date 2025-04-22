@@ -10,7 +10,7 @@ export const RegistrantListPageHeader = memo<Props>(({ handleAdd }) => {
     <Space className="mb-5 w-full justify-between">
       <Space>&nbsp;</Space>
 
-      <Button type="primary" className="mb-5 self-end" onClick={handleAdd}>
+      <Button type="primary" className="self-end" onClick={handleAdd}>
         添加
       </Button>
     </Space>
