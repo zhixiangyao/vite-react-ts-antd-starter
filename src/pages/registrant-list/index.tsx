@@ -1,11 +1,11 @@
 import React, { memo } from 'react'
 
+import { Page } from '~/components/Page'
+
 import { RegistrantListPageDrawer } from './components/RegistrantListPageDrawer'
 import { RegistrantListPageHeader } from './components/RegistrantListPageHeader'
 import { RegistrantListPageTable } from './components/RegistrantListPageTable'
 import { useRegistrantList } from './hooks/useRegistrantList'
-
-import { Page } from '/@/components/Page'
 
 export const RegistrantListPage = memo(() => {
   const registrantList = useRegistrantList()

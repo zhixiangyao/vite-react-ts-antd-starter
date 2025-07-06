@@ -1,7 +1,7 @@
-import type { Data, InitialState, RegistrantActions } from '/@/store/Reducer/types'
+import type { Data, InitialState, RegistrantActions } from '~/store/Reducer/types'
 
 import { createSlice } from '@reduxjs/toolkit'
-import { getLocalStorage, setLocalStorage } from '/@/utils/storage'
+import { getLocalStorage, setLocalStorage } from '~/utils/storage'
 
 const initialState: InitialState = {
   list: getLocalStorage('list', true) ?? [],

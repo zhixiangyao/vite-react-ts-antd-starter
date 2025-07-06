@@ -28,7 +28,7 @@ export const routes: Route[] = [
 const router = createBrowserRouter([
   {
     path: '/',
-    lazy: () => import('/@/layout').then(({ Layout }) => ({ Component: Layout })),
+    lazy: () => import('~/layout').then(({ Layout }) => ({ Component: Layout })),
     hydrateFallbackElement: (
       <Spin className="absolute left-2/4 top-2/4 translate-x-[-50%,-50%]" spinning />
     ),

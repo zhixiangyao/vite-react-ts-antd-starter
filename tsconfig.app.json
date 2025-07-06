@@ -12,7 +12,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "/@/*": ["src/*"]
+      "~/*": ["src/*"]
     },
     "types": ["vite/client", "node"],
     "allowImportingTsExtensions": true,

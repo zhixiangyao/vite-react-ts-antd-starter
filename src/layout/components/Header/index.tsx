@@ -4,7 +4,7 @@ import { Avatar, Dropdown } from 'antd'
 import React, { memo, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { stringCapitalization } from '/@/utils/string'
+import { stringCapitalization } from '~/utils/string'
 
 const items: MenuProps['items'] = [
   {

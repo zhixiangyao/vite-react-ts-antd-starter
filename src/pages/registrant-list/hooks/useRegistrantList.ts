@@ -1,11 +1,12 @@
-import type { Data } from '/@/store/Reducer/registrantReducer'
+import type { Data } from '~/store/Reducer/registrantReducer'
 import { message } from 'antd'
-
 import { useCallback, useState } from 'react'
+
+import { useAppDispatch, useAppSelector } from '~/store'
+import { addRegistrant, deleteRegistrant, editRegistrant } from '~/store/Reducer/registrantReducer'
+import { formatTime } from '~/utils/time'
+
 import { EnumAddLookEdit } from '../type'
-import { useAppDispatch, useAppSelector } from '/@/store'
-import { addRegistrant, deleteRegistrant, editRegistrant } from '/@/store/Reducer/registrantReducer'
-import { formatTime } from '/@/utils/time'
 
 function useRegistrantList() {
   const dispatch = useAppDispatch()

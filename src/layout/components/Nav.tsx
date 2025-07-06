@@ -6,8 +6,8 @@ import clsx from 'clsx'
 import React, { memo, useCallback, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { routes } from '/@/router'
-import { stringCapitalization } from '/@/utils/string'
+import { routes } from '~/router'
+import { stringCapitalization } from '~/utils/string'
 
 interface Props {}
 

@@ -1,5 +1,5 @@
-import type { Data } from '/@/store/Reducer/registrantReducer'
 import type { TableProps } from 'antd'
+import type { Data } from '~/store/Reducer/registrantReducer'
 import { Popconfirm, Space, Table } from 'antd'
 import React, { memo } from 'react'
 

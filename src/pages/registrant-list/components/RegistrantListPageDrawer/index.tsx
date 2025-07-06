@@ -1,5 +1,5 @@
-import type { Data } from '/@/store/Reducer/registrantReducer'
 import type { Props } from './type'
+import type { Data } from '~/store/Reducer/registrantReducer'
 import { Button, Drawer, Form } from 'antd'
 import dayjs from 'dayjs'
 import React, { memo } from 'react'

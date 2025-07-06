@@ -2,11 +2,11 @@ import { ConfigProvider } from 'antd'
 import React from 'react'
 import { Provider } from 'react-redux'
 
-import '/@/styles/global.css'
-import { Router } from '/@/router'
-import { store } from '/@/store'
+import { Router } from '~/router'
+import { store } from '~/store'
+import { formConfig, getPopupContainerConfig } from '~/utils/ant'
 
-import { formConfig, getPopupContainerConfig } from '/@/utils/ant'
+import '~/styles/global.css'
 
 export function App() {
   return (

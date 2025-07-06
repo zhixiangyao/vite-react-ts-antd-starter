@@ -9,17 +9,20 @@ import viteCompression from 'vite-plugin-compression'
 const baseConfig: UserConfig = {
   plugins: [react(), checker({ typescript: true }), viteCompression(), tailwindcss()],
   resolve: {
-    alias: [{ find: '/@', replacement: resolve(__dirname, './src') }],
+    alias: [
+      {
+        find: '~',
+        replacement: resolve(__dirname, './src'),
+      },
+    ],
   },
 }
 
 export default ({ command }: ConfigEnv) => {
   if (command === 'serve') {
-    return defineConfig({ ...baseConfig })
+    return defineConfig(baseConfig)
   }
   else {
-    return defineConfig({
-      ...baseConfig,
-    })
+    return defineConfig(baseConfig)
   }
 }
