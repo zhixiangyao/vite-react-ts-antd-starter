@@ -1,46 +1,42 @@
 import type { Data } from '/@/store/Reducer/registrantReducer'
 import { message } from 'antd'
-import dayjs from 'dayjs'
 
 import { useCallback, useState } from 'react'
-import { ADD_LOOK_EDIT } from './type'
+import { EnumAddLookEdit } from '../type'
 import { useAppDispatch, useAppSelector } from '/@/store'
 import { addRegistrant, deleteRegistrant, editRegistrant } from '/@/store/Reducer/registrantReducer'
+import { formatTime } from '/@/utils/time'
 
-function formatTime(time: dayjs.ConfigType, type = 'L') {
-  return dayjs(time).format(type)
-}
-
-function useMonster() {
+function useRegistrantList() {
   const dispatch = useAppDispatch()
-  const registrantList = useAppSelector(state => state.registrantReducer.registrantList)
+  const list = useAppSelector(state => state.registrantReducer.list)
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [state, setState] = useState<ADD_LOOK_EDIT>(ADD_LOOK_EDIT.ADD)
+  const [state, setState] = useState<EnumAddLookEdit>(EnumAddLookEdit.ADD)
   const [fields, setFields] = useState<Data>({})
   const [index, setIndex] = useState<number>(0)
 
   const handleAdd = useCallback(() => {
     setIsModalVisible(true)
-    setState(ADD_LOOK_EDIT.ADD)
+    setState(EnumAddLookEdit.ADD)
   }, [])
 
   const handleTableLook = useCallback(
     (index: number) => {
       setIsModalVisible(true)
-      setState(ADD_LOOK_EDIT.LOOK)
-      setFields(registrantList[index])
+      setState(EnumAddLookEdit.LOOK)
+      setFields(list[index])
     },
-    [registrantList],
+    [list],
   )
 
   const handleTableEdit = useCallback(
     (index: number) => {
       setIsModalVisible(true)
-      setState(ADD_LOOK_EDIT.EDIT)
+      setState(EnumAddLookEdit.EDIT)
       setIndex(index)
-      setFields(registrantList[index])
+      setFields(list[index])
     },
-    [registrantList],
+    [list],
   )
 
   const handleTableDelete = useCallback(
@@ -51,7 +47,7 @@ function useMonster() {
     [dispatch],
   )
 
-  const hideFormView = useCallback(() => {
+  const handleFormCancel = useCallback(() => {
     setIsModalVisible(false)
     setFields({})
   }, [])
@@ -66,9 +62,9 @@ function useMonster() {
       }
 
       dispatch(addRegistrant(form))
-      hideFormView()
+      handleFormCancel()
     },
-    [dispatch, hideFormView],
+    [dispatch, handleFormCancel],
   )
 
   const handleFormEdit = useCallback(
@@ -81,27 +77,25 @@ function useMonster() {
       }
 
       dispatch(editRegistrant({ index, value: form }))
-      hideFormView()
+      handleFormCancel()
     },
-    [dispatch, hideFormView, index],
+    [dispatch, handleFormCancel, index],
   )
 
   return {
-    handleAdd,
-
-    handleTableLook,
-    handleTableEdit,
-    handleTableDelete,
-
-    hideFormView,
-    handleFormAdd,
-    handleFormEdit,
-
     isModalVisible,
     fields,
     state,
-    registrantList,
+    list,
+
+    handleAdd,
+    handleTableLook,
+    handleTableEdit,
+    handleTableDelete,
+    handleFormCancel,
+    handleFormAdd,
+    handleFormEdit,
   }
 }
 
-export { useMonster }
+export { useRegistrantList }

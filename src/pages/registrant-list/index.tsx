@@ -1,26 +1,26 @@
 import React, { memo } from 'react'
 
 import { RegistrantListPageDrawer } from './components/RegistrantListPageDrawer'
-
 import { RegistrantListPageHeader } from './components/RegistrantListPageHeader'
 import { RegistrantListPageTable } from './components/RegistrantListPageTable'
-import { useMonster } from './hooks'
+import { useRegistrantList } from './hooks/useRegistrantList'
+
 import { Page } from '/@/components/Page'
 
 export const RegistrantListPage = memo(() => {
-  const monster = useMonster()
+  const registrantList = useRegistrantList()
 
-  const { handleAdd } = monster
-  const { handleTableLook, handleTableEdit, handleTableDelete } = monster
-  const { hideFormView, handleFormAdd, handleFormEdit } = monster
-  const { isModalVisible, fields, state, registrantList } = monster
+  const { handleAdd } = registrantList
+  const { handleTableLook, handleTableEdit, handleTableDelete } = registrantList
+  const { handleFormCancel, handleFormAdd, handleFormEdit } = registrantList
+  const { isModalVisible, fields, state, list } = registrantList
 
   return (
     <Page headerLess>
       <RegistrantListPageHeader handleAdd={handleAdd} />
 
       <RegistrantListPageTable
-        list={registrantList}
+        list={list}
         handleLook={handleTableLook}
         handleEdit={handleTableEdit}
         handleDelete={handleTableDelete}
@@ -30,7 +30,7 @@ export const RegistrantListPage = memo(() => {
         visible={isModalVisible}
         fields={fields}
         state={state}
-        handleFormCancel={hideFormView}
+        handleFormCancel={handleFormCancel}
         handleFormAdd={handleFormAdd}
         handleFormEdit={handleFormEdit}
       />

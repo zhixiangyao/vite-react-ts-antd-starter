@@ -1,4 +1,4 @@
-import type { RcFile, UploadChangeParam, UploadFile } from 'antd/lib/upload/interface'
+import type { RcFile, UploadChangeParam, UploadFile } from 'antd/lib/upload'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { message, Upload } from 'antd'
 import React from 'react'

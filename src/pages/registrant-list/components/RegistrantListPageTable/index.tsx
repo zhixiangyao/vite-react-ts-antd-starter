@@ -1,7 +1,6 @@
 import type { Data } from '/@/store/Reducer/registrantReducer'
-import type { ColumnsType } from 'antd/es/table'
+import type { TableProps } from 'antd'
 import { Popconfirm, Space, Table } from 'antd'
-
 import React, { memo } from 'react'
 
 interface Props {
@@ -35,36 +34,55 @@ export const RegistrantListPageTable = memo<Props>((props) => {
     </Space>
   )
 
-  const columns: ColumnsType<Data> = [
+  const columns: TableProps<Data>['columns'] = [
     {
       title: 'ID',
       dataIndex: 'id',
       key: 'id',
-      render: (id: string) => <a>{id}</a>,
+      width: 140,
+      fixed: 'left',
+      render: (id: string) => <div>{id}</div>,
     },
     {
       title: '姓名',
       dataIndex: 'name',
       key: 'name',
-      render: (name: string) => <a>{name}</a>,
+      width: 150,
+      render: (name: string) => <div>{name}</div>,
     },
     {
       title: '性别',
       dataIndex: 'sex',
       key: 'sex',
-      render: (sex: number) => <a>{['男', '女'][sex]}</a>,
+      width: 80,
+      render: (sex: number) => <div>{['男', '女'][sex]}</div>,
     },
     {
       title: '填表时间',
       dataIndex: 'registrationTime',
       key: 'registrationTime',
+      width: 120,
+      render: (registrationTime: string) => <div>{registrationTime}</div>,
     },
     {
+      key: 'actions',
       title: '操作',
+      width: 160,
+      fixed: 'right',
       render: handleRender,
     },
   ]
 
-  return <Table rowKey="id" className="w-full" columns={columns} dataSource={list} bordered />
+  return (
+    <Table
+      rowKey="id"
+      className="w-full"
+      columns={columns}
+      dataSource={list}
+      bordered
+      size="small"
+      scroll={{ x: columns.reduce((acc, cur) => acc + (typeof cur.width === 'number' ? cur.width : 200), 0) }}
+    />
+  )
 })
 RegistrantListPageTable.displayName = 'RegistrantListPageTable'

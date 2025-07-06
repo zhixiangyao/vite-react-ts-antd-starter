@@ -46,5 +46,5 @@ export interface Data {
 }
 
 export interface InitialState {
-  registrantList: Data[]
+  list: Data[]
 }

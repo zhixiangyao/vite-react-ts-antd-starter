@@ -1,10 +1,10 @@
 import type { Data } from '/@/store/Reducer/registrantReducer'
 
-import type { ADD_LOOK_EDIT } from '../../type'
+import type { EnumAddLookEdit } from '../../type'
 
 export interface Props {
   visible: boolean
-  state: ADD_LOOK_EDIT
+  state: EnumAddLookEdit
   fields: Data
   handleFormCancel: () => void
   handleFormAdd: (values: Data) => void

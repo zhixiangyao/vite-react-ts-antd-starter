@@ -1,4 +1,4 @@
-import type { ConfigProviderProps } from 'antd/es/config-provider'
+import type { ConfigProviderProps } from 'antd'
 
 export function getPopupContainerConfig(): HTMLElement {
   return window.document.body
