@@ -1,6 +1,6 @@
 import type { MenuProps } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
-import { Avatar, Dropdown } from 'antd'
+import { Avatar, Dropdown, theme } from 'antd'
 import React, { memo, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -16,6 +16,7 @@ const items: MenuProps['items'] = [
 interface Props {}
 
 export const Header = memo<Props>(() => {
+  const { token } = theme.useToken()
   const { pathname } = useLocation()
 
   const title = useMemo(() => {
@@ -27,17 +28,20 @@ export const Header = memo<Props>(() => {
   const menuProps = useMemo(() => ({ items }), [])
 
   return (
-    <>
-      <header className="flex h-[50px] w-full items-center justify-between bg-gray-200 px-3">
-        <span className="font-700 text-[20px]">{title}</span>
 
-        <div className="flex items-center">
-          <Dropdown menu={menuProps} disabled>
-            <Avatar size="small" icon={<UserOutlined />} />
-          </Dropdown>
-        </div>
-      </header>
-    </>
+    <header
+      className="flex h-[50px] w-full items-center justify-between px-3"
+      style={{ backgroundColor: token.colorBgContainerDisabled }}
+    >
+      <span className="font-700 text-[20px]">{title}</span>
+
+      <div className="flex items-center">
+        <Dropdown menu={menuProps} disabled>
+          <Avatar size="small" icon={<UserOutlined />} />
+        </Dropdown>
+      </div>
+    </header>
+
   )
 })
 Header.displayName = 'Header'

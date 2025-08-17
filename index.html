@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,11 +10,14 @@
     <div id="root"></div>
     <script defer>
       ;(function () {
-        const prefersDark =
-          window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-        const setting = localStorage.getItem('color-schema') || 'auto'
-        if (setting === 'dark' || (prefersDark && setting !== 'light'))
-          document.documentElement.classList.toggle('dark', true)
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        const mode = localStorage.getItem('color-schema') || 'dark'
+
+        if (mode === 'dark' || (prefersDark && mode !== 'light')) {
+          document.documentElement.classList.remove('dark', 'light')
+          document.documentElement.classList.add(mode)
+          document.documentElement.style.colorScheme = mode
+        }
       })()
     </script>
     <script type="module" src="/src/main.tsx"></script>

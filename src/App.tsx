@@ -1,19 +1,18 @@
-import { ConfigProvider } from 'antd'
 import React from 'react'
 import { Provider } from 'react-redux'
 
+import { AntConfigProvider } from '~/components/AntConfigProvider'
 import { Router } from '~/router'
 import { store } from '~/store'
-import { formConfig, getPopupContainerConfig } from '~/utils/ant'
 
-import '~/styles/global.css'
+import '~/styles/app.css'
 
 export function App() {
   return (
-    <ConfigProvider form={formConfig} getPopupContainer={getPopupContainerConfig}>
+    <AntConfigProvider>
       <Provider store={store}>
         <Router />
       </Provider>
-    </ConfigProvider>
+    </AntConfigProvider>
   )
 }
