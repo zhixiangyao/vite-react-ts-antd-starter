@@ -1,8 +1,9 @@
-import React, { memo } from 'react'
+import React from 'react'
 
 import { Page } from '~/components/Page'
 
-export const TestPage = memo(() => {
+function TestPage() {
   return <Page headerLess>Test</Page>
-})
-TestPage.displayName = 'TestPage'
+}
+
+export { TestPage }

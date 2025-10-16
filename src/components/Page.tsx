@@ -1,5 +1,5 @@
 import { Skeleton } from 'antd'
-import React, { memo } from 'react'
+import React from 'react'
 
 import { PageHeader } from './PageHeader'
 
@@ -11,7 +11,7 @@ interface Props {
   loading?: boolean
 }
 
-const Page = memo<Props>((props) => {
+function Page(props: Props) {
   const { title, header, children, loading, headerLess } = props
 
   return (
@@ -31,7 +31,6 @@ const Page = memo<Props>((props) => {
       </Skeleton>
     </>
   )
-})
-Page.displayName = 'Page'
+}
 
 export { Page }

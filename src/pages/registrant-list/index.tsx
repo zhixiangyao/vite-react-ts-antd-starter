@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 
 import { Page } from '~/components/Page'
 
@@ -7,7 +7,7 @@ import { RegistrantListPageHeader } from './components/RegistrantListPageHeader'
 import { RegistrantListPageTable } from './components/RegistrantListPageTable'
 import { useRegistrantList } from './hooks/useRegistrantList'
 
-export const RegistrantListPage = memo(() => {
+function RegistrantListPage() {
   const registrantList = useRegistrantList()
 
   const { handleAdd } = registrantList
@@ -36,5 +36,6 @@ export const RegistrantListPage = memo(() => {
       />
     </Page>
   )
-})
-RegistrantListPage.displayName = 'RegistrantListPage'
+}
+
+export { RegistrantListPage }

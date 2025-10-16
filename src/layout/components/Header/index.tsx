@@ -1,7 +1,7 @@
 import type { MenuProps } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import { Avatar, Dropdown, theme } from 'antd'
-import React, { memo, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { stringCapitalization } from '~/utils/string'
@@ -13,9 +13,7 @@ const items: MenuProps['items'] = [
   },
 ]
 
-interface Props {}
-
-export const Header = memo<Props>(() => {
+function Header() {
   const { token } = theme.useToken()
   const { pathname } = useLocation()
 
@@ -43,5 +41,6 @@ export const Header = memo<Props>(() => {
     </header>
 
   )
-})
-Header.displayName = 'Header'
+}
+
+export { Header }

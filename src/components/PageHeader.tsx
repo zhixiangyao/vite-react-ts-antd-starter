@@ -1,12 +1,12 @@
 import clsx from 'clsx'
-import React, { memo } from 'react'
+import React from 'react'
 
 interface Props {
   className?: string
   title?: React.ReactNode
 }
 
-const PageHeader = memo<Props>(({ className, title }) => {
+function PageHeader({ className, title }: Props) {
   if (title === undefined)
     return null
 
@@ -17,7 +17,6 @@ const PageHeader = memo<Props>(({ className, title }) => {
       </div>
     </div>
   )
-})
-PageHeader.displayName = 'PageHeader'
+}
 
 export { PageHeader }

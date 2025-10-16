@@ -1,7 +1,7 @@
 import type { TableProps } from 'antd'
 import type { Data } from '~/store/Reducer/registrantReducer'
 import { Popconfirm, Space, Table } from 'antd'
-import React, { memo } from 'react'
+import React from 'react'
 
 interface Props {
   list: Data[]
@@ -10,7 +10,7 @@ interface Props {
   handleDelete: (index: number) => void
 }
 
-export const RegistrantListPageTable = memo<Props>((props) => {
+function RegistrantListPageTable(props: Props) {
   const { list, handleLook, handleEdit, handleDelete } = props
 
   const handleRender = (text: unknown, record: Data, index: number) => (
@@ -84,5 +84,6 @@ export const RegistrantListPageTable = memo<Props>((props) => {
       scroll={{ x: columns.reduce((acc, cur) => acc + (typeof cur.width === 'number' ? cur.width : 200), 0) }}
     />
   )
-})
-RegistrantListPageTable.displayName = 'RegistrantListPageTable'
+}
+
+export { RegistrantListPageTable }

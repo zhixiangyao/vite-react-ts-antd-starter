@@ -1,6 +1,6 @@
 import type { WatermarkProps } from 'antd'
 import { Watermark } from 'antd'
-import React, { memo } from 'react'
+import React from 'react'
 import { Outlet, useNavigation } from 'react-router-dom'
 
 const watermarkConfig: WatermarkProps = {
@@ -8,9 +8,7 @@ const watermarkConfig: WatermarkProps = {
   gap: [150, 150],
 }
 
-interface Props {}
-
-export const Main = memo<Props>(() => {
+function Main() {
   const navigation = useNavigation()
 
   return (
@@ -24,5 +22,6 @@ export const Main = memo<Props>(() => {
       <Outlet />
     </Watermark>
   )
-})
-Main.displayName = 'Main'
+}
+
+export { Main }

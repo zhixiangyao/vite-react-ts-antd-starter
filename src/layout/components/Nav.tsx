@@ -3,15 +3,13 @@ import { HeartTwoTone } from '@ant-design/icons'
 import { useBoolean } from 'ahooks'
 import { Layout, Menu } from 'antd'
 import clsx from 'clsx'
-import React, { memo, useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { routes } from '~/router'
 import { stringCapitalization } from '~/utils/string'
 
-interface Props {}
-
-export const Nav = memo<Props>(() => {
+function Nav() {
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const [collapsed, { toggle }] = useBoolean(true)
@@ -62,5 +60,6 @@ export const Nav = memo<Props>(() => {
       />
     </Layout.Sider>
   )
-})
-Nav.displayName = 'Nav'
+}
+
+export { Nav }

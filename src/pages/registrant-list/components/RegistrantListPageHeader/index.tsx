@@ -1,11 +1,11 @@
 import { Button, Space } from 'antd'
-import React, { memo } from 'react'
+import React from 'react'
 
 interface Props {
   handleAdd: () => void
 }
 
-export const RegistrantListPageHeader = memo<Props>(({ handleAdd }) => {
+function RegistrantListPageHeader({ handleAdd }: Props) {
   return (
     <Space className="mb-5 w-full justify-between">
       <Space>&nbsp;</Space>
@@ -15,5 +15,6 @@ export const RegistrantListPageHeader = memo<Props>(({ handleAdd }) => {
       </Button>
     </Space>
   )
-})
-RegistrantListPageHeader.displayName = 'RegistrantListPageHeader'
+}
+
+export { RegistrantListPageHeader }

@@ -2,7 +2,7 @@ import type { Props } from './type'
 import type { Data } from '~/store/Reducer/registrantReducer'
 import { Button, Drawer, Form } from 'antd'
 import dayjs from 'dayjs'
-import React, { memo } from 'react'
+import React from 'react'
 
 import { EnumAddLookEdit } from '../../type'
 import { BasicInfoView } from './components/BasicInfoView'
@@ -10,7 +10,7 @@ import { BasicInfoView } from './components/BasicInfoView'
 const AddLookEdit = ['添加', '查看', '编辑']
 const TimeKeys = ['graduationDate', 'registrationTime', 'birthDate']
 
-export const RegistrantListPageDrawer = memo<Props>((props) => {
+function RegistrantListPageDrawer(props: Props) {
   const { visible, handleFormCancel } = props
   const { state, fields, handleFormAdd, handleFormEdit } = props
   const [form] = Form.useForm()
@@ -66,5 +66,6 @@ export const RegistrantListPageDrawer = memo<Props>((props) => {
       </Form>
     </Drawer>
   )
-})
-RegistrantListPageDrawer.displayName = 'RegistrantListPageDrawer'
+}
+
+export { RegistrantListPageDrawer }
