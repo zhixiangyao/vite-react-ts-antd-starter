@@ -1,12 +1,10 @@
-/dist/*
-/dist-ssr/*
-/public/*
-/.vscode/*
-/node_modules/*
-.husky
+node_modules
+dist
+public
+build
 
 **/*.html
-**/*.js
-**/*.mjs
 **/*.ts
 **/*.tsx
+**/*.js
+**/*.mjs
