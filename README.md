@@ -2,18 +2,19 @@
 
 This template is based on the template [vite-react-ts-starter](https://github.com/zhixiangyao/vite-react-ts-starter)
 
-**Editor:**
+- **Editor:**
 
-- [VS Code](https://code.visualstudio.com/)
+  - [VS Code](https://code.visualstudio.com/)
 
-**VSCode Extension:**
+- **VSCode Extension:**
 
-- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+  - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
-**Development ENV:**
+- **Development ENV:**
 
-- NodeJs
-- Git
+  - git => 2.39.0
+  - node => 24.11.0
+  - pnpm => 10.21.0
 
 ## Clone
 
