@@ -13,15 +13,15 @@ This template is based on the template [vite-react-ts-starter](https://github.co
 - **Development ENV:**
 
   - git => 2.39.0
-  - node => 24.11.0
-  - pnpm => 10.21.0
+  - node => 24.11.1
+  - pnpm => 10.24.0
 
 ## Clone
 
 ```shell
 git clone git@github.com:zhixiangyao/vite-react-ts-antd-starter.git
 cd vite-react-ts-antd-starter
-pnpm i # If not install pnpm, please run: npm install -g pnpm
+pnpm i
 ```
 
 ## Usage
