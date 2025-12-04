@@ -2,7 +2,6 @@ import type { Props } from './type'
 import type { Data } from '~/store/Reducer/registrantReducer'
 import { Button, Drawer, Form } from 'antd'
 import dayjs from 'dayjs'
-import React from 'react'
 
 import { EnumAddLookEdit } from '../../type'
 import { BasicInfoView } from './components/BasicInfoView'
@@ -39,7 +38,7 @@ function RegistrantListPageDrawer(props: Props) {
 
   return (
     <Drawer
-      width="1180px"
+      size={1180}
       title={`${AddLookEdit[state]}: 员工入职登记表`}
       placement="right"
       onClose={handleFormCancel}
