@@ -1,50 +1,50 @@
 # Vite + React + ReactRouter + ReactRedux + TypeScript + TailwindCSS + AntdUI
 
-English · [中文](./README-zh.md)
+[English](./README.md) · 中文
 
-This template is based on the template [vite-react-ts-starter](https://github.com/zhixiangyao/vite-react-ts-starter)
+这个模板基于 [vite-react-ts-starter](https://github.com/zhixiangyao/vite-react-ts-starter) 模板开发。
 
-- **Editor:**
+- **编辑器：**
 
   - [VS Code](https://code.visualstudio.com/)
 
-- **VSCode Extension:**
+- **VSCode 扩展：**
 
   - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
-- **Development ENV:**
+- **开发环境：**
 
   - git => 2.39.0
   - node => 24.11.1
   - pnpm => 10.24.0
 
-## Clone
+## 克隆
 
 ```shell
 git clone git@github.com:zhixiangyao/vite-react-ts-antd-starter.git
-# or
+# 或者
 git clone https://github.com/zhixiangyao/vite-react-ts-antd-starter.git
 cd vite-react-ts-antd-starter
 pnpm i
 ```
 
-## Usage
+## 使用
 
-### Development
+### 开发
 
-click it http://localhost:5173
+点击访问 http://localhost:5173
 
 ```shell
 pnpm dev
 ```
 
-### Build
+### 构建
 
 ```shell
 pnpm build
 ```
 
-### Check
+### 检查
 
 ```shell
 pnpm lint
