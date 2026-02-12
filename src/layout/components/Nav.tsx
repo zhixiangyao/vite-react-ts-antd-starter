@@ -3,7 +3,7 @@ import { HeartTwoTone } from '@ant-design/icons'
 import { useBoolean } from 'ahooks'
 import { Layout, Menu } from 'antd'
 import clsx from 'clsx'
-import React, { useCallback, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { routes } from '~/router'
@@ -35,7 +35,7 @@ function Nav() {
       onCollapse={toggle}
     >
       <div
-        className="sticky top-0 z-[1] flex h-[70px] w-full cursor-pointer select-none items-center justify-center"
+        className="sticky top-0 z-1 flex h-17.5 w-full cursor-pointer select-none items-center justify-center"
         onClick={toggle}
       >
         <HeartTwoTone className="text-xl" />
@@ -43,8 +43,8 @@ function Nav() {
 
       <div
         className={clsx(
-          collapsed ? 'text-[40px] leading-[40px]' : 'text-[100px] leading-[100px]',
-          'absolute bottom-20 w-full text-center text-white opacity-20 transition-all duration-[0.2s] ease-[ease]',
+          collapsed ? 'text-[40px] leading-10' : 'text-[100px] leading-25',
+          'absolute bottom-20 w-full text-center text-white opacity-20 transition-all duration-200 ease-[ease]',
         )}
       >
         {stringCapitalization(import.meta.env.VITE_APP_NODE_ENV.slice(0, 3))}

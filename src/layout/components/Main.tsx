@@ -1,6 +1,5 @@
 import type { WatermarkProps } from 'antd'
 import { Watermark } from 'antd'
-import React from 'react'
 import { Outlet, useNavigation } from 'react-router-dom'
 
 const watermarkConfig: WatermarkProps = {
@@ -13,7 +12,7 @@ function Main() {
 
   return (
     <Watermark
-      className="h-[calc(100vh_-_50px)] w-full overflow-y-auto overflow-x-hidden px-3 pt-2"
+      className="h-[calc(100vh-50px)] w-full overflow-y-auto overflow-x-hidden px-3 pt-2"
       content={watermarkConfig.content}
       gap={watermarkConfig.gap}
     >

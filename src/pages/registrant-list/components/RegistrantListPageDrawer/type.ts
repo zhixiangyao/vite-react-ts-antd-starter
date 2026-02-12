@@ -1,5 +1,4 @@
 import type { EnumAddLookEdit } from '../../type'
-
 import type { Data } from '~/store/Reducer/registrantReducer'
 
 export interface Props {

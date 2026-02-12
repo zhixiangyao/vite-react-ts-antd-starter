@@ -1,6 +1,5 @@
 import { Skeleton } from 'antd'
-import React from 'react'
-
+import { isValidElement } from 'react'
 import { PageHeader } from './PageHeader'
 
 interface Props {
@@ -18,7 +17,7 @@ function Page(props: Props) {
     <>
       {headerLess
         ? null
-        : React.isValidElement(header)
+        : isValidElement(header)
           ? (
               header
             )

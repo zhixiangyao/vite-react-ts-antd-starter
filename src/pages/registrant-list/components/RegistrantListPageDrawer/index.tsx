@@ -2,7 +2,6 @@ import type { Props } from './type'
 import type { Data } from '~/store/Reducer/registrantReducer'
 import { Button, Drawer, Form } from 'antd'
 import dayjs from 'dayjs'
-
 import { EnumAddLookEdit } from '../../type'
 import { BasicInfoView } from './components/BasicInfoView'
 

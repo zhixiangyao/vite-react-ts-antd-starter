@@ -1,6 +1,5 @@
 import { HomeOutlined, RadarChartOutlined } from '@ant-design/icons'
 import { Spin } from 'antd'
-import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 interface Route {

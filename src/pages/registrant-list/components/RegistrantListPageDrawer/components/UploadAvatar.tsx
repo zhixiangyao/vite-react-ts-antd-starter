@@ -1,7 +1,7 @@
 import type { RcFile, UploadChangeParam, UploadFile } from 'antd/lib/upload'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { message, Upload } from 'antd'
-import React from 'react'
+import { Component } from 'react'
 
 function getBase64(img: RcFile, callback: (imageUrl: string) => unknown) {
   const reader = new FileReader()
@@ -25,7 +25,7 @@ interface Props {
   disabled: boolean
 }
 
-export class UploadAvatar extends React.Component<Props> {
+export class UploadAvatar extends Component<Props> {
   override state = {
     loading: false,
     imageUrl: '',

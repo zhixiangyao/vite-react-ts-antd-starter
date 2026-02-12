@@ -1,8 +1,6 @@
 import { Layout as AntdLayout } from 'antd'
 import clsx from 'clsx'
-import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
-
 import { useIsDesktop } from '~/hooks/useIsDeskTop'
 import { Header } from '~/layout/components/Header'
 import { Main } from '~/layout/components/Main'

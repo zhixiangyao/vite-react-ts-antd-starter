@@ -1,7 +1,4 @@
-import React from 'react'
-
 import { Page } from '~/components/Page'
-
 import { RegistrantListPageDrawer } from './components/RegistrantListPageDrawer'
 import { RegistrantListPageHeader } from './components/RegistrantListPageHeader'
 import { RegistrantListPageTable } from './components/RegistrantListPageTable'

@@ -1,5 +1,4 @@
 import type { Data, InitialState, RegistrantActions } from '~/store/Reducer/types'
-
 import { createSlice } from '@reduxjs/toolkit'
 import { getLocalStorage, setLocalStorage } from '~/utils/storage'
 

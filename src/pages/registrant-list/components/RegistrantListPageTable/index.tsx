@@ -1,7 +1,6 @@
 import type { TableProps } from 'antd'
 import type { Data } from '~/store/Reducer/registrantReducer'
 import { Popconfirm, Space, Table } from 'antd'
-import React from 'react'
 
 interface Props {
   list: Data[]

@@ -1,6 +1,4 @@
 import { Col, DatePicker, Form, Input, Radio, Row, Select } from 'antd'
-import React from 'react'
-
 import { MARITAL_STATUS_LIST, POLITICAL_IDENTITY_LIST } from '../data'
 import { UploadAvatar } from './UploadAvatar'
 

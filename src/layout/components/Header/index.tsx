@@ -1,7 +1,7 @@
 import type { MenuProps } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import { Avatar, Dropdown, theme } from 'antd'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { stringCapitalization } from '~/utils/string'
@@ -28,7 +28,7 @@ function Header() {
   return (
 
     <header
-      className="flex h-[50px] w-full items-center justify-between px-3"
+      className="flex h-12.5 w-full items-center justify-between px-3"
       style={{ backgroundColor: token.colorBgContainerDisabled }}
     >
       <span className="font-700 text-[20px]">{title}</span>

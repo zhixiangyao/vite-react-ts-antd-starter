@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-
 import { registrantReducer } from './Reducer/registrantReducer'
 
 const store = configureStore({
