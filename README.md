@@ -15,8 +15,8 @@ This template is based on the template [vite-react-ts-starter](https://github.co
 - **Development ENV:**
 
   - git => 2.39.0
-  - node => 24.11.1
-  - pnpm => 10.24.0
+  - node => 24.13.0
+  - pnpm => 10.29.3
 
 ## Clone
 
