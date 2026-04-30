@@ -8,7 +8,7 @@ import { EnumAddLookEdit } from '../type'
 
 function useRegistrantList() {
   const dispatch = useAppDispatch()
-  const list = useAppSelector(state => state.registrantReducer.list)
+  const list = useAppSelector((state) => state.registrantReducer.list)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [state, setState] = useState<EnumAddLookEdit>(EnumAddLookEdit.ADD)
   const [fields, setFields] = useState<Data>({})

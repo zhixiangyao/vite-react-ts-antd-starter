@@ -18,8 +18,7 @@ function RegistrantListPageDrawer(props: Props) {
   }
 
   const handleAfterOpenChange = (open: boolean) => {
-    if (!open)
-      return
+    if (!open) return
 
     switch (state) {
       case EnumAddLookEdit.ADD: {
@@ -42,13 +41,13 @@ function RegistrantListPageDrawer(props: Props) {
       placement="right"
       onClose={handleFormCancel}
       open={visible}
-      footer={(
+      footer={
         state !== EnumAddLookEdit.LOOK && (
           <Button type="primary" onClick={() => form.submit()}>
             确定
           </Button>
         )
-      )}
+      }
       afterOpenChange={handleAfterOpenChange}
     >
       <Form

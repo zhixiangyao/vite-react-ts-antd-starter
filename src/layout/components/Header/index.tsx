@@ -20,13 +20,12 @@ function Header() {
   const title = useMemo(() => {
     const list = pathname.split('/').pop()?.split('-')
 
-    return list?.map(str => stringCapitalization(str)).join(' ')
+    return list?.map((str) => stringCapitalization(str)).join(' ')
   }, [pathname])
 
   const menuProps = useMemo(() => ({ items }), [])
 
   return (
-
     <header
       className="flex h-12.5 w-full items-center justify-between px-3"
       style={{ backgroundColor: token.colorBgContainerDisabled }}
@@ -39,7 +38,6 @@ function Header() {
         </Dropdown>
       </div>
     </header>
-
   )
 }
 

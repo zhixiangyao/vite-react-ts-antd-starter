@@ -6,8 +6,7 @@ interface Props {
 }
 
 function PageHeader({ className, title }: Props) {
-  if (title === undefined)
-    return null
+  if (title === undefined) return null
 
   return (
     <div className={clsx(className, 'flex justify-between')}>

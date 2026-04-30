@@ -15,15 +15,7 @@ function Page(props: Props) {
 
   return (
     <>
-      {headerLess
-        ? null
-        : isValidElement(header)
-          ? (
-              header
-            )
-          : (
-              <PageHeader title={loading ? 'Loading...' : title} />
-            )}
+      {headerLess ? null : isValidElement(header) ? header : <PageHeader title={loading ? 'Loading...' : title} />}
 
       <Skeleton active={loading} loading={loading}>
         {children}

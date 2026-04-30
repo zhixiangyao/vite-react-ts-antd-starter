@@ -14,8 +14,7 @@
  * ```
  */
 export function stringCapitalization(str: string, scope: [number, number] = [0, 0]) {
-  if (!str)
-    return ''
+  if (!str) return ''
 
   const list = [...str]
 
@@ -43,8 +42,7 @@ export function stringCapitalization(str: string, scope: [number, number] = [0, 
 export function stringPluralize(num: number, word: string) {
   if (num === 1) {
     return word
-  }
-  else {
+  } else {
     return `${word}s`
   }
 }

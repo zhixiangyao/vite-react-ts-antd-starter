@@ -15,7 +15,7 @@ const registrantSlice = createSlice({
       setLocalStorage('list', state.list)
     },
 
-    editRegistrant: (state, action: { payload: { index: number, value: Data } }) => {
+    editRegistrant: (state, action: { payload: { index: number; value: Data } }) => {
       state.list[action.payload.index] = action.payload.value
       setLocalStorage('list', state.list)
     },
@@ -28,8 +28,7 @@ const registrantSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-const { addRegistrant, editRegistrant, deleteRegistrant }: RegistrantActions
-  = registrantSlice.actions
+const { addRegistrant, editRegistrant, deleteRegistrant }: RegistrantActions = registrantSlice.actions
 
 const registrantReducer = registrantSlice.reducer
 

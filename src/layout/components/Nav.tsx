@@ -21,19 +21,10 @@ function Nav() {
     [navigate, pathname],
   )
 
-  const menus = useMemo(
-    () => routes.map(({ path, label, icon }) => ({ key: path, label, icon })),
-    [],
-  )
+  const menus = useMemo(() => routes.map(({ path, label, icon }) => ({ key: path, label, icon })), [])
 
   return (
-    <Layout.Sider
-      className="min-h-screen"
-      width={200}
-      collapsed={collapsed}
-      collapsible
-      onCollapse={toggle}
-    >
+    <Layout.Sider className="min-h-screen" width={200} collapsed={collapsed} collapsible onCollapse={toggle}>
       <div
         className="sticky top-0 z-1 flex h-17.5 w-full cursor-pointer select-none items-center justify-center"
         onClick={toggle}
