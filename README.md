@@ -5,18 +5,17 @@ English · [中文](./README-zh.md)
 This template is based on the template [vite-react-ts-starter](https://github.com/zhixiangyao/vite-react-ts-starter)
 
 - **Editor:**
-
-  - [VS Code](https://code.visualstudio.com/)
+  - [VSCode](https://code.visualstudio.com/)
 
 - **VSCode Extension:**
-
+  - [Oxc](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)
+  - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
   - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
 - **Development ENV:**
-
   - git => 2.39.0
-  - node => 24.14.0
-  - pnpm => 10.32.1
+  - node => 25.9.0
+  - pnpm => 11.0.0
 
 ## Clone
 
@@ -47,6 +46,9 @@ pnpm build
 ### Check
 
 ```shell
-pnpm lint
+pnpm typecheck
+pnpm lint:check
+pnpm fmt
+pnpm fmt:check
 pnpm lint:css
 ```
