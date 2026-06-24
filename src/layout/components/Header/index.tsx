@@ -2,7 +2,7 @@ import type { MenuProps } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import { Avatar, Dropdown, theme } from 'antd'
 import { useMemo } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router'
 
 import { stringCapitalization } from '~/utils/string'
 

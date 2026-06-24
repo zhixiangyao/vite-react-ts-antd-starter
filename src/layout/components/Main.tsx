@@ -1,6 +1,6 @@
 import type { WatermarkProps } from 'antd'
 import { Watermark } from 'antd'
-import { Outlet, useNavigation } from 'react-router-dom'
+import { Outlet, useNavigation } from 'react-router'
 
 const watermarkConfig: WatermarkProps = {
   content: 'vite-react-ts-antd-starter',

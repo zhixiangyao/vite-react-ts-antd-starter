@@ -4,7 +4,7 @@ import { useBoolean } from 'ahooks'
 import { Layout, Menu } from 'antd'
 import clsx from 'clsx'
 import { useCallback, useMemo } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router'
 
 import { routes } from '~/router'
 import { stringCapitalization } from '~/utils/string'
